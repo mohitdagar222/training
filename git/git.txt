@@ -20,8 +20,8 @@ Copy the contents of the public SSH key
 macOS:
 pbcopy < ~/.ssh/id_rsa.pub
 
-GNU/Linux (requires the xclip package):
-xclip -sel clip < ~/.ssh/id_rsa.pub
+Linux (requires the xclip package):
+ $ cat ~/.ssh/id_rsa.pub
 
 Copy the public SSH key to GitHub
 Copy the contents of the to your SSH keys to your GitHub account settings
@@ -69,6 +69,24 @@ git rm -r reponame ( to delete a repo )
 git remote add
 
 While the clone command is used to get an existing repository from a server, if you want to set up a remote server for a repository you have on your local machine, you will use the remote add command.
+
+
+:w for save
+:q for quit
+:q! For quit without saving
+:wq for save and quit
+i for insert mode
+esc for command mode
+x for delete
+u for undo
+K up
+J down
+H left
+L right
+dd delete line
+D delete content on the line after cursor
+
+
 
 
 
