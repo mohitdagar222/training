@@ -110,6 +110,11 @@ ALTER TABLE stat ALTER COLUMN name DROP NOT NULL;
 
 add primary key-
 ALTER TABLE stat ADD PRIMARY KEY (col-name);
+ALTER TABLE stat ADD CONSTRAINT pk_mohit primary key (col-name);
+ALTER TABLE mohit drop primary key;
+ALTER TABLE mohit drop constraint pk_mohit
+
+
 
 
 like operator-to find similar content in a table 
