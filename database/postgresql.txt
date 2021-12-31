@@ -1,6 +1,6 @@
 \installing postgresql in linux
 
-$ sudo apt install postgresql
+$ sudo apt install postgresql or run script from postgresql site
 
 systemctl stop postgresql. (for turning server on and off)
 systemctl start postgresql.
@@ -209,6 +209,13 @@ select ename from employee inner join department on employee.eno=department.eno;
 
 self join-find sudent id who is enrolled in at least two courses.
 select t1.sid from study as t1,study as t2 where t1.sid=t2.sid and t1.sid<>t2.cid
+
+left join-it gives the matching rows and the rows which are in left table but not in right table
+select eno ,ename,dname from emp left join dept on (emp.dno=dept.dno);
+
+right join -it gives the matching rows and the rowws which are in left table but not in right table
+select eno ,ename,dname from emp right join dept on (emp.dno=dept.dno);
+
 
 
 
