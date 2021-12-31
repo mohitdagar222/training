@@ -199,13 +199,16 @@ in natural join we can only put = bw same name columns of two tables but in equi
 left outer join U right outer join =full outer join 
 rows which are same in left outer join and right outer join and the rows which remains different from left and right. these all should come in full outer join.
 
-jon = cross product + some condition
+join = cross product + some condition
 
 natural join-when we need to equalize common columns values than we use natural join the.it joins two tables based on same attributes and data types.
 select ename from employee natural join department;
 
 inner join -select records that have matching values in both tables and it joins two tables based on the columns specified in ON clause.
 select ename from employee inner join department on employee.eno=department.eno;
+
+self join-find sudent id who is enrolled in at least two courses.
+select t1.sid from study as t1,study as t2 where t1.sid=t2.sid and t1.sid<>t2.cid
 
 
 
