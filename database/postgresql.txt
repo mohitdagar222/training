@@ -1,0 +1,228 @@
+\installing postgresql in linux
+
+$ sudo apt install postgresql
+
+systemctl stop postgresql. (for turning server on and off)
+systemctl start postgresql.
+systemctl status postgresql.
+
+set root user and password:-
+sudo -u postgres psql
+
+installing postgresql in mac-
+follow instructions on postgresql.org and ui will installed and manually can turn on or off server and write below command in terminal and later we can set password for it.
+psql -U postgres
+
+reset password for user postgres
+
+postgres=# ALTER USER postgres WITH PASSWORD 'PASSOWRD...';
+postgres=# ALTER USER postgres WITH SUPERUSER;
+
+TO USE POSTGRESQL use command :-
+psql -U postgres -h localhost // psql -U postgres(in mac)
+
+now it promt for the password .fill it and press enter.
+
+to create a user with specific password and access privileges.
+CREATE USER mohit WITH CREATEDB LOGIN ENCRYPRED PASSWORD ‘password’;
+ALTER USER mohit WITH SUPERUSER;
+
+ Grant access privileges to a specified user to a specified database:-
+
+postgres=# GRANT ALL PRIVILEGES ON DATABASE krishan TO krishan;
+
+to show list of db users
+\du
+
+create database-
+
+create database db_name;
+
+switch database-
+\c db_name
+
+show all databases-
+\l
+
+show all tables-
+\d or \dt
+
+drop table-
+drop table table_name;
+
+drop db-
+drop database db_name;
+
+to ceate a table-
+create table student(name varchar(50),number int);
+create table mohit (like student);
+
+
+to describe table-
+\d table_name
+
+delete all rows or specific rows from a table-
+delete from studen;
+delete from studen where name='mohit';
+
+update all rows of a table-
+update studen set name='jaat';
+update studen set name='krishan'where age='21';
+
+
+show table content-
+select * from station;
+ select name from studen;
+select name from studen where age=21;
+
+
+insert into table-
+ insert into studen (name,age)values ('mohit','22'),('krishan','21');
+
+insert into table from another table 
+create table hi (like studen);
+insert into hi select * from studen where name ='krishan';
+
+truncate a table- it deletes all records inside table
+truncate students;
+
+add a column-
+ALTER TABLE station ADD COLUMN latitude INT;
+
+drop a column-
+ALTER TABLE station DROP COLUMN latitude;
+
+rename a column-
+ALTER TABLE station RENAME COLUMN name TO lastname;
+
+rename a table-
+ALTER TABLE station RENAME TO stat;
+
+
+change column type-
+ALTER TABLE stat ALTER COLUMN lname TYPE varchar(30);
+
+add not null constraints-
+ALTER TABLE stat ALTER COLUMN city SET NOT NULL;
+
+remove not null-
+ALTER TABLE stat ALTER COLUMN name DROP NOT NULL;
+
+add primary key-
+ALTER TABLE stat ADD PRIMARY KEY (col-name);
+
+
+like operator-to find similar content in a table 
+select age from file2 where name like 'a%'; first letter should be a ,and anything after that.
+select age from file2 where name like ‘%n’;  last letter should be n ,and anything before that.
+select age from file2 where name like ‘%ee%’;  last letters after ee could be anything,and any letters before ee.
+select age from file2 where name like ‘_a%’;  first letter is fixed and second is a ,anything after that.
+select age from file2 where name like ‘_a_ _ _’;  five characters with second letter a.
+
+IN operator- in place of multiple or operators
+select * from file2 where name IN (‘mohit’ ,’ajay’);
+
+NOT IN operator-
+select name from file1 where name NOT IN ('mohit' ,'ajay');
+
+ BETWEEN operator-
+select name from file1 where age between 19 and 21;
+
+ORDER BY-
+select name,age from file1 order by name;
+select name,age from file1 order by name desc;
+
+group by- 
+postgres=# select school,count(school) from file1 group by school order by school;
+ school | count 
+--------+-------
+ apollo |     2
+ gmss   |     1
+ mvn    |     2
+
+
+LIMIT clause- to limit the number of records shown
+select name,age from file1 limit 2;
+
+OFFSET- to skip the number of records.
+select name,age from file1 order by name limit 2 offset 1;
+
+we write constraint name after data type
+
+unique constraint-
+like contact column should be unique,should not be any duplicate.
+
+not null constraints-
+like we made email column not null therefore we cant leave it empty.
+
+primary key-
+unique+not null 
+field that specify each record uniquely in a table.
+
+Foreign key-
+it references to primary key of same table or another table.
+create table course (name varchar,roll_no int references student(roll_no));
+alter table course add constraints ab foreign key(roll_no) references student(roll_no);
+
+check constraint-
+we allowed user to enter value in our fixed domain like age above 18.
+it controls the value of columns to be inserted.
+… DOB date check(DOB > ‘1900-01-01’);
+
+
+create temporary table-it will automatically removed after end of session.
+create temp table mohit(name varchar(30));
+
+serial data type-
+auto increment a value in a column.
+
+index -suppose there is a column name contains 100 names and we want to search a name than it will search from starting but after creating index pointer directly goes to specific name alphabet.
+create index ind on table_name(col_name);
+\d table_name for listing indexes
+drop index_name for deleting a index
+
+aggregate functions-
+select sum(age) from students;
+select distinct(sum(age)) from students;
+count(column_name)
+
+EXISTS-
+select * from employee where exists (select emp_id from new where employee.emp_id=new.emp_id);
+
+SUBQUERIES-
+select name from file1 where age=(select max(age) from file1);
+select * from employee emp_id in (select emp_id from new);
+select name from file1 where age=(select max(age) from file1 where age<>(select max(age) from file1); 
+
+
+in natural join we can only put = bw same name columns of two tables but in equi join we can put asmany = as we want   
+left outer join U right outer join =full outer join 
+rows which are same in left outer join and right outer join and the rows which remains different from left and right. these all should come in full outer join.
+
+jon = cross product + some condition
+
+natural join-when we need to equalize common columns values than we use natural join the.it joins two tables based on same attributes and data types.
+select ename from employee natural join department;
+
+inner join -select records that have matching values in both tables and it joins two tables based on the columns specified in ON clause.
+select ename from employee inner join department on employee.eno=department.eno;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
