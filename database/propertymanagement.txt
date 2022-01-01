@@ -47,3 +47,11 @@ ALTER TABLE
 
 
 
+
+property_mgt=# create table names(property_name_id varchar(10) primary key,property_name varchar(40)not null);
+CREATE TABLE
+
+
+
+
+
