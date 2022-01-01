@@ -85,6 +85,15 @@ INSERT 0 5
 
 
 
+property_mgt=# select property_id,property_name,property_type from property as p inner join names on (p.property_name_id=names.property_name_id) inner join types on (p.property_type_id=types.property_type_id);
+ property_id | property_name | property_type 
+-------------+---------------+---------------
+ p1          | flat          | residential
+ p2          | hotel         | commercial
+ p5          | office        | commercial
+ p3          | farmhouse     | industrial
+ p4          | warehouse     | agriculture
+(5 rows)
 
 
 
