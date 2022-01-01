@@ -160,6 +160,9 @@ alter table property_sold add constraint property_sold_fkey foreign key(property
 property_mgt=# alter table property_sold add unique(property_id);
 ALTER TABLE
 
+ select name,extract(year from age(dob)) as age from test;
+
+
 
 
 
