@@ -13,4 +13,20 @@ SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, co
 You are now connected to database "property_mgt" as user "postgres".
 
 
+property_mgt=# create table types(property_type_id int primary key,property_type varchar(30));
+CREATE TABLE
+
+
+
+property_mgt=# \d types
+                           Table "public.types"
+      Column      |         Type          | Collation | Nullable | Default 
+------------------+-----------------------+-----------+----------+---------
+ property_type_id | character varying(10) |           | not null | 
+ property_type    | character varying(30) |           |          | 
+Indexes:
+    "types_pkey" PRIMARY KEY, btree (property_type_id)
+
+
+
 
