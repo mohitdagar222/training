@@ -157,6 +157,9 @@ CREATE TABLE
 
 alter table property_sold add constraint property_sold_fkey foreign key(property_id) references property(property_id);
 
+property_mgt=# alter table property_sold add unique(property_id);
+ALTER TABLE
+
 
 
 
