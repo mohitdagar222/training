@@ -60,5 +60,24 @@ property_mgt=# select * from names;
 
 
 
+property_mgt=# select * from names;
+ property_name_id | property_name 
+------------------+---------------
+ n1               | flat
+ n2               | house
+ n3               | mall
+ n4               | office
+ n5               | store
+ n6               | hotel
+ n7               | land
+ n8               | farmhouse
+ n9               | warehouse
+ n10              | factory
+(10 rows)
+
+
+
+
+
 
 
