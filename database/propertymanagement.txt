@@ -98,6 +98,13 @@ property_mgt=# select property_id,property_name,property_type from property as p
 
 
 
+property_mgt=# create table buyers(buyer_id varchar(10) primary key,buyer_name varchar(40),buyer_mobile bigint not null unique,buyer_email varchar(50) not null unique);
+CREATE TABLE
+
+
+
+
+
 
 
 
