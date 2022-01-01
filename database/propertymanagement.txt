@@ -29,4 +29,20 @@ Indexes:
 
 
 
+property_mgt=# insert into types (property_type_id,property_type)values ('t1','residential'),('t2','commercial'),('t3','industrial'),('t4','agriculture');
+INSERT 0 4
+property_mgt=# select * from types;
+ property_type_id | property_type 
+------------------+---------------
+ t1               | residential
+ t2               | commercial
+ t3               | industrial
+ t4               | agriculture
+(4 rows)
+
+
+
+
+
+
 
