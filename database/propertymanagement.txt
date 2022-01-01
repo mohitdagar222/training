@@ -111,6 +111,19 @@ property_mgt=# create table buyers(buyer_id varchar(10) primary key,buyer_name v
 CREATE TABLE
 
 
+property_mgt=# insert into buyers (buyer_id,buyer_name,buyer_mobile,buyer_email) values('b1','sumit',8956743567,'sumit@gmail.com');
+INSERT 0 1
+
+
+property_mgt=# select * from buyers;
+ buyer_id | buyer_name | buyer_mobile |    buyer_email    
+----------+------------+--------------+-------------------
+ b1       | sumit      |   8956743567 | sumit@gmail.com
+ b2       | amit       |   9845378737 | amit@gmail.com
+ b3       | rahul      |   8814674583 | rahul@gmail.com
+ b4       | rajveer    |   9994563787 | rajveer@gmail.com
+(4 rows)
+
 
 
 
