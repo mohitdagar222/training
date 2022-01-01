@@ -76,6 +76,13 @@ property_mgt=# select * from names;
 (10 rows)
 
 
+property_mgt=# create table property(property_id varchar(10) primary key,property_type_id varchar(10)references types(property_type_id),property_name_id varchar(10) references names(property_name_id));
+CREATE TABLE
+
+
+
+
+
 
 
 
