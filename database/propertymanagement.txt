@@ -163,6 +163,15 @@ ALTER TABLE
  select name,extract(year from age(dob)) as age from test;
 
 
+property_mgt=# select buyer_name,seller_name,property_type,property_name from property_sold inner join sellers on(property_sold.seller_id=sellers.seller_id  ) inner join buyers on(property_sold.buyer_id=buyers.buyer_id ) inner join property on (property_sold.property_id=property.property_id ) inner join types on (property.property_type_id=types.property_type_id) inner join names on property.property_name_id=names.property_name_id;
+ buyer_name | seller_name | property_type | property_name 
+------------+-------------+---------------+---------------
+ sumit      | sachin      | commercial    | hotel
+ rahul      | shyam       | commercial    | office
+(2 rows)
+
+
+
 
 
 
