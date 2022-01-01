@@ -130,6 +130,13 @@ property_mgt=# create table sellers(seller_id varchar(10) primary key,seller_nam
 CREATE TABLE
 
 
+property_mgt=# insert into sellers (seller_id,seller_name,seller_mobile,seller_email) values('s3','mohan',7027567483,'mohan@gmail.com');
+INSERT 0 1
+property_mgt=# insert into sellers (seller_id,seller_name,seller_mobile,seller_email) values('s4','sachin',4786376373,'sachin@gmail.com');
+INSERT 0 1
+
+
+
 
 
 
