@@ -42,7 +42,8 @@ property_mgt=# select * from types;
 
 
 
-
+property_mgt=# alter table types alter column property_type_id set not null;
+ALTER TABLE
 
 
 
