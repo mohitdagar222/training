@@ -1,0 +1,12 @@
+property management system-i am creating a database with tables required to manage all the data of property management system of selling properties.
+
+Tables-
+property types table
+property names table
+property table
+sellers table
+buyers table
+property sold table
+
+
+
