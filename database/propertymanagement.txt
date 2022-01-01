@@ -107,6 +107,13 @@ CREATE TABLE
 
 
 
+property_mgt=# create table buyers(buyer_id varchar(10) primary key,buyer_name varchar(40),buyer_mobile bigint not null unique,buyer_email varchar(50) not null unique);
+CREATE TABLE
+
+
+
+
+
 
 
 
