@@ -155,6 +155,8 @@ property_mgt-# ;
 property_mgt=# create table property_sold (property_id varchar(10)references property(property_id)  ,seller_id varchar(10) references sellers(seller_id)   ,buyer_id varchar(10) references buyers(buyer_id));
 CREATE TABLE
 
+alter table property_sold add constraint property_sold_fkey foreign key(property_id) references property(property_id);
+
 
 
 
