@@ -8,5 +8,9 @@ sellers table
 buyers table
 property sold table
 
+postgres=# \c property_mgt
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "property_mgt" as user "postgres".
+
 
 
