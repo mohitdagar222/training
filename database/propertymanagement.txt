@@ -137,6 +137,21 @@ INSERT 0 1
 
 
 
+property_mgt=# update sellers set seller_name='ajay' where seller_id='s5';
+UPDATE 1
+property_mgt=# select * from sellers
+property_mgt-# ;
+ seller_id | seller_name | seller_mobile |   seller_email   
+-----------+-------------+---------------+------------------
+ s1        | ram         |    9813456327 | ram@gmail.com
+ s2        | shyam       |   99993556327 | shyam@gmail.com
+ s3        | mohan       |    7027567483 | mohan@gmail.com
+ s4        | sachin      |    4786376373 | sachin@gmail.com
+ s5        | ajay        |    8053768593 | rahul@gmail.com
+(5 rows)
+
+
+
 
 
 
