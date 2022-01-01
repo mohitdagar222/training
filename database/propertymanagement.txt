@@ -53,5 +53,12 @@ CREATE TABLE
 
 
 
+property_mgt=# insert into names (property_name_id,property_name)values('n1','flat'),('n2','house'),('n3','mall'),('n4','office'),('n5','store'),('n6','hotel'),('n7','land'),('n8','farmhouse'),('n9','warehouse'),('n10','factory');
+INSERT 0 10
+property_mgt=# select * from names;
+
+
+
+
 
 
