@@ -173,6 +173,14 @@ property_mgt=# select buyer_name,seller_name,property_type,property_name from pr
 
 
 
+property_mgt=# select p1.seller_id,count(p1.buyer_id) from property_sold as p1,property_sold as p2 where p1.seller_id=p2.seller_id and p1.buyer_id <> p2.buyer_id group by p1.seller_id;
+ seller_id | count 
+-----------+-------
+ s2        |     2
+(1 row)
+
+
+
 
 
 
