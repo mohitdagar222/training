@@ -246,6 +246,20 @@ ALTER TABLE
 
 
 
+property_mgt=# select property_id,seller_name from property_sold as ps right join sellers as s on ps.seller_id=s.seller_id;
+ property_id | seller_name 
+-------------+-------------
+             | ram
+ p3          | shyam
+ p5          | shyam
+             | mohan
+ p2          | sachin
+             | ajay
+(6 rows)
+
+
+
+
 
 
 
