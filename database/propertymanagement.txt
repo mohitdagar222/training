@@ -216,6 +216,17 @@ property_mgt=# alter table employees add primary key(em_id);
 ALTER TABLE
 
 
+property_mgt=# alter table property_sold add column em_id varchar(10) references employees(em_id);
+ALTER TABLE
+property_mgt=# select * from property_sold;
+ property_id | seller_id | buyer_id | em_id 
+-------------+-----------+----------+-------
+ p5          | s2        | b3       | 
+ p2          | s4        | b1       | 
+ p3          | s2        | b4       | 
+(3 rows)
+
+
 
 
 
