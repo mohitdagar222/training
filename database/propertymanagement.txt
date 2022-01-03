@@ -227,6 +227,15 @@ property_mgt=# select * from property_sold;
 (3 rows)
 
 
+property_mgt=# select em_name,p.property_id,property_type,property_name,seller_name,buyer_name from property_sold as ps inner join employees as e on ps.em_id=e.em_id inner join sellers as s on ps.seller_id=s.seller_id inner join buyers as b on ps.buyer_id=b.buyer_id inner join property as p on ps.property_id=p.property_id inner join types on types.property_type_id=p.property_type_id inner join names on names.property_name_id=p.property_name_id;
+ em_name | property_id | property_type | property_name | seller_name | buyer_name 
+---------+-------------+---------------+---------------+-------------+------------
+ rohit   | p2          | commercial    | hotel         | sachin      | sumit
+ ram     | p3          | industrial    | farmhouse     | shyam       | rajveer
+ amit    | p5          | commercial    | office        | shyam       | rahul
+(3 rows)
+
+
 
 
 
