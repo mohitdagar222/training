@@ -190,6 +190,16 @@ INSERT 0 1
 
 
 
+property_mgt=# select * from employees;
+ em_id | em_name |   em_dob   
+-------+---------+------------
+ e1    | amit    | 1999-12-19
+ e2    | rohit   | 1997-11-17
+ e3    | ram     | 1992-05-02
+(3 rows)
+
+
+
 
 
 
