@@ -181,6 +181,11 @@ property_mgt=# select p1.seller_id,count(p1.buyer_id) from property_sold as p1,p
 
 
 
+property_mgt=# create table employees (em_id varchar(10),em_name varchar(40),em_dob date);
+CREATE TABLE
+
+
+
 
 
 
