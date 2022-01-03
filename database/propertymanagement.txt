@@ -185,6 +185,10 @@ property_mgt=# create table employees (em_id varchar(10),em_name varchar(40),em_
 CREATE TABLE
 
 
+property_mgt=# insert into employees (em_id,em_name,em_dob) values('e1','amit','1999-12-19');
+INSERT 0 1
+
+
 
 
 
