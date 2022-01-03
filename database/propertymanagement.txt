@@ -260,6 +260,15 @@ property_mgt=# select property_id,seller_name from property_sold as ps right joi
 
 
 
+property_mgt=# select property_id from property where property_id not in (select property_id from property_sold);
+ property_id 
+-------------
+ p1
+ p4
+(2 rows)
+
+
+
 
 
 
