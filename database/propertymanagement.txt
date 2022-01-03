@@ -237,6 +237,15 @@ property_mgt=# select em_name,p.property_id,property_type,property_name,seller_n
 
 
 
+property_mgt=# alter table property_sold drop constraint property_sold_em_id_fkey;
+ALTER TABLE
+
+
+property_mgt=# alter table property_sold  add foreign key(em_id)references employees(em_id);
+ALTER TABLE
+
+
+
 
 
 
