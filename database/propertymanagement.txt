@@ -212,6 +212,11 @@ property_mgt=# select em_name,extract(year from age(em_dob))as age from employee
 
 
 
+property_mgt=# alter table employees add primary key(em_id);
+ALTER TABLE
+
+
+
 
 
 
