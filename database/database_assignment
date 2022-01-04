@@ -10,3 +10,10 @@ You are now connected to database "airline" as user "postgres".
 airline=# create table Flights (flno int primary key,"from" varchar(60) not null,"to" varchar(60) not null,distance int not null,departs time not null,arrive time not null,price int not null);
 CREATE TABLE
 
+
+
+airline=# create table Aircraft (aid int primary key,aname varchar(50)not null,cruisingrange int not null);
+CREATE TABLE
+
+
+
