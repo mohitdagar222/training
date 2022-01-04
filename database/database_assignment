@@ -16,4 +16,6 @@ airline=# create table Aircraft (aid int primary key,aname varchar(50)not null,c
 CREATE TABLE
 
 
+airline=# create table Employees (eid int primary key,ename varchar(60) not null,salary int not null);
+CREATE TABLE
 
