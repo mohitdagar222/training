@@ -33,3 +33,21 @@ ALTER TABLE
 airline=# insert into Aircraft(aid,aname,cruisingrange) values(3,'airbusA300',3000);
 INSERT 0 1
 
+
+
+
+airline=# select * from Aircraft;
+ aid |       aname       | cruisingrange 
+-----+-------------------+---------------
+   1 | gladiator         |          1000
+   2 | aerol29           |          2000
+   3 | airbusA300        |          3000
+   4 | Boieng717         |          5000
+   5 | airbusA320        |          4000
+   6 | Boieng720         |          4000
+   7 | aradoA96          |          6000
+   8 | agusta            |          2000
+   9 | embraer175        |          9000
+  10 | bombardier crj200 |          3500
+(10 rows)
+
