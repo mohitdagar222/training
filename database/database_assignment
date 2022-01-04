@@ -19,3 +19,7 @@ CREATE TABLE
 airline=# create table Employees (eid int primary key,ename varchar(60) not null,salary int not null);
 CREATE TABLE
 
+
+airline=# create table Certified(eid int references Employees(eid),aid int references Aircraft(aid));
+CREATE TABLE
+
