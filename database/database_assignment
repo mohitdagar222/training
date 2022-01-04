@@ -2,4 +2,7 @@
 CREATE DATABASE
 
 
+property_mgt=# \c airline
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "airline" as user "postgres".
 
