@@ -23,3 +23,8 @@ CREATE TABLE
 airline=# create table Certified(eid int references Employees(eid),aid int references Aircraft(aid));
 CREATE TABLE
 
+
+
+airline=# alter table Certified add unique(eid,aid);
+ALTER TABLE
+
