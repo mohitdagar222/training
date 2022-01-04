@@ -28,3 +28,8 @@ CREATE TABLE
 airline=# alter table Certified add unique(eid,aid);
 ALTER TABLE
 
+
+
+airline=# insert into Aircraft(aid,aname,cruisingrange) values(3,'airbusA300',3000);
+INSERT 0 1
+
