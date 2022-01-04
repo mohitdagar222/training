@@ -328,6 +328,15 @@ property_mgt=# select c_name,extract (year from age(c_dob))as age from clients w
 
 
 
+property_mgt=# select p_name from property where p_price=(select max(p_price) from property);
+  p_name   
+-----------
+ farmhouse
+(1 row)
+
+
+
+
 
 
 
