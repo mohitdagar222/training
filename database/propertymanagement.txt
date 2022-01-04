@@ -287,6 +287,16 @@ CREATE TABLE
 
 
 
+property_mgt=# insert into property(p_id,p_name,p_type,p_price,p_location)values ('p1','flat','residential', 30000,'delhi');
+INSERT 0 1
+property_mgt=# select * from property;
+ p_id | p_name |   p_type    | p_price | p_location 
+------+--------+-------------+---------+------------
+ p1   | flat   | residential |   30000 | delhi
+(1 row)
+
+
+
 
 
 
