@@ -298,6 +298,18 @@ property_mgt=# select * from property;
 
 
 
+property_mgt=# insert into employees(e_id,e_name) values('e1','anuj');
+INSERT 0 1
+property_mgt=# select * from employees;
+ e_id | e_name 
+------+--------
+ e1   | anuj
+(1 row)
+
+
+
+
+
 
 
 
