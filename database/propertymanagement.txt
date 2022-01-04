@@ -272,6 +272,10 @@ property_mgt=# create table clients(c_id varchar(10)primary key,c_name varchar(4
 CREATE TABLE
 
 
+property_mgt=# create table property (p_id varchar(10) primary key,p_name varchar(30),p_type varchar(40),p_price bigint,p_location varchar(40));
+CREATE TABLE
+
+
 
 
 
