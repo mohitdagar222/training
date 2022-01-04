@@ -367,6 +367,29 @@ property_mgt=# select * from property;
 
 
 
+property_mgt=# select * from property_deals;
+ d_id | p_id | buyer | seller | e_id 
+------+------+-------+--------+------
+ d1   | p2   | c2    | c4     | e1
+ d2   | p1   | c1    | c3     | e2
+ d3   | p4   | c4    | c1     | e3
+(3 rows)
+
+
+
+
+property_mgt=# alter table property_deals add check(buyer <> seller);
+ALTER TABLE
+
+property_mgt=# insert into property_deals(d_id,p_id,buyer,seller,e_id) values('d4','p3','c1','c1','e1');
+ERROR:  new row for relation "property_deals" violates check constraint "property_deals_check"
+DETAIL:  Failing row contains (d4, p3, c1, c1, e1).
+
+
+
+
+
+
 
 
 
