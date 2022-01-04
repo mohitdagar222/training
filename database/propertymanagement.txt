@@ -282,6 +282,11 @@ CREATE TABLE
 
 
 
+property_mgt=# create table property_deals(d_id varchar(10) primary key,p_id varchar(10)references property(p_id),buyer varchar(10)references clients(c_id),seller varchar(10) references clients(c_id),e_id varchar(10) references employees(e_id));
+CREATE TABLE
+
+
+
 
 
 
