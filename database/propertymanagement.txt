@@ -320,6 +320,15 @@ property_mgt=# select c_name from clients where c_id in(select buyer from proper
 
 
 
+property_mgt=# select c_name,extract (year from age(c_dob))as age from clients where c_dob=(select min(c_dob) from clients) group by c_dob,c_name;
+ c_name  | age 
+---------+-----
+ kuldeep |  31
+(1 row)
+
+
+
+
 
 
 
