@@ -405,6 +405,15 @@ property_mgt=# select c_name from clients where c_id in (select buyer from prope
 
 
 
+property_mgt=# select c_name from clients where c_name like '_a%';
+ c_name 
+--------
+ kapil
+(1 row)
+
+
+
+
 
 
 
