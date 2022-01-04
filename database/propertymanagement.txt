@@ -335,6 +335,15 @@ property_mgt=# select p_name from property where p_price=(select max(p_price) fr
 (1 row)
 
 
+property_mgt=# select  * from clients;
+ c_id |  c_name  |  c_mobile  |   c_dob    
+------+----------+------------+------------
+ c1   | devender |  893456345 | 1992-09-19
+ c2   | tinku    |  983456345 | 1994-03-12
+ c3   | kapil    | 9838734598 | 1998-02-14
+ c4   | krishan  | 8053456327 | 1991-01-26
+ c5   | kuldeep  | 8567463457 | 1990-08-21
+(5 rows)
 
 
 
