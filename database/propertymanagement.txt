@@ -388,6 +388,13 @@ DETAIL:  Failing row contains (d4, p3, c1, c1, e1).
 
 
 
+property_mgt=# select c_name from clients where c_id in (select buyer from property_deals where p_id in (select p_id from property where property.p_id=property_deals.p_id and property.p_type='commercial'));
+ c_name 
+--------
+ tinku
+(1 row)
+
+
 
 
 
