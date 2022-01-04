@@ -397,6 +397,15 @@ property_mgt=# select c_name from clients where c_id in (select buyer from prope
 
 
 
+property_mgt=# select c_name from clients where c_id in (select buyer from property_deals inner join property on property_deals.p_id=property.p_id and property.p_type='commercial');
+ c_name 
+--------
+ tinku
+(1 row)
+
+
+
+
 
 
 
