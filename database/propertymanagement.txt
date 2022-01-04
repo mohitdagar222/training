@@ -310,6 +310,20 @@ property_mgt=# select * from employees;
 
 
 
+property_mgt=# select c_name from clients where c_id in(select buyer from property_deals where buyer in (select seller from property_deals))
+;
+  c_name  
+----------
+ devender
+ krishan
+(2 rows)
+
+
+
+
+
+
+
 
 
 
