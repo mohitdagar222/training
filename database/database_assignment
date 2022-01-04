@@ -51,3 +51,26 @@ airline=# select * from Aircraft;
   10 | bombardier crj200 |          3500
 (10 rows)
 
+
+
+
+
+airline=# insert into Employees (eid,ename,salary)values (111,'pawan',40000);
+INSERT 0 1
+airline=# select * from Employees;
+ eid |  ename  | salary 
+-----+---------+--------
+ 101 | amit    |  10000
+ 102 | rohit   |  15000
+ 103 | kapil   |  80000
+ 104 | sachin  | 100000
+ 105 | deepak  |  95000
+ 106 | varun   | 120000
+ 107 | vishal  |  85000
+ 108 | tinku   | 150000
+ 109 | ranjeet |  86000
+ 110 | manish  |  82000
+ 111 | pawan   |  40000
+(11 rows)
+
+
