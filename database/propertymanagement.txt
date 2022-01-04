@@ -351,6 +351,24 @@ property_mgt=# select  * from clients;
 
 
 
+property_mgt=# select * from property;
+ p_id |  p_name   |   p_type    | p_price | p_location 
+------+-----------+-------------+---------+------------
+ p1   | flat      | residential |   30000 | delhi
+ p2   | hotel     | commercial  |   40000 | gurugram
+ p3   | land      | agriculture |   20000 | palwal
+ p4   | warehouse | industrial  |   50000 | sohna
+ p5   | house     | residential |   10000 | hodal
+ p6   | farmhouse | agriculture |   60000 | hathin
+ p7   | office    | commercial  |   35000 | faridabad
+(7 rows)
+
+
+
+
+
+
+
 
 
 
