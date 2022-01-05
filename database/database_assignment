@@ -94,3 +94,10 @@ airline=# select eid,max(cruisingrange) from Certified c inner join Aircraft a o
 
 
 
+airline=# select ename from Employees e where e.eid in (select eid from Certified c) and e.salary < (select min(price) from Flights where "from"='los angeles' and "to"='honolulu' );
+ ename 
+-------
+ rohit
+(1 row)
+
+
