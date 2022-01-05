@@ -130,6 +130,22 @@ airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  i
 
 
 
+
+airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
+ aid 
+-----
+   4
+   5
+   6
+   7
+   9
+  10
+(6 rows)
+
+
+
+
+
 airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000);
  ename  
 --------
@@ -143,24 +159,20 @@ airline=# select ename from Employees e inner join Certified c on c.eid=e.eid in
 
 
 
-
-
 airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000) and count(e.ename)>=2;
  ename  
 --------
  deepak
 (1 row)
 
-airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
- aid 
------
-   4
-   5
-   6
-   7
-   9
-  10
-(6 rows)
+
+airline=# select e.ename,e.salary from Employees e where e.eid not in (select eid from Certified ) and e.salary > (select avg(e1.salary) from Employees e1 where e1.eid in (select eid from Certified)); 
+  ename  | salary 
+---------+--------
+ kapil   |  80000
+ vishal  |  85000
+ ranjeet |  86000
+(3 rows)
 
 
 
