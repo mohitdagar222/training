@@ -86,5 +86,11 @@ airline=# select distinct aname from Aircraft a where aid in(select aid from Cer
 (4 rows)
 
 
+airline=# select eid,max(cruisingrange) from Certified c inner join Aircraft a on a.aid=c.aid group by eid having count(c.eid) >=3; 
+ eid | max  
+-----+------
+ 101 | 4000
+(1 row)
+
 
 
