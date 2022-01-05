@@ -74,6 +74,8 @@ airline=# select * from Employees;
 (11 rows)
 
 
+              							QUERIES
+
 
 
 airline=# select distinct aname from Aircraft a where aid in(select aid from Certified c where c.aid=a.aid and (select salary from Employees e where e.eid=c.eid)>80000 );
@@ -125,6 +127,19 @@ airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  i
  varun
 (3 rows)
 
+
+
+
+airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000);
+ ename  
+--------
+ deepak
+ varun
+ sachin
+ rohit
+ manish
+ tinku
+(6 rows)
 
 airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
  aid 
