@@ -101,3 +101,18 @@ airline=# select ename from Employees e where e.eid in (select eid from Certifie
 (1 row)
 
 
+
+
+airline=# select aname,avg(e.salary) from Aircraft a inner join Certified c on a.aid=c.aid and cruisingrange > 1000 inner join Employees e on e.eid=c.eid group by aname;
+   aname    |          avg           
+------------+------------------------
+ Boieng720  |    125000.000000000000
+ Boieng717  |    120000.000000000000
+ airbusA300 | 10000.0000000000000000
+ aradoA96   |     82000.000000000000
+ embraer175 |   900.0000000000000000
+ agusta     |     95000.000000000000
+ airbusA320 | 10000.0000000000000000
+(7 rows)
+
+
