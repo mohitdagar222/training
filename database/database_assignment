@@ -141,6 +141,16 @@ airline=# select ename from Employees e inner join Certified c on c.eid=e.eid in
  tinku
 (6 rows)
 
+
+
+
+
+airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000) and count(e.ename)>=2;
+ ename  
+--------
+ deepak
+(1 row)
+
 airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
  aid 
 -----
