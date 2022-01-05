@@ -126,3 +126,16 @@ airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  i
 (3 rows)
 
 
+airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
+ aid 
+-----
+   4
+   5
+   6
+   7
+   9
+  10
+(6 rows)
+
+
+
