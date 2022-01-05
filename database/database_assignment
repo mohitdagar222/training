@@ -116,3 +116,13 @@ airline=# select aname,avg(e.salary) from Aircraft a inner join Certified c on a
 (7 rows)
 
 
+
+airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  inner join Aircraft a on a.aid=c.aid and a.aname like 'Boieng%';
+ ename  
+--------
+ tinku
+ sachin
+ varun
+(3 rows)
+
+
