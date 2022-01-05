@@ -176,3 +176,18 @@ airline=# select e.ename,e.salary from Employees e where e.eid not in (select ei
 
 
 
+
+
+
+airline=# select em1.avg-em2.avg from (select avg(salary) as avg from Employees e where e.eid in (select eid from Certified) ) as em1 ,(select avg(salary) as avg from Employees) as em2;
+     ?column?      
+-------------------
+ 2527.272727272727
+(1 row)
+
+
+
+
+
+
+
