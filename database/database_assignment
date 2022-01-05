@@ -74,3 +74,17 @@ airline=# select * from Employees;
 (11 rows)
 
 
+
+
+airline=# select distinct aname from Aircraft a where aid in(select aid from Certified c where c.aid=a.aid and (select salary from Employees e where e.eid=c.eid)>80000 );
+   aname   
+-----------
+ agusta
+ aradoA96
+ Boieng717
+ Boieng720
+(4 rows)
+
+
+
+
