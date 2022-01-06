@@ -246,6 +246,12 @@ airline=# select * from Certified;
    
 
 
+airline=# select ename from Employees e inner join Certified c on c.eid=e.eid  inner join  Aircraft a on a.aid=c.aid and a.aname not like 'Boi%'  group by ename having every( a.cruisingrange > 3000);
+ ename  
+--------
+ rohit
+ manish
+(2 rows)
 
   
 
