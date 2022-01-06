@@ -74,21 +74,57 @@ airline=# select * from Employees;
 (11 rows)
 
 
+
+
+airline=# select * from Flights;
+ flno |    from     |      to       | distance | departs  |  arrive  | price 
+------+-------------+---------------+----------+----------+----------+-------
+ 1001 | los angeles | honolulu      |     4125 | 02:05:00 | 07:05:00 |  1100
+ 1002 | los angeles | honolulu      |     4125 | 03:10:00 | 08:00:00 |  1300
+ 1004 | los angeles | chicago       |     3243 | 05:10:00 | 11:05:00 |   900
+ 1005 | los angeles | san fransisco |      650 | 01:10:00 | 02:05:00 |   400
+ 1006 | madison     | new york      |     1280 | 09:10:00 | 12:30:00 |   800
+ 1007 | madison     | new york      |     1280 | 04:10:00 | 07:10:00 |   910
+ 1008 | madison     | chicago       |      500 | 11:00:00 | 12:10:00 |   300
+ 1009 | chicago     | new york      |      750 | 04:00:00 | 05:50:00 |   250
+ 1010 | dallas      | chicago       |      850 | 10:00:00 | 12:30:00 |   200
+ 1011 | chicago     | new york      |      750 | 03:00:00 | 04:30:00 |   300
+ 1003 | los angeles | chicago       |     3200 | 06:05:00 | 12:10:00 |   800
+(11 rows)
+
+
+
+
+airline=# select * from Certified;
+ eid | aid 
+-----+-----
+ 101 |   1
+ 101 |   3
+ 101 |   5
+ 105 |   8
+ 110 |   7
+ 108 |   6
+ 104 |   6
+ 106 |   4
+ 102 |   9
+ 105 |   3
+(10 rows)
+
+
+
               							QUERIES
 
 
-
-airline=# select distinct aname from Aircraft a where aid in(select aid from Certified c where c.aid=a.aid and (select salary from Employees e where e.eid=c.eid)>80000 );
+     a)	airline=# select aname from Aircraft a inner join Certified c on c.aid=a.aid inner join Employees e on e.eid=c.eid group by aname having every(e.salary>80000);
    aname   
 -----------
- agusta
- aradoA96
  Boieng717
- Boieng720
-(4 rows)
+ aradoA96
+ agusta
+(3 rows)
 
 
-airline=# select eid,max(cruisingrange) from Certified c inner join Aircraft a on a.aid=c.aid group by eid having count(c.eid) >=3; 
+    b)  airline=# select eid,max(cruisingrange) from Certified c inner join Aircraft a on a.aid=c.aid group by eid having count(c.eid) >=3; 
  eid | max  
 -----+------
  101 | 4000
@@ -96,7 +132,7 @@ airline=# select eid,max(cruisingrange) from Certified c inner join Aircraft a o
 
 
 
-airline=# select ename from Employees e where e.eid in (select eid from Certified c) and e.salary < (select min(price) from Flights where "from"='los angeles' and "to"='honolulu' );
+   c)  airline=# select ename from Employees e where e.eid in (select eid from Certified c) and e.salary < (select min(price) from Flights where "from"='los angeles' and "to"='honolulu' );
  ename 
 -------
  rohit
@@ -105,7 +141,7 @@ airline=# select ename from Employees e where e.eid in (select eid from Certifie
 
 
 
-airline=# select aname,avg(e.salary) from Aircraft a inner join Certified c on a.aid=c.aid and cruisingrange > 1000 inner join Employees e on e.eid=c.eid group by aname;
+   d) airline=# select aname,avg(e.salary) from Aircraft a inner join Certified c on a.aid=c.aid and cruisingrange > 1000 inner join Employees e on e.eid=c.eid group by aname;
    aname    |          avg           
 ------------+------------------------
  Boieng720  |    125000.000000000000
@@ -119,7 +155,7 @@ airline=# select aname,avg(e.salary) from Aircraft a inner join Certified c on a
 
 
 
-airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  inner join Aircraft a on a.aid=c.aid and a.aname like 'Boieng%';
+     e) airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  inner join Aircraft a on a.aid=c.aid and a.aname like 'Boieng%';
  ename  
 --------
  tinku
@@ -131,7 +167,7 @@ airline=# select ename from Employees e inner join Certified c on e.eid=c.eid  i
 
 
 
-airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
+   f)airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.distance) from Flights f where "from"='los angeles' and "to"='chicago');
  aid 
 -----
    4
@@ -146,7 +182,7 @@ airline=# select a.aid from Aircraft a where a.cruisingrange >( select min(f.dis
 
 
 
-airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000);
+     l) airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000);
  ename  
 --------
  deepak
@@ -159,14 +195,14 @@ airline=# select ename from Employees e inner join Certified c on c.eid=e.eid in
 
 
 
-airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000) and count(e.ename)>=2;
+    m) airline=# select ename from Employees e inner join Certified c on c.eid=e.eid inner join  Aircraft a on a.aid=c.aid  group by ename having every( a.cruisingrange > 1000) and count(e.ename)>=2;
  ename  
 --------
  deepak
 (1 row)
 
 
-airline=# select e.ename,e.salary from Employees e where e.eid not in (select eid from Certified ) and e.salary > (select avg(e1.salary) from Employees e1 where e1.eid in (select eid from Certified)); 
+   k) airline=# select e.ename,e.salary from Employees e where e.eid not in (select eid from Certified ) and e.salary > (select avg(e1.salary) from Employees e1 where e1.eid in (select eid from Certified)); 
   ename  | salary 
 ---------+--------
  kapil   |  80000
@@ -176,16 +212,42 @@ airline=# select e.ename,e.salary from Employees e where e.eid not in (select ei
 
 
 
+  n) airline=# select ename from Employees e inner join Certified c on c.eid=e.eid  inner join  Aircraft a on a.aid=c.aid where a.aname like 'Boi%'  group by ename having every( a.cruisingrange > 1000);
+ ename  
+--------
+ sachin
+ tinku
+ varun
+(3 rows)
 
 
 
-airline=# select em1.avg-em2.avg from (select avg(salary) as avg from Employees e where e.eid in (select eid from Certified) ) as em1 ,(select avg(salary) as avg from Employees) as em2;
+
+		
+
+
+
+
+    j) airline=# select em1.avg-em2.avg from (select avg(salary) as avg from Employees e where e.eid in (select eid from Certified) ) as em1 ,(select avg(salary) as avg from Employees) as em2;
      ?column?      
 -------------------
  2527.272727272727
 (1 row)
 
 
+
+    n)airline=# select ename from Employees e inner join Certified c on c.eid=e.eid  inner join  Aircraft a on a.aid=c.aid where a.aname like 'Boi%'  group by ename having every( a.cruisingrange > 1000);
+ ename  
+--------
+ sachin
+ tinku
+ varun
+(3 rows)
+   
+
+
+
+    
 
 
 
