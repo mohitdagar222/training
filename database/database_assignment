@@ -253,6 +253,19 @@ airline=# select ename from Employees e inner join Certified c on c.eid=e.eid  i
  manish
 (2 rows)
 
+
+
+     g) airline=# select distinct  "from","to" from Flights f where f.distance <= (select min(cruisingrange) from Aircraft a inner join Certified c on a.aid=c.aid inner join Employees e on e.eid=c.eid and e.salary> 100000);
+    from     |      to       
+-------------+---------------
+ madison     | new york
+ madison     | chicago
+ los angeles | chicago
+ dallas      | chicago
+ los angeles | san fransisco
+ chicago     | new york
+(6 rows)
+
   
 
 
