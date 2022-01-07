@@ -43,6 +43,8 @@ beryl@beryl-ThinkPad-L412:~$ rvm use 2.1.0
 Using /home/beryl/.rvm/gems/ruby-2.1.0
 
 
+beryl@beryl-ThinkPad-L412:~$ rvm install 2.5.7
+
 
 
 
