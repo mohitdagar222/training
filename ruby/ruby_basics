@@ -45,6 +45,13 @@ Using /home/beryl/.rvm/gems/ruby-2.1.0
 
 beryl@beryl-ThinkPad-L412:~$ rvm install 2.5.7
 
+beryl@beryl-ThinkPad-L412:~$ rvm -v
+rvm 1.29.12 (manual) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+
+
+beryl@beryl-ThinkPad-L412:~$ ruby -v
+ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-linux]
+
 
 
 
