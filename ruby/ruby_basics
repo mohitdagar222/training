@@ -55,6 +55,49 @@ ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-linux]
 -------------------------------------------------------------
 
 **Simple Program =puts "Hello ,Mohit Dagar!"
+Output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+Hello ,Mohit Dagar!
+
+
+**HERE DOCUMENT
+print <<ai  # simple to write strings
+Hello this is here document in ruby
+This is last line.
+ai
+
+print <<"am"
+Hello this is another type
+This is last line 
+am
+
+ print <<`aj`   #to execute commands
+
+echo it is another type
+echo it is last 
+aj
+
+print <<"fo",<<"lo"  #to build stack
+
+this is fo line
+fo
+this is lo line
+lo
+
+OUTPUT-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+Hello this is here document in ruby
+This is last line.
+Hello this is another type
+This is last line 
+it is another type
+it is last
+
+this is fo line
+this is lo line
+
+
+
+
+
 
 
 
