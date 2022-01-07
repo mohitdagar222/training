@@ -30,6 +30,15 @@ rvm install 2.7.5
 rvm install 2.5.7
 
 ------------------------------------------------
+beryl@beryl-ThinkPad-L412:~$ rvm list
+=> ruby-2.1.0 [ x86_64 ]
+ * ruby-2.7.5 [ x86_64 ]
+   ruby-3.0.0 [ x86_64 ]
+
+# => - current
+# =* - current && default
+#  * - default
+
 
 
 
