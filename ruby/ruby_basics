@@ -132,6 +132,25 @@ this is main program
 this is end code of the program
 
 
+-------------------------------------------------
+Class and Objects
+
+A class is a blueprint from which objects are created. The object is also called as an instance of a class. For Example, the animal is a class and mammals, birds, fish, reptiles, and amphibians are the instances of the class
+Syntax-
+class Class_name
+
+end
+
+Object-object_name = Class_name.new
+
+
+In Ruby member functions are called as methods. Every method is defined by the def keyword followed by a method name. The name of the method is always in lowercase and the method ends with end keyword. In Ruby, each class and methods end with end keyword.
+
+-------------------------------------------------
+
+Variables-
+
+
 
 
 
