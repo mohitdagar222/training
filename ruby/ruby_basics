@@ -1,0 +1,37 @@
+
+**rvm installation
+
+
+**Pre-requisites-
+sudo apt-get install software-properties-common
+	
+**Add the PPA and install the package-
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt-get update
+sudo apt-get install rvm
+	
+**Add your user to rvm group ($USER will automatically insert your username):
+sudo usermod -a -G rvm $USER
+
+**Change your terminal window
+At terminal window, click Edit > Profile Preferences, click on Title and Command tab and check Run command as login shell.
+
+**now reboot the system
+
+**Enable local gemsets
+rvm user gemsets
+
+**Install a ruby
+rvm install ruby
+sudo apt  install ruby
+
+**now install ruby versions
+rvm install 2.7.5
+rvm install 2.5.7
+
+------------------------------------------------
+
+
+
+
+
