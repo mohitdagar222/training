@@ -112,6 +112,26 @@ statement to be printed before code execution
 hello world
 
 
+**END STATEMENT
+
+
+puts "this is main program"
+
+
+END{
+puts "this is end code of the program"
+}
+BEGIN{
+
+puts "this is begining of the program"
+}
+
+OUTPUT-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+this is begining of the program
+this is main program
+this is end code of the program
+
+
 
 
 
