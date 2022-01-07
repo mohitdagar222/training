@@ -150,6 +150,82 @@ In Ruby member functions are called as methods. Every method is defined by the d
 
 Variables-
 
+Ruby Global Variables-A global variable name always starts with $. If you want to have a single variable, which is available across classes, you need to define a global variable.
+
+$global_variable=20
+
+class Class1
+	def method
+		puts "calling global varible by first class value is #$global_variable"
+
+	end
+end
+
+class Class2
+	def methods
+
+		puts "calling global variable my class 2 whose value is #$global_variable"
+	end
+end
+
+obj1=Class1.new
+obj2=Class2.new
+obj1.method
+obj2.methods
+Output-
+
+beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+calling global varible by first class value is 20
+calling global variable my class 2 whose value is 20
+
+
+
+**Ruby Local Variables:it has access in that particular method. A local variable name always starts with a lowercase letter(a-z) or underscore (_). These variables are local to the code construct in which they are declared. A local variable is only accessible within the block of its initialization. 
+
+**Ruby Class Variables: it is same for all objects. A class variable name always starts with @@ sign.It is available across different objects. Another way of thinking about class variables is as global variables within the context of a single class.
+
+class Students
+@@studentn=0
+def initialize(id,name,add)
+	@id=id
+	@name=name
+	@add=add
+end
+
+def display()
+	puts "id is #@id"
+	puts "name is #@name"
+	puts "add is #@add"
+end
+
+def student_number()
+	
+	@@studentn=@@studentn + 1
+	puts "student numbers is #@@studentn"
+end
+end
+
+st1=Students.new("1","krishan","hodal")
+st2=Students.new("2","mohit","palwal")
+
+st1.display()
+st1.student_number()
+st2.display()
+st2.student_number()
+
+Output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+id is 1
+name is krishan
+add is hodal
+student numbers is 1
+id is 2
+name is mohit
+add is palwal
+student numbers is 2
+
+
+
+
 
 
 
