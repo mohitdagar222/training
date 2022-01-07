@@ -96,6 +96,22 @@ this is lo line
 
 
 
+** BEGIN STATEMENT
+
+
+puts "hello world"
+
+BEGIN{
+
+puts "statement to be printed before code execution"
+}
+
+OUTPUT:
+beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+statement to be printed before code execution
+hello world
+
+
 
 
 
