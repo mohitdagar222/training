@@ -225,6 +225,15 @@ student numbers is 2
 
 
 
+**Ruby Instance Variables: it is diff for all objects and we can access it on all methods.An instance variable name always starts with a @ sign. They are similar to Class variables but their values are local to specific instances of an object. Instance variables are available across methods for any specified instance or object i.e. instance variables can change from object to object
+
+Output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+id is 1
+name is krishan
+add is hodal
+id is 2
+name is mohit
+add is palwal
 
 
 
