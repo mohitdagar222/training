@@ -633,6 +633,25 @@ You are in the method test
 You are in the block 100
 
 
+**another way of calling blocks
+
+def mohit(&block)
+    puts "you are in method"
+    block.call(1)
+end
+mohit{ |i| puts "you are in block #{i}"}
+
+Output-you are in method
+you are in block 1
+
+
+-----------------------------------------------
+
+**MODULES
+
+
+
+
 
 
 
