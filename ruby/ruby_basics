@@ -467,4 +467,19 @@ i is 2
 i is 3
 
 
+**UNTIL MODIFIER
+
+i=0
+n=4
+begin
+    puts "value of i is #{i}"
+    i+=1
+end until i>3
+Output-value of i is 0
+value of i is 1
+value of i is 2
+value of i is 3
+
+
+
 
