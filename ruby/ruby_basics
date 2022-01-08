@@ -418,17 +418,7 @@ else
 end
 
 Output-
-@age=25
-case @age
-when 0 .. 5
-    puts "baby"
-when 6 .. 20
-    puts "child"
-when 21 .. 30
-    puts "mature"
-else 
-    puts"old"
-end
+mature
 
 --------------------------------------------------------------------
 
@@ -448,6 +438,19 @@ beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
 the value of i is 1
 the value of i is 2
 the value of i is 3
+
+**while mofifier
+
+@i=0
+@n=3
+begin
+    puts "value of i is #@i"
+    @i+=1
+end while @i < @n
+
+Output-value of i is 0
+value of i is 1
+value of i is 2
 
 
 
