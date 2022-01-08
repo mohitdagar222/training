@@ -509,5 +509,19 @@ value of i is 1
 value of i is 2
 
 
+**NEXT STATEMENT-jumps to the next iteration of the most internal loop
+
+for i in 0 ..4 do
+    if i <2 then
+        next
+    end
+    puts "value of i is #{i}"
+end
+
+Output-value of i is 2
+value of i is 3
+value of i is 4
+
+
 
 
