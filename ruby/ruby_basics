@@ -481,5 +481,19 @@ value of i is 2
 value of i is 3
 
 
+**FOR LOOP
+
+
+for i in 0 ..3 do
+    puts "value of i is #{i}"
+    i+=1
+end
+oUTPUT-value of i is 0
+value of i is 1
+value of i is 2
+value of i is 3
+
+
+
 
 
