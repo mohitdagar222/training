@@ -284,6 +284,34 @@ output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
 subject variable is not given above
 
 
+**Ruby Case Statement-
+
+@age=25
+case @age
+when 0 .. 5
+    puts "baby"
+when 6 .. 20
+    puts "child"
+when 21 .. 30
+    puts "mature"
+else 
+    puts"old"
+end
+
+Output-
+@age=25
+case @age
+when 0 .. 5
+    puts "baby"
+when 6 .. 20
+    puts "child"
+when 21 .. 30
+    puts "mature"
+else 
+    puts"old"
+end
+
+
 
 
 
