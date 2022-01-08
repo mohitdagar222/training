@@ -236,6 +236,17 @@ name is mohit
 add is palwal
 
 
+--------------------------------------------------------
+**Ruby multiple comments-
+
+puts "Hello, Ruby!"
+
+=begin
+This is a multiline comment lines as you
+like. But =begin and =end should come in the first line only. 
+=end
+
+
 
 
 
