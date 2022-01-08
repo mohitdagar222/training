@@ -452,7 +452,19 @@ Output-value of i is 0
 value of i is 1
 value of i is 2
 
+**UNTIL STATEMENT-executes while conditional is false
 
+i=0
+n=3
+until i>3 do
+    puts "i is #{i}"
+    i+=1
+end 
+Output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+i is 0
+i is 1
+i is 2
+i is 3
 
 
 
