@@ -263,6 +263,12 @@ end
 Output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
 x is less than 4
 
+**use if modifier
+$mohit="name"
+
+puts "#$mohit\n" if $mohit
+output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+name
 
 
 
