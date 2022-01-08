@@ -586,4 +586,14 @@ parameters are krishan
 parameters are sanju
 
 
+** CLASS METHODS-Ruby gives you a way to access a method without creating objectof a class
 
+class Test
+    def Test.sample
+        puts "this is class method"
+    end
+
+Test.sample
+end
+Output-
+this is class method
