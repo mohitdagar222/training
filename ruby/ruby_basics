@@ -494,6 +494,20 @@ value of i is 2
 value of i is 3
 
 
+**BREAK STATEMENT-it terminates the most inner loop
+
+
+for i in 0 ..4 do
+    if i >2 
+        break
+    end
+    puts "value of i is #{i}"
+end
+
+Output-value of i is 0
+value of i is 1
+value of i is 2
+
 
 
 
