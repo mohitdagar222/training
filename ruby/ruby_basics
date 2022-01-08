@@ -551,6 +551,18 @@ distance covered is twenty
 your speed is fifty
 
 
+**RETURN STATEMENT-
 
+def values
+    a=2
+    b=3
+    c=4
+    return a,b,c
+end
+var=values
+puts var
+Output-2
+3
+4
 
 
