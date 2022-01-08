@@ -523,5 +523,34 @@ value of i is 3
 value of i is 4
 
 
+**REDO STATEMENT-restart the iteration of thr most internal loop
+
+for i in 0 ..4 do
+    if i <2 then
+        puts "value of i is #{i}"
+        redo
+    end
+   
+end
+Output-value of i is 0
+value of i is 0
+value of i is 0
+--------------
+
+-------------------------------------------------------------------
+
+**METHODS
+def walking(distance=23,speed=90)
+    puts "distance covered is #{distance}\nyour speed is #{speed}"
+end
+walking
+walking('twenty', 'fifty')
+Output-distance covered is 23
+your speed is 90
+distance covered is twenty
+your speed is fifty
+
+
+
 
 
