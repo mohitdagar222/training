@@ -565,4 +565,25 @@ Output-2
 3
 4
 
+**METHODS WITH VARIABLE NUMBER OF ARGUMENTS-
+
+def sample(*test)
+    puts "number of parameters are #{test.length}"
+    for i in test do
+        puts "parameters are #{i}"
+    end
+end
+sample('ram','mohit',2)
+sample('krishan','sanju')
+Output-
+number of parameters are 3
+parameters are ram
+parameters are mohit
+
+parameters are 2
+number of parameters are 2
+parameters are krishan
+parameters are sanju
+
+
 
