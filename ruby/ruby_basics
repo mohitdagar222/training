@@ -273,6 +273,18 @@ name
 
 
 
+** unless modifier-executes code if condition is false
+$mohit="name"
+
+print "mohit variable is given" unless $mohit
+
+print "subject variable is not given above\n" unless $subject
+
+output-beryl@beryl-ThinkPad-L412:~/Documents$ ruby test.rb
+subject variable is not given above
+
+
+
 
 
 
