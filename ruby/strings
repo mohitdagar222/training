@@ -1,0 +1,45 @@
+
+**Strings-A String object in Ruby holds and manipulates an arbitrary sequence of one or more bytes, typically representing characters that represent human language.
+
+**If you need to place an apostrophe within a single-quoted string literal, precede it with a backslash, so that the Ruby interpreter does not think that it terminates the string −
+
+puts 'this is mohit\'s book'
+
+Output-
+this is mohit's book
+
+--------------------------------------------------
+
+**String Methods-
+**sub and sub!
+
+*sub -substitute the string temporarily and only first string if two same are available if we again use that string than it will be in its original form
+
+name= "mohit"
+puts name.sub("it",'ini')
+puts name
+Output-
+mohini
+mohit
+
+*sub! -substitute the string permanently
+
+
+name= "mohit"
+puts name.sub!("it",'ini')
+puts name
+
+**gsub-Gsub is closest to a “replace string” method
+
+value='hello'
+puts value
+puts value.sub('l','*')
+puts value.gsub('l','*')
+
+Output-
+hello
+he*lo
+he**o
+
+
+
