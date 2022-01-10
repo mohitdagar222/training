@@ -58,6 +58,27 @@ String.new('hello', encoding: 'UTF-8', capacity: 25)
 
 **try_convert-Returns a new string created from a given object.
 
+4)Methods for a Frozen/Unfrozen Strings
+**freeze a string
+a=String.new('hello')
+a.freeze
+a.replace('welcome')
+
+Output-can't modify frozen String: "hello" (FrozenError)
+
+**check string frozen or not-
+
+a=String.new('hello')
+a.freeze
+b=String.new('welcome')
+puts a.frozen?
+puts b.frozen?
+
+Output- true
+	false
+
+
+5) Methods for Querying String-
 
 
 
