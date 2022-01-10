@@ -242,9 +242,77 @@ puts a==b
 Output-false
 
 
+**eql? -Returns true if the content is the same as the given other string.
+
+a=String.new("mohit") 
+b='mohitdagar'
+puts a.eql? b
+
+Output-false
 
 
 
+**<=> Returns -1, 0, or 1 as a given other string is smaller than, equal to, or larger than self.
+
+a=String.new("mohit") 
+b='mohitdagar'
+puts a <=> b
+
+Output=-1
+
+
+**casecmp-Ignoring case, returns -1, 0, or 1 as a given other string is smaller than, equal to, or larger than self.
+
+a=String.new("mohit") 
+b='mohi'
+puts a.casecmp b
+
+Output-1
+
+
+**casecmp? -Returns true if the string is equal to a given string after Unicode case folding; false otherwise.
+
+
+a=String.new("mohit") 
+b='mohi'
+puts a.casecmp? b
+
+Output-false
+
+
+
+
+9)METHODS FOR MODIFYING A STRING
+
+**insert-to add any character in between a string by specifying index
+
+a=String.new("mohi") 
+b='mohi'
+puts a.insert(-1,'ni')
+
+Output-mohini
+
+
+** << concatenate a string
+
+a=String.new("mohi") 
+b='mohi'
+puts a << ' dagar'
+
+Output-mohit dagar
+
+
+
+** succ!,next! - it increment last character of string by 1
+
+a=String.new("mohia") 
+b='mohi'
+puts a.next!
+
+Output-mohib
+
+
+**
 
 
 
