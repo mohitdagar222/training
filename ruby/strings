@@ -287,7 +287,6 @@ Output-false
 **insert-to add any character in between a string by specifying index
 
 a=String.new("mohi") 
-b='mohi'
 puts a.insert(-1,'ni')
 
 Output-mohini
@@ -296,7 +295,6 @@ Output-mohini
 ** << concatenate a string
 
 a=String.new("mohi") 
-b='mohi'
 puts a << ' dagar'
 
 Output-mohit dagar
@@ -306,53 +304,92 @@ Output-mohit dagar
 ** succ!,next! - it increment last character of string by 1
 
 a=String.new("mohia") 
-b='mohi'
 puts a.next!
 
 Output-mohib
 
 
-**
+**replace -it replace the string value to the given value
+
+a=String.new("mohia") 
+puts a.replace('my name is mohit dagar')
+Output-my name is mohit dagar
+
+
+**reverse! -Returns self with its characters in reverse order.
+
+
+a=String.new("mohit dagar") 
+
+puts a.reverse
+
+Output-ragad tihom
+
+
+**tr! -Replaces specified characters with specified replacement characters;
+
+
+a=String.new("mohitmm") 
+
+puts a.tr('m','a')
+
+Output-aohitaa
+
+
+**tr_s! -similar but removes duplicates
+
+a=String.new("mohitmm") 
+
+puts a.tr_s('m','a')
+
+
+Output-aohita
+
+
+
+10) CASING METHODS-
+
+**capitalize-Upcases the initial character and downcases all others; returns self if any changes, nil otherwise.
+
+a=String.new("mohit") 
+
+puts a.capitalize!
+
+Output-Mohit
+
+**downcase-Downcases all characters; returns self if any changes, nil otherwise.
+
+a=String.new("MOhit") 
+
+puts a.downcase!
+
+Output-mohit
+
+
+**upcase!-Upcases all characters; returns self if any changes, nil otherwise.
+
+
+a=String.new("mohit") 
+
+puts a.upcase!
+
+
+Output-MOHIT
+
+
+**swapcase-convert up case to low case and low case to up case
+
+
+a=String.new("mohitDAGAR") 
+
+puts a.swapcase!
+
+Output-MOHITdagar
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+11) 
 
