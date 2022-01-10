@@ -80,6 +80,49 @@ Output- true
 
 5) Methods for Querying String-
 
+**length
+a=String.new('hello')
+puts a.length
+
+Output-5
+
+**When the single Integer argument index is given, returns the 1-character substring found in self at offset index:
+
+a=String.new('hello')
+puts a[2]
+puts a[2]
+
+Output-l
+o
+
+**empty?
+a=String.new('hello')
+puts a.empty?
+
+Output-false
+
+**bytesize-return the count of bytes
+a=String.new('hello')
+puts a.bytesize
+
+Output-5
+
+**count-Returns the count of substrings matching given strings.
+It is used for count the substring or specific characters.
+
+Example :
+
+a=String.new('hello this is mohit')
+puts a.count "hm"  # it counts the both h or m
+
+
+Output-4
+
+
+
+
+
+
 
 
 
