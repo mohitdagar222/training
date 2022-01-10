@@ -688,7 +688,7 @@ Output-this is mohit
 (1..5)        #==> 1, 2, 3, 4, 5
 (1...5)       #==> 1, 2, 3, 4 #excludes 5
 
-**ranges as interval
+**ranges as interval test
 if ((1..10) === 5)
    puts "5 lies in (1..10)"
 end
@@ -702,12 +702,42 @@ puts "#{range1}"
 Output-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 **ranges can be used in case statement
+
 **ranges as condition-
 while gets
    print if /start/../end/
 end
 
 
+
+**some methods with ranges
+
+
+values =1..5
+
+if values.include?3
+    puts "exists"
+end
+
+max=values.max
+puts max
+
+min=values.min
+puts min
+
+values.each do|values|
+    puts "values are #{values}"
+end
+
+Output-
+exists
+5
+1
+values are 1
+values are 2
+values are 3
+values are 4
+values are 5
 
 ----------------------------------------------------------------------------------------------
 
