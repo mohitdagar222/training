@@ -647,7 +647,36 @@ you are in block 1
 
 -----------------------------------------------
 
-**MODULES
+**MODULES-Modules are a way of grouping together methods ,classes and constants
+
+module module_name
+content
+end
+method syntax in modules-
+def module_name.method_name()
+end
+
+access constant in module-
+puts module_name::Num
+
+
+
+module Moral
+Very_bad=0
+Bad=1
+def Moral.fun(param)
+    if(param==0)
+        puts "you are very bad"
+    else
+        puts "you are only bad"
+    end
+end
+end
+
+Moral.fun(Moral::Very_bad)  #calling module outside it,we can pass anything in argument
+
+Output-
+you are very bad
 
 
 
