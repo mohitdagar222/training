@@ -9,3 +9,13 @@ for i in 1 .. n do
     i += 1
     print "\n"
 end
+
+=begin
+*
+**
+***
+****
+*****
+******
+
+=end
