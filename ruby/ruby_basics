@@ -741,6 +741,35 @@ values are 5
 
 ----------------------------------------------------------------------------------------------
 
+**RUBY ITERATORS
+
+**collection-objects that store group of data members ex array,hash
+
+**each iterator
+
+values =[1,2,3,5]
+
+values.each do|v|
+    puts v
+end
+Output-
+1
+2
+3
+4
+5
+
+**collect iterator
+a = [1,2,3]
+b = a.collect{|i| i}
+puts b
+Output-
+1
+2
+3
+
+-------------------------------------------------------------------------------------------------
+
 
 
 
