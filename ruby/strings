@@ -120,6 +120,63 @@ Output-4
 
 
 
+6)Substrings
+
+** =~
+Returns the index of the first substring that matches a given Regex
+
+a=String.new('hello')
+puts a =~ /e/  # it counts the both h or m
+
+Output-1
+
+**index-Returns the index of the first occurrence of a given substring
+a=String.new('hello this is me mohit dagar') 
+puts a.index('da')
+
+Output-23
+
+**rindex-Returns the index of the last occurrence of a given substring;
+
+a=String.new('hello this is me mohit dagar') 
+puts a.rindex('l')
+
+Output-3
+
+**include? -Returns true if the string contains a given substring;
+
+a=String.new('hello this is me mohit dagar') 
+puts a.include?('z')
+Output-false
+
+**match-Returns a MatchData object if the string matches a given Regexp
+
+a=String.new('hello this is me mohit dagar') 
+puts a.match('is')
+
+Output- is
+
+
+**match? -Returns true if the string matches a given Regexp
+
+a=String.new('hello this is me mohit dagar') 
+puts a.match?('mohit')
+
+Output-true
+
+**start_with? -Returns true if the string begins with any of the given substrings.
+
+a=String.new('hello this is me mohit dagar') 
+puts a.start_with?('mohit')
+Output-false
+
+
+**end_with? -Returns true if the string ends with any of the given substrings.
+
+a=String.new('hello this is me mohit dagar') 
+puts a.end_with?('dagar')
+Output-true
+
 
 
 
