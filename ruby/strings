@@ -11,7 +11,7 @@ this is mohit's book
 --------------------------------------------------
 
 **String Methods-
-**sub and sub!
+1)sub and sub!
 
 *sub -substitute the string temporarily and only first string if two same are available if we again use that string than it will be in its original form
 
@@ -29,7 +29,7 @@ name= "mohit"
 puts name.sub!("it",'ini')
 puts name
 
-**gsub-Gsub is closest to a “replace string” method
+2)gsub-Gsub is closest to a “replace string” method,gsub! change a string permanently
 
 value='hello'
 puts value
@@ -40,6 +40,68 @@ Output-
 hello
 he*lo
 he**o
+
+3)methods for creating a string-
+
+**new-With no arguments, returns the empty string with the Encoding ASCII-8BIT:
+s = String.new
+s.encoding  #output-Encoding:ASCII-8BIT
+
+s=String.new('my name')
+s.encoding #output-Encoding:UTF-8
+
+
+**capacity-With keyword capacity, returns a copy of str; the given capacity may set the size of the internal buffer, which may affect performance:
+String.new(capacity: 1)
+The string, encoding, and capacity arguments may all be used together:
+String.new('hello', encoding: 'UTF-8', capacity: 25)
+
+**try_convert-Returns a new string created from a given object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
