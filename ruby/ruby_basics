@@ -661,22 +661,59 @@ puts module_name::Num
 
 
 
-module Moral
-Very_bad=0
-Bad=1
-def Moral.fun(param)
-    if(param==0)
-        puts "you are very bad"
-    else
-        puts "you are only bad"
+
+**trig.rb
+module Trig
+
+    def Trig.fun(param)
+       puts "this is #{param}" 
     end
-end
+ 
 end
 
-Moral.fun(Moral::Very_bad)  #calling module outside it,we can pass anything in argument
+ **test.rb
+$LOAD_PATH << '.'
+require 'trig'
 
-Output-
-you are very bad
+Trig.fun('mohit')
+
+Output-this is mohit
+
+
+----------------------------------------------------------------------------------------------------
+
+**RANGES-
+
+**ranges as sequence
+(1..5)        #==> 1, 2, 3, 4, 5
+(1...5)       #==> 1, 2, 3, 4 #excludes 5
+
+**ranges as interval
+if ((1..10) === 5)
+   puts "5 lies in (1..10)"
+end
+
+Output-5 lies in (1..10)
+
+**ranges as list
+range1 = (1..10).to_a  #we can convert a range into a list
+puts "#{range1}"
+
+Output-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+**ranges can be used in case statement
+**ranges as condition-
+while gets
+   print if /start/../end/
+end
+
+
+
+----------------------------------------------------------------------------------------------
+
+
+
+
 
 
 
