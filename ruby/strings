@@ -213,7 +213,34 @@ Output-false
 
 
 
-8)
+8)OTHER
+
+**sum-it gives the sum of binary values of each byte of string
+
+a=String.new("hello my name is mohit") 
+
+puts a.sum
+Output-2072
+
+**hash-Returns the integer hash code.
+
+a=String.new("MO") 
+
+puts a.hash
+Output-3496035914710599144
+
+
+
+9)Methods for Comparing-
+
+** == -Returns true if a given other string has the same content as self.
+
+
+a=String.new("mohit") 
+b='mohitdagar'
+puts a==b
+Output-false
+
 
 
 
