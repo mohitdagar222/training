@@ -179,6 +179,41 @@ Output-true
 
 
 
+7)ENCODINGS
+
+**encoding-Returns the Encoding object that represents the encoding of the string.
+
+a=String.new('hello this is me mohit dagar') 
+ a.force_encoding('ascii')
+puts a.encoding
+Output- us-ascii
+
+**unicode_normalized? -Returns true if the string is in Unicode normalized form; false otherwise.
+
+a=String.new('hello this is me mohit dagar') 
+
+puts a.unicode_normalized?
+
+Output-true
+
+**valid_encoding? - Returns true if the string contains only characters that are valid for its encoding
+
+a=String.new("\xC4") 
+
+puts a.force_encoding('utf-8').valid_encoding?
+Output-false
+
+
+**ascii_only? -Returns true if the string has only ASCII characters; false otherwise.
+
+a=String.new("abc\u{6666}") 
+
+puts a.force_encoding("utf-8").ascii_only?
+Output-false
+
+
+
+8)
 
 
 
