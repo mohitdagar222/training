@@ -673,3 +673,566 @@ aaaaaaaaaaaaaaaaMohit
 -----------------------------------------------------------------------------------------------------
 
 
+13) Ruby methods for conveting new string (Encoding)
+
+-> b
+
+It returns a copy of given string with ASCII-8BIT encoding.
+
+-> scrub
+
+If the string has invalid byte sequence then replace invalid bytes with given replacement character, else returns self.
+
+Example :
+
+"abc\u3042\x81".scrub #=> "abc\u3042\uFFFD"
+"abc\u3042\x81".scrub("*") #=> "abc\u3042*"
+"abc\u3042\xE3\x80".scrub{|bytes| '<'+bytes.unpack('H*')[0]+'>' } #=> "abc\u3042<e380>"
+
+
+-> unicode_normalize
+
+It is used for return a self string with each character unicode-normalized.
+
+-> encode
+
+It returns a copy of self string in which each character transcoded from one given encoding into another.
+
+
+**force_encoding- to change the encoding of a string to new encode
+
+a ="Mohan"
+b="ram"
+c='shyam'
+puts a.encoding
+puts 'after changinf encoding'
+ a.force_encoding('ascii')
+puts a.encoding
+
+Output-
+UTF-8
+after changinf encoding
+US-ASCII
+
+
+-------------------------------------------------------------------------------------------
+
+14) Substitution methods for converting to new string
+
+-> dump
+
+It returns  a printable version  of self, enclosed in double quotes, with special characters escaped, and with non-printing characters replaced by hexadecimal notation.
+
+Example :
+
+str1 ="Mumbai \t "
+puts str1
+puts str1.dump
+
+OUTPUT :
+
+Ajay 
+ 
+"Mumbai \t "
+
+
+-> undump
+
+It is used for undumped , previously dumped string.
+
+Example :
+
+a ="Mohan \t"
+puts a
+puts b=a.dump
+puts b.undump
+
+OUTPUT :
+
+Mohan 
+"Mohan \t"
+Mohan 
+
+-> tr(from_str,to_str)
+
+It is used for return a copy of self in which characters  in from_str replaced by characters in to_str.
+
+Example :
+
+str1 ="mohiT"
+puts str1
+puts str1.tr('a-z','*')
+puts str1.tr('ohij','*')
+puts str1.tr('^onac','*')
+
+OUTPUT :
+
+mohitT
+****T
+m***T
+*o***
+
+
+-> tr_s 
+
+It is used for return a copy of self in which characters in from_str replaced by characters in to_str. But it treats duplicates character (by condition) treats as one.
+
+Example :
+
+str1 ="mohiT"
+puts str1
+puts str1.tr_s('a-z','*') # print *T because all are in form a-z so, duplicates for that
+puts str1.tr_s('ohjk','*') # print m*iT because it considrers ohjk as one
+puts str1.tr_s('^hijkl','*') # print *hi* because treat moi as single and T as single  , they are except from hijkl
+
+OUTPUT :
+
+mohiT
+*T
+m*iT
+*hi*
+-> %
+
+It is used for return the result of formatting object into the format specification self.
+
+Example :
+
+puts a= "%07d"
+puts a%123   #it gives 0000123 means has length 7, previously space filled by 0's.
+
+OUTPUT :
+
+%07d
+0000123
+
+
+------------------------------------------------------------------------------------
+
+
+15) Convert other class element to string class
+
+-> to_s
+
+It is used for convert other class oblect(variable) to object of string class.
+
+Example :
+
+a=5
+puts a.class
+a=a.to_s
+puts a.class
+
+
+OUTPUT :
+
+Integer
+String
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+16). METHODS FOR CONVERTING TO NON-STRING
+
+-> bytes
+
+It is used for return array of bytes in self.
+
+Example :
+
+a='hello'
+puts a.bytes
+
+OUTPUT :
+104
+101
+108
+108
+111
+
+-> chars
+
+It is used for return array of chars in self.
+
+Example :
+
+a='hello'
+puts a.chars
+
+OUTPUT :
+h
+e
+l
+l
+o
+
+-> codepoints 
+
+It is used for return array of integer ordinals of characters.
+
+It is like 'bytes' method.
+
+-> getbyte
+
+It is used for return the byte at zero based index as integer.
+
+Example :
+
+a='hello23'
+puts a.getbyte(5)  # byte of 2 (at index 5) is 50
+
+OUTPUT :
+
+50
+
+
+
+------------------------------------------------------------------------------------------
+
+17)  Methods for Partition
+
+-> lines
+
+It returns the self , which is partition by given character as a line.
+
+For Example :
+
+a='hello world'
+puts a.lines('w')
+
+OUTPUT :
+
+hello w
+orld
+
+-> partition 
+
+It returns 3-element array determined by the first substring that matches a given substring or regexp.
+
+Example :
+
+a='hello world'
+print a.partition('e')
+puts ()
+print a.partition('x')
+puts ()
+print a.partition('l')
+puts()
+
+OUTPUT :
+
+["h", "e", "llo world"]
+["hello world", "", ""]
+["he", "l", "lo world"]
+
+-> rpartition
+
+It returns 3-element array determined by the last substring that matches a given substring or regexp.
+
+Example :
+
+a='hello world'
+print a.rpartition('e')
+puts ()
+print a.rpartition('x')
+puts ()
+print a.rpartition('l')
+puts()
+
+
+OUTPUT :
+
+["h", "e", "llo world"]
+["", "", "hello world"]
+["hello wor", "l", "d"]
+
+-> split 
+
+It returns a array of substrings determined by a deliminator -regexp or string- or, if block given, passes those substrings to the block.
+
+Example :
+
+a='hello world'
+print a.split('e')
+puts
+print a.split(' ')
+puts
+print a.split(//,6)
+puts
+
+OUTPUT :
+
+["h", "llo world"]
+["hello", "world"]
+["h", "e", "l", "l", "o", " world"]
+
+----------------------------------------------------------------------------------------------
+
+18)Methods for matching
+
+-> scan
+
+It returns an array of substrings matching a given regexp or string, or if a block given,passes each matching substring to the block.
+
+Example :
+
+a='hello world'
+print a.scan(//)
+puts
+print a.scan(/.../)
+puts
+print a.scan(/(...)(...)(...)/)
+puts
+
+OUTPUT :
+
+["", "", "", "", "", "", "", "", "", "", "", ""]
+["hel", "lo ", "wor"]
+[["hel", "lo ", "wor"]]
+
+--------------------------------------------------------------------------------
+
+
+19)  Numeric methods for strings
+
+-> hex
+
+It returns the integer value of the leading characters, interpreted as hexadecimals.
+
+Example :
+
+a='mohit'
+puts a.hex
+b='256'
+c='ab256'
+puts b.hex
+puts c.hex
+d='1'
+puts d.hex
+
+OUTPUT :
+
+0
+598
+701014
+1
+
+-> oct 
+
+It returns integer value of the leading characters, interpreted as octals. 
+
+
+Example :
+
+a='mohit'
+puts a.oct
+b='256'
+c='ab256'
+puts b.oct
+puts c.oct
+d='1'
+puts d.oct
+
+OUTPUT :
+
+0
+174
+0
+1
+
+-> ord
+
+It returns the integer ordinal of first character in self.
+
+Example :
+
+a='hello world'  
+puts a.ord       #print integer ordinal of h (104)
+b='256'
+c='ab256'
+puts b.ord       #print integer ordinal of 2 (50)
+puts c.ord       #print integer ordinal of a (97)
+d='1'
+puts d.ord       #print integer ordinal of 1 (49)
+e='ab1'
+puts e.ord       #print integer ordinal of a (97)
+
+OUTPUT :
+
+104
+50
+97
+49
+97
+
+-> to_i
+
+It returns the integer value of leading characters , interpreted as an integer.
+
+Example :
+
+a='hello world'  
+puts a.to_i      #print 0 because it has characters
+b='256'
+c='ab256'
+puts b.to_i      #print 256 
+puts c.to_i      #print 0
+d='1'
+puts d.to_i      #print 1
+e='25ab1'
+puts e.to_i      #print 25
+
+OUTPUT :
+0
+256
+0
+1
+25
+
+
+-> to_f
+
+It returns the float value of leading characters, interpreted as a floating number.
+
+Example :
+
+a='2.58'  
+puts a.to_f      #print 2.28
+b='2.45e-2'      
+c='ab256'
+puts b.to_f      #print 0.0245 
+puts c.to_f      #print 0.0
+d='1'
+puts d.to_f      #print 1.0
+e='25.85ab1'
+puts e.to_f      #print 25.85
+
+OUTPUT :
+
+2.58
+0.0245
+0.0
+1.0
+25.85
+
+
+
+-----------------------------------------------------------------------------
+
+20)  Methods for Strings and Symbols
+
+-> to_sym
+
+It returns the symbol corresponding to str, creating the symbol if it did not previously exist.
+
+Example :
+
+str1 = 'hello'
+puts str1==:hello
+str2 = str1.to_sym
+puts str2==:hello
+
+OUTPUT :
+
+false
+true
+
+-> inspect 
+
+It returns a printable version of self, enclosed in double-quotes, and with special characters escaped
+
+Example :
+
+my_str1 = 'hello'
+my_str2 = 'hello world'
+puts my_str1.inspect
+puts my_str2.inspect
+
+OUTPUT :
+
+"foo"
+"bar baz"
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+24. Methods for iteration in strings
+
+-> each_byte
+
+Calls the given block with successive byte in self.
+
+Example :
+
+my_str1 = 'foo'
+my_str1.each_byte{|b| print b ,' '}
+puts
+
+OUTPUT :
+
+102 111 111 
+
+-> each_char
+
+Calls the given block with successive char in self.
+
+Example :
+
+my_str1 = 'foo'
+my_str1.each_char{|b| print b ,' '}
+puts
+
+OUTPUT :
+
+f o o 
+
+-> each_codepoint 
+
+Calls the given block with successive codepoints in self.
+
+Example :
+
+my_str1 = "foo\u0259"
+my_str1.each_codepoint{|b| print b ,' '}
+puts
+
+OUTPUT :
+
+102 111 111 601 
+
+-> each_line
+
+Calls the given block with successive line in self, as determined by a given record separator.
+
+Example :
+
+example="hello world"
+example.each_line('l'){|n| p n}   # p means print
+
+OUTPUT :
+
+"hel"
+"l"
+"o worl"
+"d"
+
+-> upto
+
+
+
+
+Example :
+
+example='a9'
+example.upto('c3'){|n| print n,' '}   #print till c3
+puts
+example.upto('c3',true){|n| print n,' '} #print till c2 , stop when reached c3
+puts 
+
+OUTPUT :
+
+ a9 b0 b1 b2 b3 b4 b5 b6 b7 b8 b9 c0 c1 c2 c3 
+ a9 b0 b1 b2 b3 b4 b5 b6 b7 b8 b9 c0 c1 c2 
+
+
+
+
