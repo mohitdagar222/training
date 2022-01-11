@@ -388,8 +388,165 @@ Output-MOHITdagar
 
 
 
+------------------------------------------------------------------------------------------
+
+
+11) Ruby Methods for Deletion
+
+-> clear 
+
+It is used for clear complete string.
+
+Example :
+
+str1= 'my name is Ram'
+str1.clear
+
+puts str1
+
+
+OUTPUT :
+
+
+-> slice! or []=
+
+These are used for removes a substring determined by a given index, start/length, range, regexp, or substring.
+
+Example :
+
+b="my name is Mohit dagar"
+ b.slice!(2)
+ puts b
+ b.slice!(1..4)
+ puts b
+ b.slice!(/M.*t/)
+ puts b
+
+ b.slice!("r")
+ puts b
 
 
 
-11) 
+OUTPUT :
+
+myname is Mohit dagar
+me is Mohit dagar
+me is  dagar
+me is  daga
+
+-> squeeze
+
+It is used for remove contiguous duplicate substrings except one .
+
+Example :
+
+b="my naaaame is Mohit dagar"
+puts b.squeeze!
+
+OUTPUT :
+
+my name is mohit dagar
+
+Important : we can also give arguments for remove specific duplicate elements like spaces or any other.
+
+-> delete!
+
+It is used for delete all specified substrings from string.
+
+Example :
+
+b="my naaaame is Mohit dagar"
+puts b.delete!('naaame')
+
+
+OUTPUT :
+
+y  is Mohit dgr
+
+-> lstrip 
+
+It is used for remove leading whitespaces , it means white spaces before starting of string.
+
+Example :
+
+str = '   i am from palwal'
+puts str
+str.lstrip!
+puts str
+
+
+OUTPUT :
+
+   i am from palwal
+i am from palwal
+
+-> rstrip
+
+It is used for remove trailing whitespaces , it means white spaces after completion of string.
+
+Example :
+
+str = 'i am from palwal   '
+puts str.rstrip!
+
+
+
+OUTPUT :
+
+i am from palwal
+
+-> strip 
+
+It is used for remove trailing and leading white spaces both at same time.
+
+Example :
+
+str = '    i am from palwal   '
+puts str.strip!
+
+
+OUTPUT :
+
+i am from palwal  
+
+-> chomp
+
+It will remove trailing record separator, if found.
+
+Example :
+
+str ="chennai \n\r"
+puts str
+str.chomp!
+puts str
+str.chomp!
+puts str
+
+OUTPUT :
+chennai
+
+chennai 
+chennai 
+
+-> chop
+
+It is used for remove last character of string.
+
+Example :
+
+str ="chennai"
+puts str
+str.chop!
+puts str
+
+
+OUTPUT :
+
+chennai
+chenna
+
+-------------------------------------------------------------------
+
+
+12) 
 
