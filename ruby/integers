@@ -1,7 +1,5 @@
 					                 RUBY INTEGER METHODS
-
-
-																																					1) public class Methods-
+1) public class Methods-
 
 **sqrt(n)--Returns the integer square root of the non-negative integer n, i.e. the largest non-negative integer less than or equal to the square root of n.
 
@@ -55,7 +53,7 @@ puts 4 + 5
 Output-9
 
 
-**(**) it returns self multiplication of given times
+**(**) it returns power of a
 
 2 ** 3
 
@@ -113,6 +111,113 @@ puts 67 == 67
 Output-true
 
 
+**abs-Returns the absolute value of int.
+
+num=-235673
+puts num.abs
+
+Output-
+235673
+
+**allbits?(mask)-Returns true if all bits of int & mask are 1.
+
+num=5
+puts num.allbits?(9)
+Output-false
+
+
+**anybits?(mask)-Returns true if any bits of int & mask are 1.
+
+num=5
+puts num.allbits?(9)
+Output-true
+
+
+
+**bit_length-Returns the number of bits of the value of int.
+
+num=7
+puts num.bit_length
+Output-3
+
+**ceil([ndigits])-Returns the smallest number greater than or equal to int with a precision of ndigits decimal digits
+	Returns self when ndigits is zero or positive.if number is positive than result will be in next group of nums ex 35 than it will be in 40 and if num is negative than ans will be in preeceded group ex -35 than output is -30
+
+num=7.to_i
+puts num.ceil(2)
+Output-7
+
+
+**chr(encoding) -Returns a string containing the character represented by the int's value according to encoding.
+
+
+num=255
+puts num.chr
+puts num.chr(Encoding::UTF_8)
+Output-�
+ÿ
+
+
+**coerce(numeric)-Returns an array with both a numeric and a big represented as Bignum objects.
+
+num=(0x3FFFFFFFFFFFFFFF+1)
+print num.coerce(67)
+Output-[67, 4611686018427387904]
+
+
+**digits(base)-Returns the digits of int's place-value representation with radix base (default: 10). The digits are returned as an array with the least significant digit as the first array element.
+
+
+num=345
+print num.digits
+print num.digits(100)
+
+Output-[5, 4, 3]
+	[45, 3] 
+
+
+
+**div-Performs integer division: **fdiv returns floating pont result of division
+
+num=345
+puts num.div(5)
+Output-69
+
+
+**downto(limit) {|i| block }--terates the given block, passing in decreasing values from int down to and including limit.
+
+num=5
+puts num.downto(2) { |i| print i,".. "}
+
+Output-5.. 4.. 3.. 2..
+
+
+** even? -Returns true if int is an even number.
+
+num=5
+puts num.even?
+
+Output-false
+
+**gcd()-Returns the greatest common divisor of the two integers. The result is always positive. 
+
+num=60
+puts num.gcd(80)
+
+Output-num=20
+
+**gcdlcm() -Returns an array with the greatest common divisor and the least common multiple of the two integers
+
+num=60
+print num.gcdlcm(80)
+
+Output-[20, 240]
+
+
+**lcm -
+num=60
+print num.lcm(80)
+Output-240
 
 
 
