@@ -1,0 +1,115 @@
+					                 RUBY INTEGER METHODS
+
+
+																																					1) public class Methods-
+
+**sqrt(n)--Returns the integer square root of the non-negative integer n, i.e. the largest non-negative integer less than or equal to the square root of n.
+
+puts Integer.sqrt(36)
+puts Integer.sqrt(24)
+
+Output-
+6
+4
+
+-----------------------------------------------
+
+2) Public instance methods
+
+**% it gives remainder
+
+
+
+
+**&  The Bitwise AND operator applies a & operation on each bit of the sequence.
+
+So let’s detail the following operation 7 & 5
+
+7 in Base 2: 0000 0111
+5 in Base 2: 0000 0101  128 64 32 16 8 4 2 1
+ ---------------------- 
+7: 0  0  0  0  0 1 1 1
+   &  &  &  &  & & & &
+5: 0  0  0  0  0 1 0 1
+-----------------------
+5: 0  0  0  0  0 1 0 1
+
+puts 7 & 5
+
+Output-5
+
+
+
+
+
+**(*) it returns multiplication
+
+puts 4 * 5
+
+Output-20
+
+**+ it returns addition
+
+puts 4 + 5
+
+Output-9
+
+
+**(**) it returns self multiplication of given times
+
+2 ** 3
+
+Output-8
+
+
+**/ it returns division
+
+250 / 5
+
+Output-50
+
+
+**- it returns substraction
+
+puts 50 -30
+
+Output-20
+
+
+**< it returns true or false if less or not
+
+40 < 50
+
+Output-True
+
+
+**<= it returns if less or equal to given number
+
+puts 30 <= 30
+Output-True
+
+
+**<< The LEFT SHIFT operator << shifts each bit of a number to the left by n positions.
+7 in Base 2: 0000 0111   128 64 32 16  8 4 2 1
+   ---------------------- 
+7:  0  0  0  0   0 1 1 1
+shift each bit to the left by 2 positions
+   ----------------------
+28: 0  0  0  1   1 1 0 0
+
+puts 7 << 2
+Output-28
+
+
+**<=> it returns 1 if greater 0 if equal and -1 if small
+
+puts 5 <=> 4
+Output-1
+
+
+**== it returns true if both are equal
+
+puts 67 == 67
+Output-true
+
+
