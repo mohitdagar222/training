@@ -549,4 +549,127 @@ chenna
 
 
 12) 
+METHODS FOR CONVERTING TO NEW STRING
+
+ Ruby methods for extensions
+
+-> *
+
+It is used for return concatenation of  many copies of given string.
+
+Example :
+
+str ="Mohit "
+puts str*3
+puts str
+
+OUTPUT :
+
+Mohit Mohit Mohit 
+Ajay 
+
+-> +
+
+It is used for concatenation of many strings.
+
+Example :
+
+str1 ="Mohan "
+str2 ="Ram "
+str3 ="Shyam"
+puts str1+str2+str3
+
+OUTPUT :
+
+Mohan Ram Shyam
+
+-> center
+
+It is used for increase the width of string and put string in center.
+
+Example :
+
+a ="Mohan"
+
+puts a.center(7) #takes 1 space before and one after
+puts a.center(25) #takes 10 before and 10 after
+puts a.center(31,'*') #takes 1 before and 13 after and filled by *
+
+
+OUTPUT :
+
+ Mohan 
+         Mohan          
+************Mohan*************
+
+-> concat
+
+It is used for concatenate first given string with another given string .
+
+Example :
+
+str1 ="Mohit "
+str2 ="Dgar "
+str1.concat(str2)
+puts str1
+
+OUTPUT :
+
+Mohit Dagar 
+
+-> prepend
+
+It is used for prepend another given string with first given string.
+
+Example :
+
+str1 ="Mohit "
+str2 ="Dagar "
+str1.prepend(str2)
+puts str1
+
+OUTPUT :
+
+Dagar Mohit 
+
+
+-> ljust
+
+If integer is greater than the length of given string, returns the new string which has length equals to integer and has white spaces after string.
+
+Example :
+
+str1 ="Mohit"
+puts str1.ljust(7)
+puts str1.ljust(20)
+puts str1.ljust(20,'a')
+
+OUTPUT :
+
+Mohit 
+Mohit                
+Mohitaaaaaaaaaaaaaaaa
+
+
+-> rjust
+
+If integer is greater than the length of given string, returns the new string which has length equals to integer and has white spaces before string content.
+
+Example :
+
+str1 ="Mohit"
+puts str1.rjust(7)
+puts str1.rjust(20)
+puts str1.rjust(20,'a')
+
+OUTPUT :
+
+ Mohit
+               Mohit
+aaaaaaaaaaaaaaaaMohit
+
+
+
+-----------------------------------------------------------------------------------------------------
+
 
