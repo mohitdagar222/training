@@ -220,4 +220,88 @@ print num.lcm(80)
 Output-240
 
 
+**next -Returns the successor of int, i.e. the Integer equal to int+1.
+
+num=60
+print num.next
+Output-61
+
+
+**numerator -always returns self
+**denominator -always returns 1
+**integer? -always returns true
+**odd? -numer is odd or not
+**ord -rteurn the int itself
+
+
+**pow() -it returns the power
+
+num=6
+print num.pow(6)
+
+Output-46656
+
+
+**pred -Returns the predecessor of int
+
+puts 5.pred
+Output-4
+
+
+**rationalize -Returns the value as a rational. 
+
+num=45.6
+puts num.rationalize
+
+Output-288/5
+
+**remainder -it returns remainder
+
+**round([ndigits] -Returns int rounded to the nearest value with a precision of ndigits decimal digits
+
+1.round           #=> 1
+1.round(2)        #=> 1
+15.round(-1)      #=> 20
+(-15).round(-1)   #=> -20
+
+
+
+
+** size → Returns the number of bytes in the machine representation of int (machine dependent).
+
+
+
+**succ -return the successor of int
+
+** to_s(base)
+
+Returns a string containing the place-value representation of int with radix base (between 2 and 36).
+
+12345.to_s       #=> "12345"
+12345.to_s(2)    #=> "11000000111001"binary
+12345.to_s(8)    #=> "30071" octal
+12345.to_s(10)   #=> "12345" decimal
+12345.to_s(16)   #=> "3039" hexa
+12345.to_s(36)   #=> "9ix"
+78546939656932.to_s(36)  #=> "rubyrules"
+
+
+
+
+**upto(limit){|i| print i}
+
+num=5
+puts num.upto(8) {|i| print i," "}
+
+
+Output -5,6,7,8
+
+
+
+** times{|i| print i}
+num=5
+num.times {|i| print i, " "}
+
+Output-0 1 2 3 4
+
 
