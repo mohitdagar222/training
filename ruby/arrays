@@ -85,7 +85,48 @@ Output-
 4
 4
 
-**
+**empty?, include?() -to check whether array is empty or not ,to check an element is included or not
 
+states = ["Haryana", "UP", "West Bengal", "Chandigarh"]
+puts states.empty?
+puts states.include?("West Bengal")
+
+Output-False
+True
+
+--------------------------------------------------------------------------------------
+
+**Adding items to arrays
+
+** push, <<
+
+
+states = ["Haryana", "UP", "West Bengal", "Chandigarh"]
+print states.push("Bihar")
+puts
+print states << "Assam"
+puts
+
+Output-
+["Haryana", "UP", "West Bengal", "Chandigarh", "Bihar"]
+["Haryana", "UP", "West Bengal", "Chandigarh", "Bihar", "Assam"]
+
+
+**unshift, insert()-to add elements at the begining of array
+
+states = ["Haryana", "UP", "West Bengal", "Chandigarh"]
+print states.unshift("Bihar")
+puts
+print states.insert(1,"Assam")
+puts
+
+Output-
+["Bihar", "Haryana", "UP", "West Bengal", "Chandigarh"]
+["Bihar", "Assam", "Haryana", "UP", "West Bengal", "Chandigarh"]
+
+
+---------------------------------------------------------------
+
+**
 
 
