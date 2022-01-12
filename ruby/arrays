@@ -127,6 +127,36 @@ Output-
 
 ---------------------------------------------------------------
 
+**Removing items from an array
+
+** shift, pop, compact, uniq, delete() --remove first element,remove last element,remove null, remove duplicates, remove specified index element-
+
+
+states = ["Haryana", "UP", "West Bengal", nil,"Chandigarh", "UP", "UP"]
+print states.pop
+puts
+print states.shift
+puts 
+print states.delete_at(1)
+puts
+print states.compact
+puts
+print states.uniq
+puts 
+print states.delete("Chandigarh")
+puts
+print states
+puts
+
+Output-UP
+Haryana
+West Bengal
+["UP", "Chandigarh", "UP"]
+["UP", nil, "Chandigarh"]
+Chandigarh
+["UP", nil, "UP"]
+
+
 **
 
 
