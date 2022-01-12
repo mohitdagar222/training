@@ -156,7 +156,57 @@ West Bengal
 Chandigarh
 ["UP", nil, "UP"]
 
+------------------------------------------------------------------------------------------------
+**Iterating over Arrays
 
-**
+**Each and reverse_each -which defines what elements should be iterated over and how, Another sometimes useful iterator is reverse_each which will iterate over the elements in the array in reverse order.
+
+arr = [1, 2, 3, 4, 5]
+arr.each{|a| print a -= 10, " "}
+words = ["one","two","three"]
+str=" "
+words.reverse_each{|word| str += "#{word} "}  
+puts
+puts str
+
+Output--9 -8 -7 -6 -5 
+ three two one 
+
+
+
+**map -The map method can be used to create a new array based on the original array
+
+arr = [1, 2, 3, 4, 5]
+print  arr.map{|a| a*2}
+puts
+
+
+Output-[2, 4, 6, 8, 10]
+
+**Non-destructive Selection
+
+arr = [1, 2, 3, 4, 5, 6]
+print arr.select {|a| a > 3}       #=> [4, 5, 6]
+print arr.reject {|a| a < 3}       #=> [3, 4, 5, 6]
+print arr.drop_while {|a| a < 4}   #=> [4, 5, 6]
+print arr                          #=> [1, 2, 3, 4, 5, 6]
+
+
+
+
+**destructive selection
+
+arr.delete_if {|a| a < 4}   #=> [4, 5, 6]
+printarr                         #=> [4, 5, 6]
+
+arr = [1, 2, 3, 4, 5, 6]
+arr.keep_if {|a| a < 4}   #=> [1, 2, 3]
+print arr                       #=> [1, 2, 3]
+
+
+------------------------------------------------------------------------------------------
+
+**methods for querying-
+
 
 
