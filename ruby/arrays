@@ -209,4 +209,39 @@ print arr                       #=> [1, 2, 3]
 **methods for querying-
 
 
+**all? -if all elements meets the given criteria//**any? returns true if any element meets the given criteria
 
+arr = [0, 1, 2]
+arr.all? { |element| element < 3 }
+Output-true
+
+
+**index-Returns the index of a specified element.
+
+arr = [1, 2, 3, 4, 5]
+print  arr.index(2)
+puts
+
+Output=1
+
+
+**rindex -Returns the index of the last element that meets a given criterion.
+
+arr = [1, 2, 3, 4, 5,2]
+print  arr.index(2)
+puts
+
+
+Output=5
+
+**hash-Returns the integer hash code.
+
+arr = [1, 2, 3, 4, 5]
+print  arr.hash == [2, 3, 4]
+puts
+
+Output-False
+
+---------------------------------------------------------------------------------------------------
+
+**
