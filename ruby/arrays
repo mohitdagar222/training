@@ -264,5 +264,61 @@ Output- true
 
 --------------------------------------------------------------------------------------------
 
+**methods for fetching-
+
+**fetch -Returns the element at offset index.
+
+arr = [1, 2, "mohit", 4, 5]
+print  arr.fetch(2)
+
+Output-mohit
+
+**first(n)-returns first n elements
+
+arr = [1, 2, "mohit", 4, 5]
+print  arr.first,"\t"
+print arr.first(3)
+puts
+Output- 1       [1, 2, "mohit"]
+
+
+**last- returns last n elements
+
+arr = [1, 2, "mohit", 4, 5]
+print  arr.last,"\t"
+print arr.last(3)
+puts
+
+Output- 5       ["mohit", 4, 5]
+
+
+**max -it returns max element in a array
+
+arr = [1, 2, 4, 5]
+print  arr.max,"\t"
+print arr.max(4)
+puts
+
+Output- 5       [5, 4, 2, 1]
+
+
+
+**minmax - it returns the ninimum and maximum in array
+
+arr = [1, 2, 4, 5]
+print  arr.minmax
+puts
+
+Output-[1, 5]
+
+
+**assoc(obj)- Returns the first element in self that is an Array whose first element == obj:
+
+arr = [[1, 2, 4],[3,4,5]]
+print  arr.assoc(3)
+puts
+
+Output- [3, 4, 5]
+
 **
 
