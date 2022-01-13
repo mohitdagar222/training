@@ -97,6 +97,47 @@
  => false 
 
 
-**
+**valid_ordinal? - 
+ > Date.valid_ordinal?(2022,13)
+ => true 
+
+
+**xmlschema -Creates a new Date object by parsing from a string according to some typical XML Schema formats.
+
+> Date.xmlschema('1999-12-19')
+ => #<Date: 1999-12-19 ((2451532j,0s,0n),+0s,2299161j)> 
+
+
+** +,- =adding in date and and doing less in date
+
+2.7.5 :004 > d -=1
+ => #<Date: 1999-12-18 ((2451531j,0s,0n),+0s,2299161j)> 
+2.7.5 :005 > d += 1
+ => #<Date: 1999-12-19 ((2451532j,0s,0n),+0s,2299161j)> 
+2.7.5 :006 > d -= 1
+ => #<Date: 1999-12-18 ((2451531j,0s,0n),+0s,2299161j)> 
+
+
+** << n -Returns a date object pointing n months before self. The argument n should be a numeric value.
+
+> Date.new(1999,12,19) << 2
+ => #<Date: 1999-10-19 ((2451471j,0s,0n),+0s,2299161j)> 
+
+
+** <=> - Compares the two dates and returns -1, zero, 1 or nil. The other should be a date object 
+
+> Date.new(1999,12,19) <=> Date.new(2000,1,1)
+ => -1 
+
+
+** === - return true if they are same
+
+ Date.new(1999,12,19) === Date.new(2000,1,1)
+ => false
+
+
+
+
+
 
 
