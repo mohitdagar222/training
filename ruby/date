@@ -136,6 +136,100 @@
  => false
 
 
+** >> n -Returns a date object pointing n months after self. The argument n should be a numeric value.
+
+
+> Date.new(1999,12,19) >> 2
+ => #<Date: 2000-02-19 ((2451594j,0s,0n),+0s,2299161j)> 
+
+**ajd - Returns the astronomical Julian day number. This is a fractional number, which is not adjusted by the offset.
+
+> Date.new(1999,12,19).ajd
+ => (4903063/2) 
+
+
+**cwday -Returns the day of calendar week (1-7, Monday is 1).
+
+> Date.new(1999,12,19).cwday
+ => 7 
+
+**cweek -Returns the calendar week number (1-53).
+
+ > Date.new(1999,12,19).cweek
+ => 50 
+
+**cwyear -Returns the calendar week based year.
+
+> Date.new(1999,12,19).cwyear
+ => 1999 
+
+**gregorian? -Returns true if the date is on or after the day of calendar reform.
+
+ > Date.new(1581,10,15).gregorian?
+ => false 
+
+
+**jd -return the julian day number 
+
+ > Date.new(1999,12,19).jd
+ => 2451532 
+
+
+**julian? -Returns true if the date is before the day of calendar reform.
+
+ > Date.new(1581,10,15).julian?
+ => true 
+
+**ld -Returns the Lilian day number. This is a whole number, which is adjusted by the offset as the local time.
+
+ > Date.new(1999,12,19).ld
+ => 152372 
+
+
+**leap? -Returns true if the year is a leap year.
+
+
+
+> Date.new(1999,12,19).leap?
+ => false 
+
+
+**sunday? -return true if day is sunday
+
+ > Date.new(1999,12,19).sunday?
+ => true 
+
+
+**monday? -return true if day is monday
+> Date.new(1999,12,19).monday?
+ => false
+
+
+**next_year(n) -This method is equivalent to d >> (n * 12).
+
+> Date.new(1999,12,19).next_year
+ => #<Date: 2000-12-19 ((2451898j,0s,0n),+0s,2299161j)> 
+
+
+**prev_year(n) -it returns date with one year previous
+
+> Date.new(1999,12,19).prev_year(5)
+ => #<Date: 1994-12-19 ((2449706j,0s,0n),+0s,2299161j)>
+
+**to_s -returns as string
+
+ > Date.new(1999,12,19).to_s
+ => "1999-12-19"
+
+**yday -Returns the day of the year (1-366).
+
+ > Date.new(1999,12,19).yday
+ => 353 
+
+
+------------------------------------------------------------------------------------------------
+
+
 
 
 
