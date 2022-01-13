@@ -610,6 +610,47 @@ OUTPUT -["arun", "amrit", "singaa", "bharat", 1, 2, 6, "english", "hindi", "engl
 
 -------------------------------------------------------------------------------------------------------
 
+**Methods for iterating-
+
+**each -When a block given, passes each successive array element to the block;
+
+sub=  ["hindi", "english","maths"]
+sub.each{|element| print "#{element},  " }
+
+Output -
+hindi,  english,  maths,
+
+**cycle() -Calls a given block with each element, then does so again, for a specified number of times, or forever.
+
+sub=  ["hindi", "english","maths"]
+sub.cycle(2){|element| print "#{element}  " }
+Output -hindi  english  maths  hindi  english  maths
 
 
+**combination -Calls a given block with combinations of elements of self; a combination does not use the same element more than once.
+
+names = ["arun","amrit", "singaa","bharat",1, 2, 6, "english"]
+roll = [1, 2, 8, 4, 6, "english"]
+sub=  ["hindi", "english","maths"]
+ sub.combination(2){|n| print "#{n} "}
+puts
+
+Output -
+["hindi", "english"] ["hindi", "maths"] ["english", "maths"] 
+
+
+
+**permutation-Calls a given block with permutations of elements of self; a permutation does not use the same element more than once.
+
+names = ["arun","amrit", "singaa","bharat",1, 2, 6, "english"]
+roll = [1, 2, 8, 4, 6, "english"]
+sub=  ["hindi", "english","maths"]
+ sub.permutation(2){|n| print "#{n} "}
+puts
+
+Output -["hindi", "english"] ["hindi", "maths"] ["english", "hindi"] ["english", "maths"] ["maths", "hindi"] ["maths", "english"]
+
+---------------------------------------------------------------------------------------------------------------
+
+**
 
