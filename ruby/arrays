@@ -558,4 +558,58 @@ Output -amrit
 ["arun", "singaa", "bharat"]
 
 -----------------------------------------------------------------------------------------------------------------
-**
+
+** methods for combining-
+
+** & -Returns an array containing elements found both in self and a given array.
+
+names = ["arun","amrit", "singaa","bharat",1, 2, 6]
+roll = [1, 2, 8, 4, 6]
+print names & roll
+puts
+
+Output -[1, 2, 6]
+
+
+** Intersection -Returns an array containing elements found both in self and in each given array.
+
+names = ["arun","amrit", "singaa","bharat",1, 2, 6, "english"]
+roll = [1, 2, 8, 4, 6, "english"]
+sub=  ["hindi", "english"]
+print names.intersection(roll,sub)
+puts
+
+Output -["english"]
+
+
+
+
+** + =Returns a new Array containing all elements of array followed by all elements of other_array
+
+** -,difference =Returns a new Array containing only those elements from array that are not found in Array other_array
+
+** |, union =Returns an array containing all elements of self and all elements of a given array, duplicates removed.
+
+** product -Returns or yields all combinations of elements from self and given arrays.
+
+names = ["arun","amrit", "singaa","bharat",1, 2, 6, "english"]
+roll = [1, 2, 8, 4, 6, "english"]
+sub=  ["hindi", "english","maths"]
+print names + sub
+puts
+print names - sub
+puts
+print names | roll
+puts
+
+
+OUTPUT -["arun", "amrit", "singaa", "bharat", 1, 2, 6, "english", "hindi", "english", "maths"]
+["arun", "amrit", "singaa", "bharat", 1, 2, 6]
+["arun", "amrit", "singaa", "bharat", 1, 2, 6, "english", 8, 4]
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
