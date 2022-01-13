@@ -48,6 +48,55 @@
  => #<Date: 1999-12-20 ((2451533j,0s,0n),+0s,2299161j)> 
 
 -------------------------------------
+**_parse -Parses the given representation of date and time, and returns a hash of parsed elements.
 
+ > Date._parse('1999-12-19')
+ => {:year=>1999, :mon=>12, :mday=>19} 
+
+
+**_strptime -Parses the given representation of date and time with the given template, and returns a hash of parsed elements. 
+
+ > Date._strptime('1999-12-19','%Y-%m-%d')
+ => {:year=>1999, :mon=>12, :mday=>19} 
+
+
+**gregorian_leap? -Returns true if the given year is a leap year of the proleptic Gregorian calendar.
+
+> Date.gregorian_leap?(2000)
+ => true 
+
+
+**julian_leap? -Returns true if the given year is a leap year of the proleptic Julian calendar.
+
+> Date.julian_leap?(2000)
+ => true 
+
+
+**rfc2822 Creates a new Date object by parsing from a string according to some typical RFC 2822 formats.
+
+> Date.rfc2822('Sat, 3 Feb 2001 00:00:00 +0000')
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)>
+
+
+
+**today -it gives current date
+
+ > Date.today
+ => #<Date: 2022-01-13 ((2459593j,0s,0n),+0s,2299161j)> 
+
+
+**valid_date? -Returns true if the given calendar date is valid, and false if not.
+
+ > Date.valid_date?(1999,13,19)
+ => false 
+
+
+**valid_commercial? -Returns true if the given week date is valid, and false if not.
+
+ > Date.valid_commercial?(1999,5,14)
+ => false 
+
+
+**
 
 
