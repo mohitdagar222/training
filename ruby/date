@@ -1,0 +1,53 @@
+
+									DATE CLASS IN RUBY
+
+**'date' provides two classes: Date and DateTime.
+
+*Date-A Date object is created with Date::new, Date::jd, Date::ordinal, Date::commercial, Date::parse, Date::strptime, Date::today, Time#to_date, etc.
+**creating date objects
+
+3.0.0 :009 > Date.new(2011,03,19)
+ => #<Date: 2011-03-19 ((2455640j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :010 > Date.jd(2476982)     **Creates a date object denoting the given chronological Julian day number.
+ => #<Date: 2069-08-23 ((2476982j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :011 > Date.ordinal(2001,34)     **34th day of 2001
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :012 > Date.parse('2000-04-19')
+ => #<Date: 2000-04-19 ((2451654j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :013 > Date.parse('19 dec 1999')
+ => #<Date: 1999-12-19 ((2451532j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :014 > Date.commercial(2001,5,6)        **creating object with week and day
+ => #<Date: 2001-02-03 ((2451944j,0s,0n),+0s,2299161j)> 
+3.0.0 :015 > 
+
+--------------------------------------
+
+**A Date object has various methods-
+
+3.0.0 :016 > d=Date.parse('19 dec 1999')
+ => #<Date: 1999-12-19 ((2451532j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :017 > d.year
+ => 1999 
+
+3.0.0 :018 > d.mon
+ => 12 
+
+3.0.0 :019 > d.mday
+ => 19 
+
+3.0.0 :020 > d.wday
+ => 0 
+
+3.0.0 :021 > d += 1
+ => #<Date: 1999-12-20 ((2451533j,0s,0n),+0s,2299161j)> 
+
+-------------------------------------
+
+
+
