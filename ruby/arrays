@@ -652,5 +652,81 @@ Output -["hindi", "english"] ["hindi", "maths"] ["english", "hindi"] ["english",
 
 ---------------------------------------------------------------------------------------------------------------
 
-**
+**methods for converting -
 
+**map -Calls the block, if given, with each element of self; returns a new Array whose elements are the return values from the block:
+
+sub=  ["hindi", "english","maths",3]
+a= sub.map{|n| n.class}
+print a
+puts
+Output -[String, String, String, Integer]
+
+
+**flatten -Returns an array that is a recursive flattening of self.
+
+a = [ 0, [ 1, [2, 3], 4 ], 5 ]
+a.flatten(0) 	# => [0, [1, [2, 3], 4], 5]
+
+a = [ 0, [ 1, [2, 3], 4 ], 5 ]
+a.flatten(1) 	# => [0, 1, [2, 3], 4, 5]
+
+a = [ 0, [ 1, [2, 3], 4 ], 5 ]
+a.flatten(2) 	# => [0, 1, 2, 3, 4, 5]
+
+a = [ 0, [ 1, [2, 3], 4 ], 5 ]
+a.flatten(3) 	# => [0, 1, 2, 3, 4, 5]
+
+
+**join -Returns a newsString containing the elements joined by the field separator.
+
+names = ["arun","amrit", "singaa","bharat",1, 2, 6, "english"]
+roll = [1, 2, 8, 4, 6, "english"]
+sub=  ["hindi", "english","maths",3]
+print sub.join
+puts
+
+Output -hindienglishmaths3
+
+
+**to_a -
+
+class MyArray < Array; end
+print a = MyArray.new(['foo', 'bar', 'two'])
+print a.instance_of?(Array) 	# => false
+print a.kind_of?(Array) 	# => true
+ a1 = a.to_a
+print a1 	# => ["foo", "bar", "two"]
+print a1.class 	# => Array # Not MyArray
+
+
+**to_h -When no block is given, self must be an Array of 2-element sub-arrays, each sub-array is formed into a key-value pair in the new Hash
+
+
+sub=  [["hindi", "english"],["maths",3]]
+print sub.to_h
+puts
+
+Output -{"hindi"=>"english", "maths"=>3}
+
+
+**transpose -
+
+sub=  [["hindi", "english"],["maths",3]]
+print sub.transpose
+puts
+
+Output -[["hindi", "maths"], ["english", 3]]
+
+**zip -Returns a new array of arrays containing self and given arrays; follow the link for details.
+
+names = ['a1', 'a2', 'a3']
+roll = ['b1', 'b2', 'b3']
+sub=  ['c1', 'c2', 'c3']
+print names.zip(roll,sub)
+puts
+
+Output -[["a1", "b1", "c1"], ["a2", "b2", "c2"], ["a3", "b3", "c3"]]
+
+
+------------------------------------------------------------------------------------------------------
