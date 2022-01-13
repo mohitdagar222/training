@@ -320,5 +320,242 @@ puts
 
 Output- [3, 4, 5]
 
-**
+**rassoc - Returns the first element that is an array whose second element == a given object.
 
+arr = [[1, 2, 4],[3,4,5]]
+print  arr.assoc(2)
+puts
+Output- [1, 2, 4]
+
+
+**dig -Returns the object in nested objects that is specified by a given index and additional arguments.
+
+a = [mohit, [ram, shyam, [mohan, lakhan]]]
+print a.dig(1)
+print a.dig(1, 2) 
+print a.dig(1, 2, 0) 
+print a.dig(1, 2, 3) 
+
+Output-
+[ram, shyam, [mohan, lakhan]]
+[mohan, lakhan]
+mohan
+
+
+**drop - it removes first n elements
+
+a = [0, 1, 2, 3, 4, 5]
+print a.drop(2)
+
+Output -[2, 3, 4, 5]
+
+
+**drop_while - drop elements till condition
+a = [0, 1, 2, 3, 4, 5]
+a.drop_while {|element| element < 3 }
+
+Output -  [3, 4, 5]
+
+
+**take - it shows only first n elements
+
+a = [0, 1, 2, 3, 4, 5]
+print a.take(2)
+
+Output -[0, 1]
+
+
+**take_while -it shows only first n elements till condition
+
+a = [0, 1, 2, 3, 4, 5]
+print a.take_while{|element| element < 3 }
+
+Output -[0, 1, 2]
+
+
+**sort- it sorts elements
+
+a = ['a', 'z', 'y', 'i', 't']
+print a.sort
+
+Output-["a", "i", "t", "y", "z"]
+
+
+**slice -
+
+
+
+
+
+
+
+**reverse -it reverse the array
+
+a = [1, 2, 3,4]
+print a.reverse
+puts
+
+Output -[4, 3, 2, 1]
+
+
+**reverse_each -it runs loop for each element
+
+**rotate - te places first element to last and shift each element to left
+
+a = [:foo, 'bar', 2, 'mohit']
+print a.rotate(1)
+puts
+Output -
+["bar", 2, "mohit", :foo]
+
+
+**sample -Returns random elements from self
+
+a = [3, 4, 9, 1, 3]
+print a.sample
+puts
+print a.sample(2)
+puts
+Output- 4
+[9, 3]
+
+
+**shuffle -Returns elements in a random order.
+
+a = [3, 4, 9, 1, 3]
+print a.shuffle
+puts
+
+Output -[9, 1, 3, 4, 3]
+
+
+----------------------------------------------------------------------------------------------
+
+**Methods for assigning 
+
+**[ ]= -Assigns specified elements with a given object.
+
+a = [3, 4, 9, 1, 3]
+print a
+puts
+ a[0] = "mohit"
+ print a
+
+Output -[3, 4, 9, 1, 3]
+["mohit", 4, 9, 1, 3]
+
+
+**insert -Inserts given objects before or after the element at Integer index 
+
+a = [3, 4, 9, 1, 3]
+print a
+puts
+ a.insert(1,"mohit", "dagar")
+ print a
+ puts
+
+Output-
+[3, 4, 9, 1, 3]
+[3, "mohit", "dagar", 4, 9, 1, 3]
+
+
+**concat -Appends all elements from given arrays.
+
+a = [3, 4, 9, 1, 3]
+print a
+puts
+ a.concat(["mohit", "dagar"])
+ print a
+ puts
+
+Output -[3, 4, 9, 1, 3]
+[3, 4, 9, 1, 3, "mohit", "dagar"]
+
+
+
+**fill -Replaces specified elements with specified objects.
+
+a = [3, 4, 9, 1, 3]
+print a
+puts
+ a.fill("mohit", 2)
+ print a
+ puts
+
+Output -
+[3, 4, 9, 1, 3]
+[3, 4, "mohit", "mohit", "mohit"]
+
+
+**replace -Replaces the content of self with the content of a given array.
+
+a = [3, 4, 9, 1, 3]
+print a
+puts
+a.replace([1, 2, 3, 4])
+print a
+puts
+
+Output -[3, 4, 9, 1, 3]
+[1, 2, 3, 4]
+
+
+**reverse -Replaces self with its elements reversed.
+
+a = [3, 4, 9, 1, 3]
+print a
+puts
+print a.reverse
+puts
+
+Output -[3, 4, 9, 1, 3]
+[3, 1, 9, 4, 3]
+
+----------------------------------------------------------------------------------------------------
+
+**methods for deleting -
+
+** pop -Removes and returns the last element.
+
+a = [10, 4, 9, 1, 3]
+print a.pop
+puts
+
+Outout -3
+
+**shift -Removes and returns the first element
+
+a = [10, 4, 9, 1, 3]
+print a.shift
+puts
+Output -10
+
+
+**delete_if -Removes each element in self for which the block returns a truthy value
+
+names = ["arun","amrit", "singaa","bharat"]
+print names.delete_if{|name| name.to_s.start_with?("a")}
+puts
+
+Output -["singaa", "bharat"]
+
+
+**keep_if -names = ["arun","amrit", "singaa","bharat"]
+print names.keep_if{|name| name.to_s.start_with?("a")}
+puts
+
+Output -["arun", "amrit"]
+
+
+**slice! -Removes and returns elements from self.
+
+names = ["arun","amrit", "singaa","bharat"]
+print names.slice!(1)
+puts
+print names 
+puts
+Output -amrit
+["arun", "singaa", "bharat"]
+
+-----------------------------------------------------------------------------------------------------------------
+**
