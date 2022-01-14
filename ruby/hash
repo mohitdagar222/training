@@ -48,5 +48,72 @@ some_method({mohit: 89, krishan: 90, ajay: 91})
 Output -{:mohit=>89, :krishan=>90, :ajay=>91}
 
 
+**creating a hash -
+
+> h = Hash.new
+ => {} 
+3.0.0 :036 > h.class
+ => Hash 
+
+You can create a Hash by calling method Hash.[].
+
+ > h = Hash[]
+ => {} 
+
+Create a Hash with initial entries:
+
+ > h = Hash[name: "mohit", location: "gurugram"]
+ => {:name=>"mohit", :location=>"gurugram"} 
+
+
+You can create a Hash by using its literal form (curly braces).
+
+> h = {name: "mohit",location: "faridabad", job: "traineee" }
+ => {:name=>"mohit", :location=>"faridabad", :job=>"traineee"}
+
+----------------------------------------------------------
+**Methods for Setting Hash State -
+
+**compare_by_identity - two keys are considered the same only if they are the same object; returns self
+
+By default, these two object are considered to be the same key, so s1 will overwrite s0:
+
+s0 = 'x'
+s1 = 'x'
+h = {}
+h.compare_by_identity? # => false
+h[s0] = 0
+h[s1] = 1
+print h
+puts
+
+Output -{"x"=>1}
+
+After calling #compare_by_identity, the keys are considered to be different, and therefore do not overwrite each other:
+
+s0 = 'x'
+s1 = 'x'
+h = {}
+h.compare_by_identity
+h.compare_by_identity? # => false
+h[s0] = 0
+h[s1] = 1
+print h
+puts
+
+Output -{"x"=>0, "x"=>1}
+
+
+**default = value -Sets the default value to value; returns value:
+
+ > h = {}.default = true
+ => true 
+
+------------------------------------------------------
+
+**
+
+
+
 
 
