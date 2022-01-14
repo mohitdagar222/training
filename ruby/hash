@@ -418,6 +418,31 @@ nil
 
 ------------------------------------------------------------------------
 
+**Methods for converting-
+
+**to_s,inspect -Returns a new String containing the hash entries.
+
+ > h.inspect
+ => "{:b=>2, :c=>3, :a=>1}" 
+
+3.0.0 :176 > h.to_s
+ => "{:b=>2, :c=>3, :a=>1}" 
 
 
+
+**to_a -Returns a new array of 2-element arrays; each nested array contains a key-value pair from self
+
+ h.to_a
+ => [[:b, 2], [:c, 3], [:a, 1]] 
+
+
+**to_h -Returns self if a Hash; if a subclass of Hash, returns a Hash containing the entries from self.
+
+ h.to_h {|key, value| [value, key] }
+ => {0=>:foo, 1=>:bar, 2=>:baz}
+
+
+-------------------------------------------------------------------
+
+**Methods for transforming keys and values 
 
