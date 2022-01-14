@@ -196,6 +196,69 @@ Output -{"x"=>0, "x"=>1}
  => true
 
 -------------------------------------------------------------------------------------
+
+**Methods for fetching
+
+**[] - Returns the value associated with a given key.
+
+> h[:name]
+ => "mohit"
+
+
+**assoc(key) -If the given key is found, returns a 2-element Array containing that key and its value:
+
+> h.assoc(:location)
+ => [:location, "haridwar"] 
+
+
+**dig -Returns the object in nested objects that is specified by a given key and additional arguments.
+
+h = {foo: {bar: {baz: 2}}}
+h.dig(:foo) 		# => {:bar=>{:baz=>2}}
+h.dig(:foo, :bar) 	# => {:baz=>2}
+h.dig(:foo, :bar, :baz) # => 2
+h.dig(:foo, :bar, :BAZ) # => nil
+
+
+
+**fetch(key) -Returns the value for the given key, if found.
+
+> h.fetch(:location)
+ => "haridwar" 
+
+
+**fetch_values(keys) -Returns array containing the values associated with given keys.
+
+ > h.fetch_values(:location,:name)
+ => ["haridwar", "mohit"] 
+
+
+
+**key,keys -Returns the key for the first-found entry with a given value.
+
+
+ > h.key("mohit")
+ => :name 
+
+ > h.keys
+ => [:name, :location] 
+
+
+**rassoc(value) -Returns a new 2-element Array consisting of the key and value of the first-found entry whose value is == to value
+
+> h.rassoc("haridwar")
+ => [:location, "haridwar"] 
+
+
+**values, values_at -Returns an array containing all values in self/ Returns an array containing values for given keys.
+
+> h.values
+ => ["mohit", "haridwar"] 
+
+ h.values_at(:name,:Location,:location)
+ => ["mohit", nil, "haridwar"] 
+
+-----------------------------------------------------------------------------
+
+
 **
-
-
