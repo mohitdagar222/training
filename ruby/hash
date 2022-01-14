@@ -362,6 +362,62 @@ h.store(:bar, 3)
 
 --------------------------------------------------------------------------------
 
+**These methods return a copy of self with some entries removed:/do not remove permanently
+
+**compact -it removes nil
+
+h[:d]=nil
+ => nil 
+3.0.0 :146 > h.compact
+ => {:b=>2, :c=>3} 
+
+
+
+**except -Returns a copy of self with entries removed for specified keys.
+
+h.except(:d)
+ => {:b=>2, :c=>3} 
+3.0.0 :153 > h
+ => {:b=>2, :c=>3, :d=>nil} 
+
+
+**slice -Returns a new Hash object containing the entries for the given keys:
+
+> h.slice(:b,:c)
+ => {:b=>2, :c=>3} 
+
+---------------------------------------------------------------------------------
+
+**Methods for iterating-
+
+**each, each_pair -Calls a given block with each key-value pair.
+
+> h.each_pair{|key, value| "#{key}  #{value}"}
+ => {:b=>2, :c=>3, :d=>nil, :a=>1} 
+
+
+
+**each_key -Calls a given block with each key.
+
+> h.each_key{|key| puts key}
+b
+c
+d
+a
+
+
+
+**each_value -Calls a given block with each value.
+
+h.each_value{|key| puts key}
+2
+3
+nil
+1
+
+
+------------------------------------------------------------------------
+
 
 
 
