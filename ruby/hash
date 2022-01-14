@@ -111,7 +111,55 @@ Output -{"x"=>0, "x"=>1}
 
 ------------------------------------------------------
 
-**
+**Methods For Querying -
+
+**any? -Returns whether any element satisfies a given criterion.
+
+> h = {name: "mohit", location: "palwal"}
+ => {:name=>"mohit", :location=>"palwal"} 
+
+ > h.any?([:name, "mohit"])
+ => true
+
+
+**empty? Returns whether there are no entries.
+
+> h.empty?
+ => false
+
+
+**eql? - Returns whether a given object is equal to self.
+
+> h.eql?({name: "mohit", location: "haridwar"})
+ => true 
+
+
+**hash -Returns the integer hash code.
+
+ > h.hash ==({name: "mohit", location: "haridw"}).hash
+ => false 
+
+
+**include?,member?, key?, has_key? -Returns whether a given object is a key in self.
+
+ > h.include?(:nam)
+ => false 
+
+
+**length, size -Returns the count of entries.
+
+ > h.length
+ => 2 
+
+**value? -Returns whether a given object is a value in self.
+
+ > h.value?("mohit")
+ => true 
+
+
+----------------------------------------------------------------------------------
+
+
 
 
 
