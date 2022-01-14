@@ -159,9 +159,43 @@ Output -{"x"=>0, "x"=>1}
 
 ----------------------------------------------------------------------------------
 
+**Methods for comparing- 
+
+** < - Returns whether self is a proper subset of a given object.
+> h
+ => {:name=>"mohit", :location=>"haridwar"} 
 
 
+> h < ({name: "mohit", location: "haridwar",language: "ruby"})
+ => true 
 
 
+** <= -Returns whether self is a subset of a given object.
+
+> h <= ({name: "mohit", location: "haridwar"})
+ => true 
+
+
+** == -Returns whether a given object is equal to self.
+
+ > h == ({name: "mohit", location: "haridwar",language: "ruby"})
+ => false 
+
+
+** > -Returns whether self is a proper superset of a given object
+
+ > {name: "mohit", location: "haridwar",language: "ruby"} > h
+ => true 
+3.0.0 :087 > {name: "mohit", location: "haridwar"} > h
+ => false 
+
+
+** >= Returns whether self is a proper superset of a given object
+
+ > {name: "mohit", location: "haridwar"} > h
+ => true
+
+-------------------------------------------------------------------------------------
+**
 
 
