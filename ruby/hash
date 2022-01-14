@@ -444,5 +444,38 @@ nil
 
 -------------------------------------------------------------------
 
-**Methods for transforming keys and values 
+**Methods for transforming keys and values
+
+**transform keys, transform keys! -Returns a copy of self with modified keys/Modifies keys in self
+
+
+ h.transform_keys{|key| key.to_s}
+ => {"foo"=>0, "bar"=>1, "baz"=>2} 
+
+3.0.0 :181 > h
+ => {:foo=>0, :bar=>1, :baz=>2} 
+
+3.0.0 :182 > h.transform_keys!{|key| key.to_s}
+ => {"foo"=>0, "bar"=>1, "baz"=>2}
+ 
+3.0.0 :183 > h
+ => {"foo"=>0, "bar"=>1, "baz"=>2}  
+
+
+
+
+**transform values,transform values! -Returns a copy of self with modified values.
+
+
+ > h.transform_values{|value| value*4}
+ => {"foo"=>0, "bar"=>4, "baz"=>8} 
+
+ h.transform_values!{|value| value*4}
+ => {"foo"=>0, "bar"=>4, "baz"=>8} 
+
+3.0.0 :186 > h
+ => {"foo"=>0, "bar"=>4, "baz"=>8} 
+
+
+-----------------------------------------------------------------------
 
