@@ -293,12 +293,74 @@ h.store(:bar, 3)
 
 -----------------------------------------------------------------------------------
 
-**
+**Methods for deleting-
+
+**clear -Removes all entries from self.
+
+ v ={name: "anand"}
+ => {:name=>"anand"} 
+3.0.0 :115 > v.clear
+ => {} 
+
+
+**compact! -Removes all nil-valued entries from self.
+
+
+> h[:a]=nil
+ => nil 
+
+3.0.0 :112 > h
+ => {:name=>"mohit", :location=>"gurugram", :class=>"middle", :a=>nil} 
+
+3.0.0 :113 > h.compact!
+ => {:name=>"mohit", :location=>"gurugram", :class=>"middle"} 
 
 
 
+**delete, delete_if -Removes the entry for a given key./Removes entries selected by a given block.
+
+ > h.delete(:a)
+ => 1 
+
+> h = {a: 1, b: 2, c: 3}
+ => {:a=>1, :b=>2, :c=>3} 
+
+3.0.0 :120 > h.delete_if{|key ,value| value > 2}
+ => {:a=>1, :b=>2} 
 
 
+
+**select!,filter!- Keep only those entries selected by a given block.
+
+ > h
+ => {:a=>1, :b=>2, :c=>3} 
+3.0.0 :136 > h.select!{|key,value| value<3}
+ => {:a=>1, :b=>2} 
+
+
+
+**keep_if -
+
+ > h
+ => {:a=>1, :b=>2} 
+3.0.0 :138 > h.keep_if{|key,value| value<2}
+ => {:a=>1} 
+
+
+
+**shift -Removes and returns the first entry.
+
+ > h
+ => {:a=>1, :b=>2, :c=>3} 
+
+3.0.0 :143 > h.shift
+ => [:a, 1] 
+
+3.0.0 :144 > h
+ => {:b=>2, :c=>3} 
+
+
+--------------------------------------------------------------------------------
 
 
 
