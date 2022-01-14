@@ -261,4 +261,45 @@ h.dig(:foo, :bar, :BAZ) # => nil
 -----------------------------------------------------------------------------
 
 
+** Methods for assigning
+
+**[]= Associates a given key with a given value.
+
+ h[:class]="middle"
+ => "middle" 
+3.0.0 :106 > h
+ => {:name=>"mohit", :location=>"haridwar", :class=>"middle"} 
+
+h.store(:bar, 3) 
+
+
+**replace -Replaces the entire contents of self with the contents of a givan hash.
+
+3.0.0 :106 > h
+ => {:name=>"mohit", :location=>"haridwar", :class=>"middle"} 
+
+3.0.0 :107 > h.replace({area: 23,circum: 34})
+ => {:area=>23, :circum=>34} 
+
+3.0.0 :108 > h
+ => {:area=>23, :circum=>34} 
+
+3.0.0 :109 > h.replace({name: "mohit",location: "gurugram",class: "middle"})
+ => {:name=>"mohit", :location=>"gurugram", :class=>"middle"} 
+
+3.0.0 :110 > h
+ => {:name=>"mohit", :location=>"gurugram", :class=>"middle"} 
+
+
+-----------------------------------------------------------------------------------
+
 **
+
+
+
+
+
+
+
+
+
