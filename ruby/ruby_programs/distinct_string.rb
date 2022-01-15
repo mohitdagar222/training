@@ -17,13 +17,12 @@ class Test
         arr2.push(arr[i])
       end
     end
-    return arr2.first(k)
-    ""
+    return arr2[k - 1] if arr2.length >= k
+    "no string available"
   end
 end
 
 t1 = Test.new
-print t1.distinct(["mohit", "akash", "jahul", "mohit", "vijay"], 2)
-puts
+puts t1.distinct(["mohit", "akash", "jahul", "mohit", "vijay"], 2)
 
-#Output = ["akash", "jahul"]
+#Output = jahul
