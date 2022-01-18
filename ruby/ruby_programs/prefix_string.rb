@@ -5,20 +5,23 @@ positive k no larger than words.length. Return true if s is a prefix string of w
 =end
 
 class Test
-  def prefix(s, words, k)
+  def prefix(s, words)
     s1 = ""
     s.tr!("^[a-z1-9]", "")
-    if k <= words.length
-      for i in 0...k
-        s1 << words[i]
+    bool = false
+    for i in 0...words.length
+      s1 << words[i]
+      if s1 == s
+        bool = true
+        break
       end
     end
-    return true if s == s1
+    return true if bool == true
     false
   end
 end
 
 t1 = Test.new
-puts t1.prefix("mohit singh dagar ", ["mohit", "singh", "dagar", "this", "is", "to", "do", "end", "full"], 3)
+puts t1.prefix("mohit singh dagar ", ["mohit", "singh", "dagar", "this", "is", "to", "do", "end", "full"])
 
 #Output = true
