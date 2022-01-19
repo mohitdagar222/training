@@ -94,3 +94,104 @@ IO.foreach("input.txt") { |lines| puts lines }
 
 **Renaming and Deleting Files
 
+
+**delete a file
+File.delete("inputfile")
+
+**rename a file
+File.rename("input.txt", "inputfile")
+
+-----------------------------------------------------------------------------
+
+**file modes and ownership = Use the chmod method with a mask to change the mode or permissions/access list of a file
+
+file = File.new( "test.txt", "w" )
+file.chmod( 0755 )
+
+
+
+-----------------------------
+
+**File Enquiries 
+
+The following command tests whether a file exists before opening it −
+File.open("input1.txt") if File::exists? ("input1.txt")
+
+The following command inquire whether the file is really a file −
+File.file?( "text.txt" ) 
+
+The following command finds out if the given file name is a directory −
+File::directory?( "/usr/local/bin" ) =true
+
+The following command finds whether the file is readable, writable or executable −
+File.readable?( "test.txt" )   # => true
+File.writable?( "test.txt" )   # => true
+File.executable?( "test.txt" ) # => false
+
+The following command returns size of the file and type of the file −
+File.size?( "text.txt" )     # => 1002
+File::ftype( "test.txt" )     # => file
+
+
+The following command can be used to find when a file was created, modified, or last accessed −
+
+File::ctime( "test.txt" ) # => Fri May 09 10:06:37 -0700 2008
+File::mtime( "text.txt" ) # => Fri May 09 10:44:44 -0700 2008
+File::atime( "text.txt" ) # => Fri May 09 10:45:01 -0700 2008
+
+
+--------------------------------------------
+
+**Navigating through directories 
+
+**To change directory within a Ruby program, use Dir.chdir as follows. This example changes the current directory to /usr/bin.
+
+Dir.chdir("/usr/bin")
+
+
+**to find out what the current directory is with Dir.pwd 
+
+puts Dir.pwd
+
+
+**to  get a list of the files and directories within a specific directory using Dir.entries 
+
+puts Dir.entries("/home/beryl/Documents").join(",")
+
+
+**Dir.entries returns an array with all the entries within the specified directory. Dir.foreach provides the same feature −
+
+Dir.foreach("/usr/bin") do |entry|
+   puts entry
+end
+
+
+**An even more concise way of getting directory listings is by using Dir's class array method −
+
+Dir["/usr/bin/*"]
+
+
+
+**deleting a directory -
+Dir.delete("testdir")
+
+
+**creating temporary directories and files
+
+require 'tmpdir'
+   tempfilename = File.join(Dir.tmpdir, "tingtong")
+   tempfile = File.new(tempfilename, "w")
+   tempfile.puts "This is a temporary file"
+   tempfile.close
+   File.delete(tempfilename)
+
+
+require 'tempfile'
+   f = Tempfile.new('tingtong')
+   f.puts "Hello"
+   puts f.path
+   f.close
+-----------------------------------------
+
+
+
