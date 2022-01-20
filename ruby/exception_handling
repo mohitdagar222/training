@@ -1,0 +1,102 @@
+								EXCEPTIONS
+
+**Ruby provide a nice mechanism to handle exceptions. We enclose the code that could raise an exception in a begin/end block and use rescue clauses to tell Ruby the types of exceptions we want to handle.
+
+**Syntax -
+begin  
+# -  
+rescue OneTypeOfException  
+# -  
+rescue AnotherTypeOfException  
+# -  
+else  
+# Other exceptions
+ensure
+# Always will be executed
+end
+
+
+**Using retry statement -
+You can capture an exception using rescue block and then use retry statement to execute begin block from the beginning.
+
+**Syntax - 
+begin
+   # Exceptions raised by this code will 
+   # be caught by the following rescue clause
+rescue
+   # This block will capture all types of exceptions
+   retry  # This will move control to the beginning of begin
+end
+
+
+**EXAMPLE = 
+class A
+  @@a = 0
+  begin
+    puts 5 / @@a
+  rescue ZeroDivisionError => e
+    puts e
+    @@a = 2
+    retry
+  end
+end
+
+**Output
+divided by 0
+2
+
+*****The following is the flow of the process −
+An exception occurred at open.
+Went to rescue. fname was re-assigned.
+By retry went to the beginning of the begin.
+This time file opens successfully.
+Continued the essential process.
+
+
+---------------------------------------------------------------------
+
+Program =
+
+begin
+  no1 = Integer(gets)
+  no2 = Integer(gets)
+  raise RuntimeError if no2 < 3
+  puts "Hello"
+  no2 / no1
+  raise ZeroDivisionError if no1 == 0
+rescue RuntimeError => e
+  puts "Rescue 1 Block"
+  puts e
+  retry #if we dont use retry it will not execute code after where we raise exception
+rescue ZeroDivisionError => e
+  puts "rescue 2 block "
+  puts e
+  retry
+else
+  puts "Else Block" #it will executes if no rescue called
+ensure
+  puts "Ensure block" #it will always execute
+end
+
+
+**OUTPUT = 
+
+0
+4
+Hello
+rescue 2 block 
+divided by 0
+1
+2
+Rescue 1 Block
+RuntimeError
+1
+5
+Hello
+Else Block
+Ensure block
+
+
+--------------------------------------------------------------------------------------
+
+
