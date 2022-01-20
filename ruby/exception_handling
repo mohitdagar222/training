@@ -99,4 +99,56 @@ Ensure block
 
 --------------------------------------------------------------------------------------
 
+**CATCH AND THROW
+EXAMPLE = 
+def promptAndGet(prompt)
+  print prompt
+  res = gets.chomp!
+  throw :quitRequested if res == "!"
+  return res
+end
 
+catch :quitRequested do
+  name = promptAndGet("Name: ")
+  age = promptAndGet("Age: ")
+  puts name, age
+  sex = promptAndGet("Sex: ")
+  height = promptAndGet("Height: ")
+end
+puts "out of block"
+
+OUTPUT =
+
+Name: Mohit
+Age: 22
+Mohit
+22
+Sex: !
+out of block
+
+EXAMPLE = 
+
+class Test
+  def a
+    arr = []
+    catch :stop do
+      for i in 0..20
+        for j in 0..15
+          throw :stop if j > 7
+          arr << j
+        end
+      end
+    end
+    return arr
+  end
+end
+
+t = Test.new
+p t.a
+
+OUTPUT = 
+
+[0, 1, 2, 3, 4, 5, 6, 7]
+
+
+------------------------------------------------------------------------
