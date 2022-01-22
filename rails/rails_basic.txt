@@ -17,8 +17,24 @@ gem install pg
 than in project folder we run - bundle install
 
 **than we setup port, host, db user, db password in database.yml file
-**than we run command - rake db:create, to create our datbase
+** - rake db:create, to create our datbase
+Created database 'property_management_system'
 
-*** 
+** rake db:drop
+Dropped database 'property_management_system'
+
+*** to create table -
+** rails generate model property
+Property class created
+properties migration created
+now we will give column names and data types and run that migration
+
+**rails db:migrate
+== 20220122061218 CreateProperties: migrated (0.1371s) ========================
+
+
+
+
+
 
 
