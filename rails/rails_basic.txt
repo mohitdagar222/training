@@ -46,6 +46,15 @@ we run rails db:migrate to execute every migration we created
 
 **RAILS MIGRATIONS TO ALTER TABLE
 
+** add column - add_column :properties, :price, :integer
+** remove column - remove_column :properties, :price, :integer
+** add index - add_index :properties, :name
+** change column type - change_column :properties, :location, :string
+** set column not null - change_column_null :properties, :name, false
+** add foreign key -  add_foreign_key :property_solds, :properties, column: :property_id, primary_key: :id
+** delete foreign key - remove_foreign_key :property_solds, column: :property_id
+
+
 
 
 
