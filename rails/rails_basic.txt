@@ -1,0 +1,24 @@
+									RAILS
+
+****Installing rails 
+
+**gem install rails
+
+**rails -v
+Rails 7.0.1
+
+
+****creating new project
+**rails new project_name -d postgresql
+
+if any bundle errors-
+sudo apt install libpq-dev
+gem install pg
+than in project folder we run - bundle install
+
+**than we setup port, host, db user, db password in database.yml file
+**than we run command - rake db:create, to create our datbase
+
+*** 
+
+
