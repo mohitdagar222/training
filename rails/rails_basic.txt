@@ -29,7 +29,7 @@ Dropped database 'property_management_system'
 Property class created
 properties migration created
 now we will give column names and data types and run that migration
- t.string :name, index: true, null: false     || primary_key: true if we first remove automatically generated id pkey
+ t.string :name, null: false, index: true || index: { unique: true}  || primary_key: true if we first remove automatically generated id pkey
 
 *rails db:migrate
 == 20220122061218 CreateProperties: migrated (0.1371s) ========================
@@ -69,7 +69,8 @@ we run rails db:migrate to execute every migration we created
 ** to add timestamps - add_timestamps :properties
 
 ** add_reference - add_reference(:properties, :name, polymorphic: true, index: false, type: :string)
-it creates name_id automatically of type bigint and if polymorphic true it also creates name_type with string datatype, we can also give data type.
+it creates tableName_id automatically of type bigint and if polymorphic true it also creates tableName_type with string datatype, we can also give data type.
+@@@@@@ if we have a table course and another table student and if we write |add_reference(:course, :student,foreign_key: true, index: true)| than it will create a student_id column in course table which is a foeign key of primary key in student tabele.
 
 ** drop table - drop_table(:tables, if_exists: true)
 
@@ -85,6 +86,19 @@ end
 ** rails db:rollback - to revert to previous migration 
 
 ** remove index - remove_index :property_solds, :name
+
+**remove_reference - remove_reference :properties, :name, polymorphic: true
+
+** to remove timestamps - remove_timestamps(:properties)
+
+** rename column - rename_column :properties, :name, :p_name
+
+** rename_index - rename_index :properties, 'index_properties_on_sellers', 'index_on_sellers'
+
+** rename table - rename_table('properties', 'propertiies')
+
+** change default value of column - change_column_default(table_name, column_name, default_or_changes)
+change_column_default(:posts, :state, from: nil, to: "draft")  || helps in rollback
 
 
 
