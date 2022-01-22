@@ -24,15 +24,27 @@ Created database 'property_management_system'
 Dropped database 'property_management_system'
 
 *** to create table -
-** rails generate model property
+** (rails generate model property)
 Property class created
 properties migration created
 now we will give column names and data types and run that migration
-
-**rails db:migrate
+*rails db:migrate
 == 20220122061218 CreateProperties: migrated (0.1371s) ========================
 
 
+***creating a migration to drop table column
+* (rails g migration drop_column_from_properties)
+create    db/migrate/20220122064533_drop_column_from_properties.rb
+*query to remove table we write inside migration
+remove_column :properties, :price, :integer
+*rails db:migrate
+== 20220122064533 DropColumnFromProperties: migrated (0.0061s) ================
+we run rails db:migrate to execute every migration we created
+
+
+----------------------------------------------------------
+
+**RAILS MIGRATIONS TO ALTER TABLE
 
 
 
