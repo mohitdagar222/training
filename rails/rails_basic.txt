@@ -22,21 +22,27 @@ Created database 'property_management_system'
 
 ** rake db:drop
 Dropped database 'property_management_system'
+-----------------------------------------------------------------
 
 *** to create table -
 ** (rails generate model property)
 Property class created
 properties migration created
 now we will give column names and data types and run that migration
+ t.string :name, index: true, null: false     || primary_key: true if we first remove automatically generated id pkey
+
 *rails db:migrate
 == 20220122061218 CreateProperties: migrated (0.1371s) ========================
 
 
+
 ***creating a migration to drop table column
+
 * (rails g migration drop_column_from_properties)
 create    db/migrate/20220122064533_drop_column_from_properties.rb
 *query to remove table we write inside migration
 remove_column :properties, :price, :integer
+
 *rails db:migrate
 == 20220122064533 DropColumnFromProperties: migrated (0.0061s) ================
 we run rails db:migrate to execute every migration we created
@@ -47,15 +53,38 @@ we run rails db:migrate to execute every migration we created
 **RAILS MIGRATIONS TO ALTER TABLE
 
 ** add column - add_column :properties, :price, :integer
+
 ** remove column - remove_column :properties, :price, :integer
+
 ** add index - add_index :properties, :name
+
 ** change column type - change_column :properties, :location, :string
+
 ** set column not null - change_column_null :properties, :name, false
+
 ** add foreign key -  add_foreign_key :property_solds, :properties, column: :property_id, primary_key: :id
+
 ** delete foreign key - remove_foreign_key :property_solds, column: :property_id
 
+** to add timestamps - add_timestamps :properties
 
+** add_reference - add_reference(:properties, :name, polymorphic: true, index: false, type: :string)
+it creates name_id automatically of type bigint and if polymorphic true it also creates name_type with string datatype, we can also give data type.
 
+** drop table - drop_table(:tables, if_exists: true)
+
+** create table - 
+
+create_table(:suppliers) do |t|
+  t.string :name, limit: 60
+  # Other fields here
+end
+
+** drop primary key -  execute "ALTER TABLE properties DROP CONSTRAINT properties_pkey;"
+
+** rails db:rollback - to revert to previous migration 
+
+** remove index - remove_index :property_solds, :name
 
 
 
