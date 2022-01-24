@@ -24,6 +24,8 @@ Created database 'property_management_system'
 Dropped database 'property_management_system'
 -----------------------------------------------------------------
 
+MIGRATIONS-
+
 *** to create table -
 ** (rails generate model property)
 Property class created
@@ -100,6 +102,17 @@ end
 ** change default value of column - change_column_default(table_name, column_name, default_or_changes)
 change_column_default(:posts, :state, from: nil, to: "draft")  || helps in rollback
 
+** create join table -  create_join_table (:properties, :property_solds)
+
+** create join table with indexes
+def change
+    create_join_table :properties, :properties_solds do |t|
+      t.index :property_id
+      t.index :properties_sold_id
+    end
+  end
+
+
 
 --------------------------------------
 
@@ -128,7 +141,45 @@ change_column_default(:posts, :state, from: nil, to: "draft")  || helps in rollb
   end
 
 
----------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+CRUD OPERATIONS-
+
+
+** insert data into table -
+  *property = Property.new(name: "farmhouse",ptype: "agriculture",price: 55000, location: "hathin")
+  property.save
+ *property = Property.create(name: "farmhouse",ptype: "agriculture",price: 55000, location: "hathin") ( it saves automatically)
+ *property = Property.new
+  property.name = "flat"
+  
+
+
+** Update data in tables
+Once an Active Record object has been retrieved, its attributes can be modified and it can be saved to the database.
+Property.update_all "price = 33000, name = 'empty'"
+Property.update(:all, price: 3, name: 'true')
+
+
+** Delete data from tables
+* Likewise, once retrieved an Active Record object can be destroyed which removes it from the database.
+* land = Property.find_by(name: "land")
+  property.destroy   =>(it will delete complete row)
+* property.destroy_by(name: "land")
+* property.destroy_all
+
+
+** Read data from tables
+ * property = Property.all => (collect all property data , we can print that)
+ *  property = Property.first  => (it collect first property)
+ *  land = Property.find_by(name: "land")   => (it collects everything from first property named land)
+ * property = Property.where(ptype: "agriculture").order(created_at: :desc)  => (it collects everything from properties where ptype = agriculture and  		in order desc)
 
 
 
+
+
+
+ 
+
+
+  
