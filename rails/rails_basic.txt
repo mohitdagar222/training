@@ -50,7 +50,7 @@ we run rails db:migrate to execute every migration we created
 
 ----------------------------------------------------------
 
-**RAILS MIGRATIONS TO ALTER TABLE
+**RAILS MIGRATIONS TO ALTER TABLE USING CHANGE METHOD
 
 ** add column - add_column :properties, :price, :integer
 
@@ -99,6 +99,36 @@ end
 
 ** change default value of column - change_column_default(table_name, column_name, default_or_changes)
 change_column_default(:posts, :state, from: nil, to: "draft")  || helps in rollback
+
+
+--------------------------------------
+
+**CHANGE_TABLE
+
+* add column
+**def change
+    change_table :property_solds do |t|
+      t.text :price
+    end
+  end
+
+
+* change type of column
+**def change
+    change_table :property_solds do |t|
+      t.change :price, :string
+    end
+  end
+
+* remove column
+**def change
+    change_table :property_solds do |t|
+      t.remove :price
+    end
+  end
+
+
+---------------------------------------------------
 
 
 
