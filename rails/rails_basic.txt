@@ -158,7 +158,7 @@ CRUD OPERATIONS-
 Once an Active Record object has been retrieved, its attributes can be modified and it can be saved to the database.
 Property.update_all "price = 33000, name = 'empty'"
 Property.update(:all, price: 3, name: 'true')
-
+property.update(location: "punjab")
 
 ** Delete data from tables
 * Likewise, once retrieved an Active Record object can be destroyed which removes it from the database.
@@ -231,6 +231,39 @@ HAVING -  (WE CAN ALSO WRITE COLUMN NAME IN STRINGS INSTEAD OF HASH)
 
 SQL uses the HAVING clause to specify conditions on the GROUP BY fields.
 ** property = Property.select("ptype ,sum(price) as sum").group(:ptype).having("sum(price) >? ",50000)
+
+
+OVERRIDING CONDITIONS - 
+
+**UNSCOPE - 
+  You can specify certain conditions to be removed using the unscope method. For example:
+property = Property.where('id > 3').limit(3).order(location: :asc).unscope(:order) => (it will remove order condition from executing)
+
+property = Property.where(id: 4).limit(3).unscope(:where) => (unscope where condition ,coould also- where: :id)
+
+**ONLY
+You can also override conditions using the only method. For example:
+Property.where('id > 5').limit(20).order('id desc').only(:order, :where) => (it only executes order and only conditions)
+
+**RESELECT -
+ The reselect method overrides an existing select statement. For example:
+property = Property.select(:name,:ptype).reselect(:location)
+
+
+**REVERSE ORDER
+ The reverse_order method reverses the ordering clause if specified.
+property = Property.where('id>3').order(:name).reverse_order => (it reverses order name desc)
+
+
+**REWHERE -
+ The rewhere method overrides an existing, named where condition. For example:
+property = Property.where(name: "land").rewhere(name: "flat") => (it override the where condition)
+
+
+**JOINS -
+ transaction = Property.select(:name).joins("INNER JOIN transactions ON properties.id = transactions.property_id and transactions.seller_i
+d=4")
+ SELECT "properties"."name" FROM "properties" INNER JOIN transactions ON properties.id = transactions.property_id and transactions.seller_id=4  
 
 
 
