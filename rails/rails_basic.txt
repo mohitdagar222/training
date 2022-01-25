@@ -173,18 +173,77 @@ Property.update(:all, price: 3, name: 'true')
 1) property = Property.all => (collect all property data , we can print that)
 2) property = Property.first  => (it collect first property)
 3) property = Property.find_by(name: "land")   => (it collects everything from first property named land)
+
 4) property = Property.where(ptype: "agriculture").order(created_at: :desc)  => (it collects everything from properties where ptype = agriculture and  		in order desc)
 5)  property = Property.find(4) =>(Find the property with primary key (id) 4)
 5.1)property = Property.find([2,4]) =>( Find the property with primary keys 2 and 4.)
+
 6)  property = Property.take =>(The take method retrieves a record without any implicit ordering.)
 6.1)property = Property.take(2) => (You can pass in a numerical argument to the take method to return up to that number of results.)
+
 7)  property = Property.first =>(The first method finds the first record ordered by primary key )
 7.1)property = Property.first(5)  => (You can pass in a numerical argument to the first method to return up to that number of results)
 7.2)property = Property.order(:name).first =>(if we first order by name that it will give first acc to that)
+
 8)  property = Property.last =>(The last method finds the last record ordered by primary key)
 8.1)property = Property.order(:name).last(2) => (it will give last two records ordered by name)
-9)  
+
+NOT CONDITIONS -
+
+**property = Property.where.not(name: "warehouse") => ( it collects property where name is not warehouse. NOT SQL queries can be built by where.not:)
  
+OR CONDITIONS -
+
+OR conditions between two relations can be built by calling or on the first relation, and passing the second one as an argument.
+**property = Property.where(name: "house").or(Property.where(ptype: "residential"))
+
+AND CONDITIONS - 
+
+** property = Property.where(name: "flat").where(location: ["delhi","palwal"])
+ can be built by calling and on the first relation, and passing the second one as an argument.
+**property = Property.where(name: ["office","human"]).and(Property.where(name: ["office","flat"]))
+
+ORDERING - 
+
+**property = Property.order(:location) => (it shows all records in ascending order by location column)
+**property = Property.order(location: :desc) => (it show all records in descending order by location column)
+**property = Property.order(name: :asc, location: :desc)
+
+
+SELECTING SPECIFIC FIELDS - 
+
+**property = Property.select(:name, :price).where(id: 5) => (it only selects name and price fields from the table)
+**property = Property.select(:ptype).distinct => (it will only give distinct selected elements)
+
+
+LIMIT AND OFFSET -
+
+**property = Property.limit(2).offset(4) => (it collects 2 properties after skipping 4 )
+
+
+GROUP BY -
+
+**property = Property.group(:ptype).count
+output = {"industrial"=>1, "residential"=>2, "agriculture"=>2, "commercial"=>2}
+
+
+HAVING -  (WE CAN ALSO WRITE COLUMN NAME IN STRINGS INSTEAD OF HASH)
+
+SQL uses the HAVING clause to specify conditions on the GROUP BY fields.
+** property = Property.select("ptype ,sum(price) as sum").group(:ptype).having("sum(price) >? ",50000)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
