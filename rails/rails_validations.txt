@@ -1,0 +1,28 @@
+
+								VALIDATIONS
+
+VALID? AND INVALID?
+
+**Before saving an Active Record object, Rails runs your validations. If these validations produce any errors, Rails does not save the object.
+
+class Property < ApplicationRecord
+  validates :name, presence: true
+end
+
+ property = Property.create(ptype: "residential")
+ property.valid?
+ => false  (because we didnt provide name)
+
+ property.invalid?
+ => true    (because we didnt provide name)
+
+ 
+
+ property.errors.size    
+ => 1      (After Active Record has performed validations, any errors found can be accessed through the errors instance method, which returns a        collection of errors)
+
+
+ property.errors.objects.first.full_message      (error message)
+ => "Name can't be blank" 
+
+ 
