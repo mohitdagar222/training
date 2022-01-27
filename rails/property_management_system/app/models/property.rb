@@ -5,4 +5,6 @@ class Property < ApplicationRecord
   validates :location, format: { with: /\A[a-zA-Z]+\z/, message: "wrong format" }
   validates :location, inclusion: { in: %w(palwal hodal), message: "not in valid location" }
   validates :ptype, length: { in: 4..10 }
+  has_many :transactions
+  has_many :employees, through: :transactions
 end
