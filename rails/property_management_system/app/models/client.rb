@@ -4,4 +4,5 @@ class Client < ApplicationRecord
   validates :mobile, uniqueness: true
   validates :name, presence: { strict: true }
   has_many :transactions
+  has_many :comments, as: :commented
 end
