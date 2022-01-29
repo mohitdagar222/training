@@ -9,5 +9,6 @@ class Agent < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_many :appointments
+  has_many :clients, through: :appointments
   has_many :properties
 end
