@@ -1,8 +1,10 @@
 class Client < ApplicationRecord
-  validates :mobile, numericality: { only_integer: true }
-  #validates :dob, absence: true
-  validates :mobile, uniqueness: true
-  validates :name, presence: { strict: true }
-  has_many :transactions
-  has_many :comments, as: :commented
+  validates :name, presence: true
+  validates :gender, presence: true
+  validates :contact, uniqueness: true
+  validates :contact, length: { is: 10 }
+  validates :contact, numericality: true
+  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
