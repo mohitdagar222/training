@@ -10,7 +10,9 @@ class Property < ApplicationRecord
   validates :agent_id, presence: true
   validates :agent_id, numericality: true
 
+  has_many :reviews, as: :reviewed
   has_many :appointments
+  has_many :clients, through: :appointments
   belongs_to :type
   belongs_to :agent
 end

@@ -1,3 +1,3 @@
 class Review < ApplicationRecord
-  validates :name, presence: true
+  belongs_to :reviewed, polymorphic: true
 end
