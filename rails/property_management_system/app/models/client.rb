@@ -7,4 +7,6 @@ class Client < ApplicationRecord
   validates :email, uniqueness: true
   validates :name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  has_many :appointments
 end
