@@ -1,10 +1,12 @@
 class Property < ApplicationRecord
-  validates :name, presence: { message: "can't blank" }
-  validates :price, comparison: { greater_than: 50000 }
-  validates :location, exclusion: { in: %w(delhi goa), message: "reserved values" }
-  validates :location, format: { with: /\A[a-zA-Z]+\z/, message: "wrong format" }
-  #validates :location, inclusion: { in: %w(palwal hodal), message: "not in valid location" }
-  validates :ptype, length: { in: 4..30 }
-  has_many :transactions
-  has_many :employees, through: :transactions
+  validates :price, format: { with: /\A[a-zA-Z1-9]+\z/, message: "wrong format" }
+  validates :name, presence: true
+  validates :area, format: { with: /\A[a-zA-Z1-9]+\z/, message: "wrong format" }
+  validates :type_id, numericality: true
+  validates :price, presence: true
+  validates :location, presence: true
+  validates :area, presence: true
+  validates :type_id, presence: true
+  validates :agent_id, presence: true
+  validates :agent_id, numericality: true
 end
