@@ -6,7 +6,7 @@ VALID? AND INVALID?
 **Before saving an Active Record object, Rails runs your validations. If these validations produce any errors, Rails does not save the object.
 
 class Property < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true  || validates :name, presence: { message: "can't blank" }
 end
 
  property = Property.create(ptype: "residential")
@@ -25,4 +25,116 @@ end
  property.errors.objects.first.full_message      (error message)
  => "Name can't be blank" 
 
+=============================================================
+
+VALIDATION HELPERS
+
+** acceptance
+ This method validates that a checkbox on the user interface was checked when a form was submitted,column is of binary data
+validates :terms_of_service, acceptance: true
+
+** comparision 
+ This check will validate a comparison between any two comparable values.
+ validates :price, comparison: { greater_than: 50000 }
+
+**exclusion 
+ This helper validates that the attributes' values are not included in a given set.
+validates :location, exclusion: { in: %w(delhi goa), message: "reserved values" }
+
+**format 
+ This helper validates the attributes' values by testing whether they match a given RE using :with, :without(if want to take value except this)
+validates :location, format: { with: /\A[a-zA-Z]+\z/, message: "wrong format" }
+
+**inclusion
+ This helper validates that the attributes' values are included in a given set.
+ validates :location, inclusion: { in: %w(palwal hodal), message: "not in valid location" }
+
+
+**length
+ This helper validates the length of the attributes' values.
+ validates :ptype, length: { in: 4..10 }  ("is too short (minimum is 4 characters)")
+
+validates :name, length: { minimum: 2 }
+validates :bio, length: { maximum: 500 }
+validates :password, length: { in: 6..20 }
+validates :registration_number, length: { is: 6 }
+
+**numericality
+ This helper validates that your attributes have only numeric values. (it has also many options)
+ validates :mobile, numericality: { only_integer: true }
+
+**absence 
+ This helper validates that the specified attributes are absent.
+ validates :dob, absence: true
+
+**uniqueness
+ This helper validates that the attribute's value is unique right before the object gets saved
+ validates :mobile, uniqueness: true 
+
+===================================================
+
+COMMOM_VALIDATION_OPTIONS
+
+**allow_nil 
+ The :allow_nil option skips the validation when the value being validated is nil
+  validates :size, inclusion: { in: %w(small medium large),message: "%{value} is not a valid size" }, allow_nil: true
+
+**allow_blank 
+ The :allow_blank option is similar to the :allow_nil option. This option will let validation pass if the attribute's value is blank?
+ validates :title, length: { is: 5 }, allow_blank: true
+
+**message
+ As you've already seen, the :message option lets you specify the message that will be added to the errors collection when validation fails
+ validates :name, presence: { message: "must be given please" }
+
+**on
+ The :on option lets you specify when the validation should happen. The default behavior for all the built-in validation helpers is to be run on save
+ both create or update.but we can specify using on: :create, on: :update
+ # it will be possible to update email with a duplicated value
+  validates :email, uniqueness: true, on: :create
+
+  # it will be possible to create the record with a non-numerical age
+  validates :age, numericality: true, on: :update
+
+===================================================
+
+STRICT VALIDATIONS
+
+ ActiveModel::StrictValidationFailed when the object is invalid.
+   validates :name, presence: { strict: true }
+
+==================================================
+
+CONDITIONAL VALIDATIONS
+
  
+ validates :name, presence: true, if: :dob_pre?
+
+  def dob_pre?
+    mobile == 8930931208
+  end
+
+=======================================
+class AddUniqueIndexToReleases < ActiveRecord::Migration
+  def change
+    add_index :releases, [:country, :medium], unique: true
+  end
+end
+
+
+
+class Release < ActiveRecord::Base
+  validates :country, uniqueness: { scope: :medium }
+end
+
+validates_uniqueness_of :property_id, :scope => [:owner_id, :client_id]
+
+
+** to change column type
+ALTER TABLE properties ALTER COLUMN price TYPE integer USING (type::integer);
+
+
+
+ 
+
+
