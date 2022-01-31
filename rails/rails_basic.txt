@@ -31,7 +31,9 @@ MIGRATIONS-
 Property class created
 properties migration created
 now we will give column names and data types and run that migration
- t.string :name, null: false, index: true || index: { unique: true}  || primary_key: true if we first remove automatically generated id pkey
+ t.string :name, null: false, index: true || index: { unique: true} || primary_key: true if we first remove automatically generated id pkey
+  t.references :agent, foreign_key: true (table name is agents)
+ add_reference :properties, :agent, foreign_key: true
 
 *rails db:migrate
 == 20220122061218 CreateProperties: migrated (0.1371s) ========================
@@ -65,6 +67,7 @@ we run rails db:migrate to execute every migration we created
 ** set column not null - change_column_null :properties, :name, false
 
 ** add foreign key -  add_foreign_key :property_solds, :properties, column: :property_id, primary_key: :id
+ (we can also make foreign key while generating a model like - rails g model transaction property:references)
 
 ** delete foreign key - remove_foreign_key :property_solds, column: :property_id
 
@@ -263,7 +266,11 @@ property = Property.where(name: "land").rewhere(name: "flat") => (it override th
 **JOINS -
  transaction = Property.select(:name).joins("INNER JOIN transactions ON properties.id = transactions.property_id and transactions.seller_i
 d=4")
- SELECT "properties"."name" FROM "properties" INNER JOIN transactions ON properties.id = transactions.property_id and transactions.seller_id=4  
+ 
+SELECT "properties"."name" FROM "properties" INNER JOIN transactions ON properties.id = transactions.property_id and transactions.seller_id=4  
+
+** group by having
+ Appointment.select("agent_id, sum(property_id) as sum").group(:agent_id).having("sum(property_id) > ?",13)
 
 
 
