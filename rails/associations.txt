@@ -11,45 +11,212 @@
  has_one :through
  has_and_belongs_to_many
 
-** belongs to
- we use belongs to where we have foreign id of anothers primary id
- generally where non repeating column values
-(book) belongs_to :author
-(author) has_many :books
+==============================
 
-** has one
- we use this with one to one relation  (in a bank one person has one account and one account belongs to one person)
+
+1. has_many : 
+
+ we use this with one to many relation. You'll often find this association 
+on the "other side" of a belongs_to association.
+
+Ex :
+
+class Property < ApplicationRecord
+  validates :accept, acceptance: true
+  belongs_to :type
+end
+
+class Type < ApplicationRecord
+  has_many :properties
+end
+
+Queries :
+
+(a)
+
+Property.first.type.name
+=> "A1 Villa"  
+
+------------------------------------------------------------------------------------------------
+
+
+2. has_many :through
+
+this is used with many to many relation by the help of third model.
+
+Example :
+
+class Appointment < ApplicationRecord
+  belongs_to :client
+  belongs_to :agent
+end
+
+
+class Client < ApplicationRecord
+  has_many :appointments
+  has_many :agents, through: :appointments
+end
+
+
+class Agent < ApplicationRecord
+  has_many :appointments
+  has_many :clients, through: :appointments
+end
+
+
+------------------------------------------------------------------------------------------------
+
+3. has_one
+
+we use this with one to one relation.
+
+It is bidirectional association.
+
+Example :
+
+class Supplier < ApplicationRecord
+  has_one :account
+end
+
+class Account < ApplicationRecord
+  belongs_to :supplier
+end
+
+
+--------------------------------------------------------------------------------------------------
+
+4. belongs_to
+
+ we use belongs to where we have foreign id of anothers primary id 
+
+Example:
+
+class Property < ApplicationRecord
+  belongs_to :agent
+end
  
-** has many 
- we use this with one to many relation  (one department could have many employees but one employee would have one department)
 
-**has_many :through
-  this is used with many to many relation by the help of third table (property has many clients through appointments)
 
-**has one :through
- suppose each supplier has one account and each account have one account history
- than one supplier has one account history through account 
+--------------------------------------------------------------------------------------------
 
-**has and belongs to many
- used to build many to many relation by creating third model
- ex- students_teachers student:references teacher:references
+5. has_one :through
 
- we can also make join tables
-  create_join_table :agents, :clients
-  Client.last.agents << Agent.find(6)
+A has_one :through association sets up a one-to-one connection with another model. 
 
-**polymorphic association (in one to many relation)
- comments - belongs_to :commented, polymorphic: true  || should have two columns commented_id and commented_type
- client - has_many :comments, as: :commented 
- employees - has_many :comments, as: :commented
- owners - has_many :comments, as: :commented
+Example :
 
-** self join
- suppose we have employee table and we stored all managers and subbordinates in that table
- so we have to make emid primary key and manager_id as foreign key of employees primary key
+class Supplier < ApplicationRecord
+  has_one :account
+  has_one :account_history, through: :account
+end
 
- has_many :subordinates, class: "Employee", foreign_key: "manager_id"
- belongs_to :manager, class: "Employee",optional: true
+class Account < ApplicationRecord
+  belongs_to :supplier
+  has_one :account_history
+end
+
+class Account_history < ApplicationRecord
+  belongs_to :account
+end
+
+
+
+----------------------------------------------------------------------------------------------
+
+6. has_and_belongs_to_many
+
+A has_and_belongs_to_many association creates a direct many-to-many connection with another model, with no intervening model.By create join table
+
+Steps :
+
+1. Define has_and_belongs_to_many in both modles
+
+class Student < ApplicationRecord
+  has_and_belongs_to_many :books
+end
+
+class Book < ApplicationRecord
+  has_and_belongs_to_many :students
+end
+
+2. Create a migration for joint table (alphabetically table name)
+
+rails g migration create_books_students_join_table
+
+class CreateBooksStudentsJoinTable < ActiveRecord::Migration[7.0]
+  def change
+    create_join_table :books, :students
+  end
+end
+
+rails db:migrate
+
+
+Queries:
+
+Enter data in join table,
+
+student = Student.first
+
+student.books << books.where(id:1001)
+ 
+----------------------------------------------------------------------------------------------
+
+7. polymorphic association
+
+A slightly more advanced twist on associations is the polymorphic association. With polymorphic associations, a model can belong to more 
+than one other model, on a single association. 
+
+Example :
+
+class Event < ApplicationRecord
+  has_many :comments, as: :commentable
+end
+
+class News < ApplicationRecord
+  has_many :comments, as: :commentable
+end
+
+class Comment < ApplicationRecord ||  should have two columns commentable_id and commentable_type and other column :title
+  belongs_to :commentable, polymorphic: true
+end
+
+Queries :
+
+event = Event.first
+
+event.comments.create(title: "first comment on event")
+ 
+
+--------------------------------------------------------------------------------------------------
+
+8. self join
+
+In designing a data model, you will sometimes find a model that should have a relation to itself. For example, you may want to store all 
+employees in a single database model, but be able to trace relationships such as between manager and subordinates. This situation can be 
+modeled with self-joining associations:
+
+Example :
+
+class CreateEmployees < ActiveRecord::Migration[7.0]
+  def change
+    create_table :employees do |t|
+      t.string :name
+      t.references :manager, foreign_key: { to_table: :employees }
+    end
+  end
+end
+
+
+class Employee < ApplicationRecord
+  has_many :subordinates, class_name: "Employee",
+                          foreign_key: "manager_id"
+
+  belongs_to :manager, class_name: "Employee", optional: true
+end
+
+** now we can check first employee's manager and and first employee has how many subordinates
+----------------------------------------------------------------------------------------------------------------
 
 
  
