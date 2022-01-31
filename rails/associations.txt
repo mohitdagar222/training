@@ -1,0 +1,59 @@
+								ASSOCIATION  
+
+** In Rails, an association is a connection between two Active Record models. Why do we need associations between models? Because they make common operations simpler and easier in your code. 
+
+** Types of association
+
+ belongs_to 
+ has_one -book
+ has_many -books 
+ has_many :through
+ has_one :through
+ has_and_belongs_to_many
+
+** belongs to
+ we use belongs to where we have foreign id of anothers primary id
+ generally where non repeating column values
+(book) belongs_to :author
+(author) has_many :books
+
+** has one
+ we use this with one to one relation  (in a bank one person has one account and one account belongs to one person)
+ 
+** has many 
+ we use this with one to many relation  (one department could have many employees but one employee would have one department)
+
+**has_many :through
+  this is used with many to many relation by the help of third table (property has many clients through appointments)
+
+**has one :through
+ suppose each supplier has one account and each account have one account history
+ than one supplier has one account history through account 
+
+**has and belongs to many
+ used to build many to many relation by creating third model
+ ex- students_teachers student:references teacher:references
+
+ we can also make join tables
+  create_join_table :agents, :clients
+  Client.last.agents << Agent.find(6)
+
+**polymorphic association (in one to many relation)
+ comments - belongs_to :commented, polymorphic: true  || should have two columns commented_id and commented_type
+ client - has_many :comments, as: :commented 
+ employees - has_many :comments, as: :commented
+ owners - has_many :comments, as: :commented
+
+** self join
+ suppose we have employee table and we stored all managers and subbordinates in that table
+ so we have to make emid primary key and manager_id as foreign key of employees primary key
+
+ has_many :subordinates, class: "Employee", foreign_key: "manager_id"
+ belongs_to :manager, class: "Employee",optional: true
+
+
+ 
+
+ 
+
+ 
