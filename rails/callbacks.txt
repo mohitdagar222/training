@@ -1,0 +1,57 @@
+							     CALLBACKS
+
+** Callbacks are methods that get called at certain moments of an object's life cycle. With callbacks it is possible to write code that will run whenever an Active Record object is created, saved, updated, deleted, validated, or loaded from the database.
+
+** CREATING AN OBJECT
+
+ *before_validation 
+
+ validates :name, length: { maximum: 6 }
+ before_validation :remove_whitespaces
+
+  private
+  def remove_whitespaces
+    name.strip!
+  end
+
+ *after_validation (if validation fails than data wouldn't be save in database)
+  we can run validation by .valid?
+ after_validation :normalize_name
+
+  def normalize_name
+    self.name = name.downcase.titleize
+  end
+
+ *before_save
+
+ before_save :function1
+ def function1
+    self.name = "harish"
+  end
+
+ *after_save
+
+ after_save :function2
+ def function2
+    self.name = "raman"
+  end
+ if we check the name which is returned when object is saved than it will be raman and value stored in db will be harish
+
+ *before_create
+
+   def function3
+    puts self.name.upcase
+  end
+
+ *after_create
+ 
+ def function4
+    self.name = "after create"
+  end
+ it will not make changes in database but return the given value to object only
+ 
+ *after_commit
+ There is a slight but important difference between after_save and after_commit callbacks. after_commit is invoked when a database transaction reaches committed state. In case a transaction fails, for instance, while creating a record, after_commit is not invoked by Active Record, but after_save will have run by then. If there is a requirement that necessitates data to be persisted in the database before executing a piece of code, we should use after_commit instead of after_save.
+ 
+
+ 
