@@ -54,4 +54,15 @@
  There is a slight but important difference between after_save and after_commit callbacks. after_commit is invoked when a database transaction reaches committed state. In case a transaction fails, for instance, while creating a record, after_commit is not invoked by Active Record, but after_save will have run by then. If there is a requirement that necessitates data to be persisted in the database before executing a piece of code, we should use after_commit instead of after_save.
  
 
+
+ *after_destroy
+ 
+  after_destroy :agent_greet
+
+  private
+
+  def agent_greet
+    puts "Thank you #{self.agent.name} for dealing by our platform"
+  end
+
  
