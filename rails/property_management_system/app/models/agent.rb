@@ -17,12 +17,13 @@ class Agent < ApplicationRecord
   validates :name, length: { maximum: 20 }
   before_validation :remove_whitespaces
   after_validation :normalize_name
+=begin
   before_save :function1
   after_save :function2
   before_create :function3
   after_create :function4
   after_commit :function5
-
+=end
   def remove_whitespaces
     name.strip!
   end
@@ -31,6 +32,22 @@ class Agent < ApplicationRecord
     self.name = name.downcase.titleize
   end
 
+  after_initialize :name_assign
+
+  private
+
+  def name_assign
+    self.name = "vikram"
+  end
+
+  after_find :agent_found
+
+  private
+
+  def agent_found
+    puts "#{self.name} agent found"
+  end
+=begin
   def function1
     self.name = "amar"
   end
@@ -50,4 +67,5 @@ class Agent < ApplicationRecord
   def function5
     self.name = "raju"
   end
+=end
 end
