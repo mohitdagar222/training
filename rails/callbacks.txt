@@ -84,7 +84,15 @@
     puts "#{self.name} agent found"
   end
 
- *
+ *after_touch
+ after_touch :touches
+
+  private
+  def touches
+    puts "you have touched an object"
+  end
+ first we have to create a object or fetch an object from db than call touch by that object
+ we can also say belongs to agent, touch: true and define after touch in both models, so both touches execute if we touch by appointment object
 
  
 
