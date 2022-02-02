@@ -13,7 +13,7 @@
   def remove_whitespaces
     name.strip!
   end
-
+-----------------
  *after_validation (if validation fails than data wouldn't be save in database)
   we can run validation by .valid?
  after_validation :normalize_name
@@ -21,14 +21,14 @@
   def normalize_name
     self.name = name.downcase.titleize
   end
-
+------------------
  *before_save
 
  before_save :function1
  def function1
     self.name = "harish"
   end
-
+------------------
  *after_save
 
  after_save :function2
@@ -36,24 +36,24 @@
     self.name = "raman"
   end
  if we check the name which is returned when object is saved than it will be raman and value stored in db will be harish
-
+-----------------
  *before_create
 
    def function3
     puts self.name.upcase
   end
-
+-----------------
  *after_create
  
  def function4
     self.name = "after create"
   end
  it will not make changes in database but return the given value to object only
- 
+------------------
  *after_commit
  There is a slight but important difference between after_save and after_commit callbacks. after_commit is invoked when a database transaction reaches committed state. In case a transaction fails, for instance, while creating a record, after_commit is not invoked by Active Record, but after_save will have run by then. If there is a requirement that necessitates data to be persisted in the database before executing a piece of code, we should use after_commit instead of after_save.
  
-
+-----------------
 
  *after_destroy
  
@@ -65,7 +65,7 @@
     puts "Thank you #{self.agent.name} for dealing by our platform"
   end
 
-
+-------------------
  *after_initialize and after_find
  when we create object by new after_initialize will be called
  and when we retrieve data drom db after_find will be called and in this case after_initialize will be called after after_find
@@ -83,7 +83,7 @@
   def agent_found
     puts "#{self.name} agent found"
   end
-
+---------------------
  *after_touch
  after_touch :touches
 
@@ -95,5 +95,24 @@
  we can also say belongs to agent, touch: true and define after touch in both models, so both touches execute if we touch by appointment object
 
  
+----------------------
 
- 
+CONDITIONAL CALLBACKS
+
+after_initialize :gender_assign, if: :gender_empty
+
+  private
+  def gender_empty
+    if self.gender == nil
+      return true
+    else
+      return false
+    end
+  end
+
+  private
+  def gender_assign
+    self.gender = "Male"
+  end
+
+------------------------
