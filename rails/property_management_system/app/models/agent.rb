@@ -1,6 +1,6 @@
 class Agent < ApplicationRecord
   validates :name, presence: true
-  validates :gender, presence: true
+  # validates :gender, presence: true
   validates :contact, uniqueness: true
   validates :contact, numericality: true
   validates :contact, length: { minimum: 10, maximum: 10, too_long: "contact number is too long", too_short: "contact number is too short" }
@@ -17,6 +17,7 @@ class Agent < ApplicationRecord
   validates :name, length: { maximum: 20 }
   before_validation :remove_whitespaces
   after_validation :normalize_name
+
 =begin
   before_save :function1
   after_save :function2
@@ -32,27 +33,39 @@ class Agent < ApplicationRecord
     self.name = name.downcase.titleize
   end
 
-  after_initialize :name_assign
+  after_initialize :gender_assign, if: :gender_empty
 
   private
 
-  def name_assign
-    self.name = "vikram"
+  def gender_empty
+    if self.gender == nil
+      return true
+    else
+      return false
+    end
   end
-
-  after_find :agent_found
 
   private
 
-  def agent_found
-    puts "#{self.name} agent found"
+  def gender_assign
+    self.gender = "Male"
   end
 
-  after_touch :touches
+  # after_find :agent_found
 
-  def touches
-    puts "you have touched an object"
-  end
+  # private
+
+  # def agent_found
+  #   puts "#{self.name} agent found"
+  # end
+
+  # after_touch :touches
+
+  # private
+
+  # def touches
+  #   puts "you have touched an object"
+  # end
 =begin
   def function1
     self.name = "amar"
