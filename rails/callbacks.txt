@@ -65,4 +65,27 @@
     puts "Thank you #{self.agent.name} for dealing by our platform"
   end
 
+
+ *after_initialize and after_find
+ when we create object by new after_initialize will be called
+ and when we retrieve data drom db after_find will be called and in this case after_initialize will be called after after_find
+
+ after_initialize :name_assign (when we call Agent.new than name will be automatically assigned to it)
+
+  private
+  def name_assign
+    self.name = "vikram"
+  end
+
+ after_find :agent_found  (when we fetch a record from agents than after_find will calles than name become Vikram after that)
+
+  private
+  def agent_found
+    puts "#{self.name} agent found"
+  end
+
+ *
+
+ 
+
  
