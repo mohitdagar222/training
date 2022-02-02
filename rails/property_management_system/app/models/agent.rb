@@ -47,6 +47,12 @@ class Agent < ApplicationRecord
   def agent_found
     puts "#{self.name} agent found"
   end
+
+  after_touch :touches
+
+  def touches
+    puts "you have touched an object"
+  end
 =begin
   def function1
     self.name = "amar"
