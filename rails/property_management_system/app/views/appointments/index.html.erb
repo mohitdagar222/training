@@ -1,0 +1,25 @@
+<div>
+  <h1 style ="color:green;text-align:center;font-size:40px;">Property Management System </h1>
+</div>
+
+<div>
+
+  <div style = "float:left;margin-left:300px;margin-top:2%;;">
+    <h1 style = "text-align:center;color:red;margin-left:40px;border:2px solid green;padding:10px;border-radius:5px;">   List Of Agents </h1><br>
+   <ul style = "list-style-type:none;" >
+    <% @appointments_a.each do |a| %>
+    <li style = "text-align:center;"><h3 > <%= link_to a.agent.name.capitalize, "clients/#{a.id}" %></h3> </li>
+    <% end %>
+   </ul>
+  </div>
+  <br>
+
+  <div style = "float:right;margin-right:300px;margin-top:1%">
+    <h1 style = "text-align:center;color:red;margin-left:40px;border:2px solid green;padding:10px;border-radius:5px;">   Property Types </h1><br>
+    <ul style = "list-style-type:none;margin-top:20px;" >
+     <% @types.each do |t| %>
+      <li style = "text-align:center;"><h3 > <%= link_to t.name.capitalize, "property_types/#{t.id}" %></h3> </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
