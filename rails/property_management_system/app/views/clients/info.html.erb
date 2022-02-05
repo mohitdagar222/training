@@ -1,0 +1,10 @@
+<div>
+ <h2 style = "text-align:center;color:olive;margin-top:6%;"> Info of client <%= Client.find(@client).name.upcase %> </h2>
+ <ul style = "list-style-type:none;margin-top:2%;">
+   <li style = "text-align:center;color:blue;"><h3 >Client Name: <%= Client.find(@client).name %></h3> </li>
+   <li style = "text-align:center;color:blue;"><h3 >Client Contact: <%= Client.find(@client).contact %></h3> </li>
+   <li style = "text-align:center;color:blue;"><h3 >Client Email: <%= Client.find(@client).email %></h3> </li>
+   <li style = "text-align:center;color:blue;"><h3 >Client Gender: <%= Client.find(@client).gender %></h3> </li>
+  </ul>
+  <h2 style = "margin-left:10%;"><%= link_to "Previous Page", "/clients/#{@aid}" %> </h2>
+</div>
