@@ -1,0 +1,9 @@
+<div>
+ <h2 style = "text-align:center;color:olive;margin-top:6%;font-size:35px;"> Info of agent <%= Agent.find(@agent).name.upcase %> </h2>
+ <ul style = "list-style-type:none;margin-top:2%;font-size:22px;">
+   <li style = "text-align:center;color:blue;"><h3 >Agent Name: <%= Agent.find(@agent).name %></h3> </li>
+   <li style = "text-align:center;color:blue;"><h3 >Agent Contact: <%= Agent.find(@agent).contact %></h3> </li>
+   <li style = "text-align:center;color:blue;"><h3 >Agent Email: <%= Agent.find(@agent).email %></h3> </li>
+   <li style = "text-align:center;color:blue;"><h3 >Agent Gender: <%= Agent.find(@agent).gender %></h3> </li>
+ </ul>
+</div>
