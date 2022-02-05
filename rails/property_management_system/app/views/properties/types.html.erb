@@ -1,0 +1,8 @@
+<div style = "margin-top:6%;">
+ <h2 style = "text-align:center;color:olive;font-size:30px"> Properties of <%= Type.find(@type).name %> type </h2>
+  <ul style = "list-style-type:none;font-size:25px;">
+   <% Property.all.where(type_id: @type).each do |p| %>
+    <li style = "text-align:center;"><h3 > <%= link_to p.name.capitalize, "/property_info/#{p.id}" %></h3> </li>
+   <% end %>
+  </ul>
+</div>
