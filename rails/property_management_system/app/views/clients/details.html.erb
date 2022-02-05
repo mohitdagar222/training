@@ -1,0 +1,40 @@
+<style>
+      table,
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size:20px;
+        color: purple;
+      }
+      h2{
+          text-allign:center;
+          color:green;
+          margin-left: 500px;
+          margin-top:70px;
+          font-size:30px;
+      }
+      </style>
+      
+
+<h2>Appointments of <%= link_to @agent.name.upcase, "/agents_info/#{@agent.id}" %>  </h2>
+ <table style="margin-left:auto; margin-right:auto;margin-top:50px;">
+  <tr>
+    
+    <th>client name</th>
+    <th>property</th>
+    <th>date</th>
+  </tr>
+<% @agent.clients.each do |c| %> 
+ <% @id = c.properties.find_by(agent_id: @agent.id).id %>
+  <tr>
+  <td><%= link_to c.name, "/clients_info/#{c.id}/#{@a_id}" %></td>
+  <td><%= link_to c.properties.find_by(agent_id: @agent.id).name, "/property_info/#{@id}" %></td> 
+  <td><%= Appointment.find_by(agent_id: @agent.id, client_id: c).date.strftime("%d-%m-%Y") %>
+  </tr>
+
+  <% end %> 
+  </table>
+  <h2 style = "font-size:30px;margin-left:550px;"><%= link_to "Go to Home", "/" %></h2>
+  
