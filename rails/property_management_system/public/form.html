@@ -1,0 +1,110 @@
+<!DOCTYPE Html>
+<html>
+<head>
+  <title>Form</title> 
+  <style>
+      h1{
+          color:white;
+          font-size: 30px;
+          text-align: center;
+          background-color: black;
+          border: 2px solid black;
+          border-radius:5px;
+         
+
+        }
+      #form{
+          
+          color: purple;
+          padding-bottom:20px;
+      }
+      #form_div{
+          
+          border-radius:4px;
+          margin-left:15%;
+          margin-right:15%
+      }
+      .label{
+          font-style:italic;
+          font-size:25px;
+          float: left;
+          margin-left:200px;
+          margin-bottom:5px;
+      }
+      .inputs{
+          font-size:18px;
+          margin-right:180px;
+          float: right;
+          margin-bottom:6px;
+          width:300px;
+          color:turquoise;
+      }
+      #t{
+          
+          margin-left:200px;
+          font-size: 20px;
+          color:green;
+      }
+      #button1,#button2{
+          margin-left:200px;
+          font-size:20px;
+          color:red;
+
+        
+      }
+    
+
+
+  </style>   
+</head>
+
+<body>
+<div id = "form_div">
+    <fieldset>
+<legend><h1> Add New Agent </h1></legend>
+<form action = "/" id = "form" method = "/">
+  
+    
+  <label for = "name" class="label">Enter Your Name: </label>
+  <input type = "text" id = "name" name = "name" value = "Enter Your Name" class="inputs"><br> <br>
+  <label for = "email" class="label">Enter Your Email: </label>
+  <input type = "email" id = "email" name = "email" class= "inputs" value = "Enter Your Email"></br><br>
+  <label for = "contact"class="label">Enter Your Contact: </label>
+  <input type = "tel" id = "contact" name = "contact"class= "inputs"value = "Enter Your Contact"></br><br>
+  <label for = "dob"class="label">Enter Your DOB: </label>
+  <input type = "date" id = "dob" name = "dob" class= "inputs"value = "Enter Your DOB"></br> <br> 
+  <label for = "gender"class="label">Select Your Gender: </label></br><br>
+   <div id ="t"> <input type = "radio" id = "male" name = "gender" >
+    <label for ="male" >Male</label></br>
+    <input type = "radio" id = "female" name = "gender">
+    <label for ="female"  >Female</label></br><br>
+   </div>
+ <label for = "city"class="label" >Choose Your City: </label>
+  <select id="city"  name="city" class= "inputs">
+    <option value="Faridabad">Faridabad</option>
+    <option value="Gurgaon" selected>Gurgaon</option>
+    <option value="Sohna">Sohna</option>
+    <option value="Rewari">Rewari</option>
+  </select>
+  <br><br clear = "all">
+  
+ <label for = "types" class="label" > Select Your Interests In Types Of Properties: </label><br><br>
+ <div id ="t">
+   <input type = "checkbox" id = "type1" name = "type1" >
+   <label for = "type1"  > Commercial </label></br>
+   <input type = "checkbox" id = "type2" name = "type2" >
+   <label for = "type2"  > Agriculture </label></br>
+   <input type = "checkbox" id = "type3" name = "type3" >
+   <label for = "type3" > Industrial </label></br>
+   <input type = "checkbox" id = "type4" name = "type4" >
+   <label for = "type4"  > Residential </label></br><br>
+   </div>
+ <button type = "submit" value = "submit" id = "button1">Submit </button>
+ <button type = "reset" id = "button2">Reset</button>
+
+</form>
+</fieldset>
+</div>
+
+</body>
+</html>
