@@ -1,0 +1,12 @@
+<div>
+<h2 style = "text-align:center;color:olive;margin-top:6%;font-size:30px;"> Info of property <%= Property.find(@property).name.upcase %> </h2>
+<ul style = "list-style-type:none;margin-top:2%;font-size:22px;">
+  
+   <li style = "text-align:center;color:blue;"><h3 >Property Name: <%= Property.find(@property).name %></h3> </li>
+    <li style = "text-align:center;color:blue;"><h3 >Property Price: <%= Property.find(@property).price %></h3> </li>
+     <li style = "text-align:center;color:blue;"><h3 >Property Location: <%= Property.find(@property).location %></h3> </li>
+      <li style = "text-align:center;color:blue;"><h3 >Property Area <%= Property.find(@property).area %></h3> </li>
+ 
+  </ul>
+  <button style = "margin-left:10%;padding: 12px 30px;font-size:20px;"><%= link_to "Go to Home", "/" %> </button>
+</div>
