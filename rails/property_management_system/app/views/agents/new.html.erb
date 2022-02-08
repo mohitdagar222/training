@@ -1,149 +1,37 @@
-<!DOCTYPE Html>
-<html>
-<head>
-  <title>Form</title> 
-  <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
-  <style>
-      h1{
-          color:blueviolet;
-          font-size: 27px;
-          text-align: center;
-          background-color: white;
-          border: 2px solid black;
-          border-radius:5px;
-          font-family: 'Pangolin';
-          padding: 2px;
-        }
-      #form{
-          margin-left:250px;
-          margin-right:250px;   
-      }
-        
-      .label{
-          
-          font-size:25px;
-          float: left;
-          margin-left:100px;
-          margin-top:7px;
-          font-family: 'Pangolin';font-size: 22px;
-      }
-      .inputs{
-          font-size:15px;
-          margin-right:155px;
-          float: right;
-          margin-top:5px;
-          width:300px;
-          color:black;
-          border-radius: 4px;
-          padding:4px;
-          height:16px;
-          color:red;
-      }
-      #t{
-          
-          margin-left:110px;
-          font-size: 20px;
-          color:rgb(21, 223, 14);
-      }
-      #button1{
-          margin-left:200px;
-          font-size:20px;
-          width:100px;
-          border:solid green 2px;
-          border-radius: 8%;
-          padding:4px;
-          font-family: 'Pangolin';
-          background-color: green;
-          color: whitesmoke;
-      }
-      #button1:hover{
-        background-color: white;
-        color:green;
-      }
-      
-      #button2{
-          margin-left:200px;
-          font-size:20px;
-          padding:4px;
-          width:100px;
-          border:solid red 2px;
-          border-radius: 8%;
-          font-family: 'Pangolin';
-          background-color: red;
-          color:whitesmoke;
+
+
+   <% if @agent.errors.any? %>
+    <div style="color: red; text-align:center;">
+      <h2><%= pluralize(@agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
+      <ul style = "list-style-type:none;color:black;">
+        <% @agent.errors.each do |error| %>
+          <li>*<%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<%= form_for @agent do |f| %>
+    <div id = "form">
+    <h2>New Agent </h2>
+    <label for = "name" class="label">Enter Your Name: </label>
+    <%= f.text_field :name %><br><br>
+    <label for = "gender" class="label">Enter Your Gender: </label> <br/><br>
+   <div id ="t"> <%= f.radio_button("gender", "Male") %> Male <br/>
+    <%= f.radio_button("gender", "Female") %> Female </div><br>
+   <label for = "dob" class="label">Enter Your DOB: </label>
+    <%= f.date_field :dob %><br><br>
+    <label for = "city" class="label">Select your city: </label>
+    <%= f.select :city, options_for_select(["Faridabad", "New Delhi", "Gurugram", "Noida", "Rewari"]) %><br><br>
+    <label for = "email" class="label">Enter Your Email: </label>
+    <%= f.email_field :email %> <br><br>
+   <label for = "contact" class="label">Enter Your Contact: </label>
+    <%= f.telephone_field :contact %> 
   
-      }
-      #button2:hover{
-        background-color: white;
-        color:red;
-      }
-      #outer{
-        border-radius:5px;
-        border: solid green 3px;
-      }
-      #city{
-       
-          margin-right:170px;
-          float: right;
-          margin-top:5px;
-          width:300px;
-          color:red;
-          border-radius: 4px;
-          padding:4px;
-          font-size:15px;
-         
-      }
 
 
-  </style>   
-</head>
-
-<body>
-<form action = "/agents/create" id = "form" method = "post">
-  <fieldset id = "outer">
-    <legend><h1>  New Agent </h1></legend>
-  
     
-  <label for = "name" class="label">Enter Your Name: </label>
-  <input type = "text" id = "name" name = "name" onfocus="this.value =''" value = "* Name" class="inputs"><br> <br>
-  <label for = "email" class="label">Enter Your Email: </label>
-  <input type = "email" id = "email" name = "email" class= "inputs" onfocus="this.value=''" value = "* Email"><br><br>
-  <label for = "contact"class="label">Enter Your Contact: </label>
-  <input type = "tel" id = "contact" name = "contact"class= "inputs" onfocus="this.value=''" value = "* Contact"><br><br>
-  <label for = "dob"class="label">Enter Your DOB: </label>
-  <input type = "date" id = "dob" name = "dob" class= "inputs" onfocus="this.value=''" value = "* Enter Your DOB"><br> <br> 
-  <label for = "gender"class="label">Select Your Gender: </label><br><br>
-   <div id ="t"> <input type = "radio" id = "male" name = "gender" value = "male" >
-    <label for ="male" >Male</label><br>
-    <input type = "radio" id = "female" name = "gender" value = "female">
-    <label for ="female"  >Female</label><br><br>
-   </div>
- <label for = "city"class="label" >Choose Your City: </label>
-  <select id="city"  name="city" >
-    <option value="Faridabad">Faridabad</option>
-    <option value="Gurgaon" selected>Gurgaon</option>
-    <option value="Sohna">Sohna</option>
-    <option value="Rewari">Rewari</option>
-  </select>
-  <br><br clear = "all">
-  
- <label for = "types" class="label" > Select Your Interests In Types Of Properties: </label><br><br>
- <div id ="t">
-   <input type = "checkbox" id = "1" name = "type1" value ="commercial" >
-   <label for = "type1" > Commercial </label><br>
-   <input type = "checkbox" value="agriculture" id = "2" name = "type2" >
-   <label for = "type2"  > Agriculture </label><br>
-   <input type = "checkbox" id = "3" name = "type3" value = "industrial" >
-   <label for = "type3" > Industrial </label><br>
-   <input type = "checkbox" id = "4" name = "type4" value = "residential" >
-   <label for = "type4"  > Residential </label><br><br>
-   </div>
- <button type = "submit" value = "submit" id = "button1">Submit </button>
- <button type = "reset" id = "button2">Reset</button>
-
-</fieldset>
-</form>
-</div>
-
-</body>
-</html>
+    <%= f.submit %>
+    </div>
+<% end %>
