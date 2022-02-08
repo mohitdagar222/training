@@ -12,24 +12,37 @@ class AgentsController < ApplicationController
     @agents = Agent.all
   end
 
-  def form
+  def new
+    @agent = Agent.new
+    # debugger
   end
 
   def create
-    interests = [params[:type1], params[:type2], params[:type3], params[:type4]]
-    interest2 = []
-    interests.each { |interest|
-      if interest == nil
-        next
-      else
-        interest2 << interest
-      end
-    }
+    @agent = Agent.new(agent_params)
+    if @agent.save
+      redirect_to "/agent/#{@agent.id}"
+    else
+      render "new", status: :unprocessable_entity
+    end
+  end
 
-    @agent = Agent.new(name: params[:name], email: params[:email], contact: params[:contact], gender: params[:gender], dob: params[:dob], city: params[:city], interests: interest2)
-    @agent.save
+  def delete
+    agent = Agent.find(params[:id])
+    agent.destroy
+    redirect_to "/"
+  end
 
-    id = Agent.last.id
-    redirect_to "/agent/#{id}"
+  def edit
+    @agent = Agent.find(params[:id])
+  end
+
+  def update
+    @agent = Agent.update(agent_params)
+    redirect_to "/agent/#{params[:id]}"
+  end
+
+  def agent_params
+    params[:agent][:interests] ||= []
+    params.require(:agent).permit(:id, :name, :email, :contact, :gender, :dob, :city, interests: [])
   end
 end
