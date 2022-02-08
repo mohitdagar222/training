@@ -1,0 +1,8 @@
+<h1> All Agents </h1>
+<br>
+<ul>
+<% @agents.each do |agent| %>
+<li><%= agent.name %> &nbsp; &nbsp;<%= link_to "Show Details", "/agent/#{agent.id}" %></li> 
+<% end %>
+</ul>
+<h2> <%= link_to "Create New Agent", "agents/new" %> </h2>
