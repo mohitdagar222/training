@@ -10,6 +10,13 @@ class AgentsController < ApplicationController
 
   def index
     @agents = Agent.all
+
+    @city = params[:city]
+    @dob = params[:dob]
+    @name = params[:name]
+    @agent = Agent.where(city: @city)
+    @like = Agent.where("name ilike ?", "#{@name}%")
+    @date = Agent.where("dob > ?", "#{@dob}")
   end
 
   def new
@@ -42,7 +49,12 @@ class AgentsController < ApplicationController
   end
 
   def agent_params
-    params[:agent][:interests] ||= []
-    params.require(:agent).permit(:id, :name, :email, :contact, :gender, :dob, :city, interests: [])
+    params.require(:agent).permit(:name, :email, :contact, :gender, :dob, :city)
+  end
+
+  def view
+    @city = params[:city]
+    @dob = params[:dob]
+    @agent = Agent.where(city: @city)
   end
 end
