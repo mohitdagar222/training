@@ -1,8 +1,50 @@
 <h1> All Agents </h1>
 <br>
+
+<%= form_with(url: "/view", method: :get) do |form| %>
+   <%= form.label(:city, "Search Agent in City:") %>
+   <%= form.text_field(:city) %><br><br>
+    <%= form.label(:dob, "Search Agent with DOB greater than:") %>
+    <%= form.date_field(:dob) %><br>
+      <%= form.label(:name, "Search Agent with name letter:") %>
+        <%= form.text_field(:name) %><br>
+   <%= form.submit("Search") %>
+<% end %>
+
+<% if @city != nil and @city != "" %>
+<% @agent.each do |agent| %>
+<ul>
+<li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
+</ul>
+<% end %>
+<% else %>
+<% end %>
+
+
+<% if @name != nil and @name != "" %>
+<% @like.each do |agent| %>
+<ul>
+<li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
+</ul>
+<% end %>
+<% else %>
+<% end %>
+
+
+
+<% if @dob != nil and @dob != "" %>
+<% @date.each do |agent| %>
+<ul>
+<li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
+</ul>
+<% end %>
+<% else %>
+<% end %>
+
+
+<h2> <%= link_to "Create New Agent", "agents/new" %> </h2>
 <ul>
 <% @agents.each do |agent| %>
-<li><%= agent.name %> &nbsp; &nbsp;<%= link_to "Show Details", "/agent/#{agent.id}" %></li> 
+<li><%= agent.name %> &nbsp; &nbsp;<%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %> </li> 
 <% end %>
 </ul>
-<h2> <%= link_to "Create New Agent", "agents/new" %> </h2>
