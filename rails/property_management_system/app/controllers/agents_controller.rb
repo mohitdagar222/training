@@ -17,10 +17,24 @@ class AgentsController < ApplicationController
     @agent = Agent.where(city: @city)
     @like = Agent.where("name ilike ?", "#{@name}%")
     @date = Agent.where("dob > ?", "#{@dob}")
+    @age = params[:age].to_i
+    @age_filter = []
+
+    @agents.each do |a|
+      age = ((Time.now - a.dob.to_time) / (60 * 60 * 24 * 365.25))
+      if @age != nil
+        if age > @age
+          @age_filter << a
+        else
+        end
+      else
+      end
+    end
   end
 
   def new
     @agent = Agent.new
+
     # debugger
   end
 
@@ -49,7 +63,7 @@ class AgentsController < ApplicationController
   end
 
   def agent_params
-    params.require(:agent).permit(:name, :email, :contact, :gender, :dob, :city)
+    params.require(:agent).permit(:name, :email, :contact, :gender, :dob, :city, interests: [])
   end
 
   def view

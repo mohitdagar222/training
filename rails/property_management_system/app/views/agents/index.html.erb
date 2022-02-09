@@ -1,17 +1,21 @@
-<h1> All Agents </h1>
+<h1> Search Agents </h1>
 <br>
 
 <%= form_with(url: "/view", method: :get) do |form| %>
-   <%= form.label(:city, "Search Agent in City:") %>
+   <%= form.label(:city, "Search Agent by City:") %>
    <%= form.text_field(:city) %><br><br>
     <%= form.label(:dob, "Search Agent with DOB greater than:") %>
-    <%= form.date_field(:dob) %><br>
-      <%= form.label(:name, "Search Agent with name letter:") %>
-        <%= form.text_field(:name) %><br>
+    <%= form.date_field(:dob) %><br><br>
+    <%= form.label(:name, "Search Agent with name letter:") %>
+    <%= form.text_field(:name) %><br><br>
+
+    <%= form.label(:age, "Search Agent with age greater than:") %>
+    <%= form.text_field(:age) %><br><br>
    <%= form.submit("Search") %>
 <% end %>
 
 <% if @city != nil and @city != "" %>
+<h2>Agents in <%= @city %>  city </h2>
 <% @agent.each do |agent| %>
 <ul>
 <li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
@@ -21,7 +25,19 @@
 <% end %>
 
 
+<% if @age != nil and @age != 0 %>
+<h2>Agents with age greater than <%= @age %>  </h2>
+<% @age_filter.each do |agent| %>
+<ul>
+<li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
+</ul>
+<% end %>
+<% else %>
+<% end %>
+
+
 <% if @name != nil and @name != "" %>
+<h2>Agents name starting by => <%= @name %> </h2>
 <% @like.each do |agent| %>
 <ul>
 <li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
@@ -33,6 +49,7 @@
 
 
 <% if @dob != nil and @dob != "" %>
+<h2>Agents with DOB greater than  <%= @dob %> </h2>
 <% @date.each do |agent| %>
 <ul>
 <li><%= agent.name %><%= link_to "Show Details", "/agent/#{agent.id}" %> &nbsp;&nbsp;<%= link_to "edit agent", "/agent/edit/#{agent.id}" %> &nbsp; &nbsp;<%= button_to "Delete Agent", "/agent/#{agent.id}", method: :delete %>  </li>
@@ -41,7 +58,7 @@
 <% else %>
 <% end %>
 
-
+<h1> All Agents </h1>
 <h2> <%= link_to "Create New Agent", "agents/new" %> </h2>
 <ul>
 <% @agents.each do |agent| %>
