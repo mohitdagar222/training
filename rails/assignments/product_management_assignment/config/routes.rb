@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   get "/product/:id" => "products#edit"
   delete "/product/:id" => "products#delete"
   get "/logout" => "products#logout"
-  resources :products
 end
