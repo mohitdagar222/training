@@ -1,15 +1,81 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+#footer {
+  color: red;
+  border: solid black 2px;
+  text-align: center;
+  margin-top: 20%;
+
+  width: 100%;
+  height: 60px;
+  background: #6cf;
+  padding-bottom: 6px;
+}
+#form {
+  margin: 100px 310px;
+  border-radius: 5px;
+  border: solid black 3px;
+  padding: 18px;
+  padding-top: 26px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  text-align: center;
+  height: 180px;
+  font-size: 23px;
+  color: red;
+}
+h3 {
+  margin-left: 900px;
+  color: red;
+  font-size: 25px;
+}
+h2 {
+  color: red;
+}
+
+#form2 {
+  margin: 20px 310px;
+  border-radius: 5px;
+  border: solid black 3px;
+
+  padding-top: 2px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+}
+
+.label {
+  font-size: 22px;
+  float: left;
+  margin-left: 50px;
+  margin-top: 7px;
+}
+#user_name,
+#user_dob,
+#user_address,
+#user_password,
+#user_password_confirmation,
+#product_name,
+#product_price {
+  font-size: 15px;
+  margin-right: 110px;
+  float: right;
+  margin-top: 5px;
+  width: 300px;
+  color: black;
+  border-radius: 4px;
+  padding: 4px;
+  height: 16px;
+  color: red;
+}
+#t {
+  margin-left: 80px;
+  font-size: 20px;
+  color: rgb(21, 223, 14);
+}
+table,
+th,
+td {
+  padding: 13px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 20px;
+  color: red;
+}
