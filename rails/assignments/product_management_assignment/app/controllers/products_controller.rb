@@ -1,15 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :users_login
+
   def index
-    if session[:user_id] == nil
-      redirect_to "/"
-    end
     @products = Product.where(user_id: session[:user_id])
   end
 
   def new
-    if session[:user_id] == nil
-      redirect_to "/"
-    end
     @product = Product.new
   end
 
@@ -29,7 +25,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.update(product_params)
+    @product = Product.find(params[:id])
+    @product.update(product_params)
     redirect_to "/products"
   end
 
@@ -38,12 +35,21 @@ class ProductsController < ApplicationController
     redirect_to "/products"
   end
 
+  def logout
+    session[:user_id] = nil
+    redirect_to "/"
+  end
+
+  private
+
   def product_params
     params.require(:product).permit(:name, :price)
   end
 
-  def logout
-    session[:user_id] = nil
-    redirect_to "/"
+  def users_login
+    if session[:user_id] == nil
+      flash[:message] = "You Must Be Logged In"
+      redirect_to "/"
+    end
   end
 end
