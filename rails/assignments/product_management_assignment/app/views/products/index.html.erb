@@ -1,5 +1,12 @@
 <h3><%= link_to "Create Product", "/products/create" %> | <%= link_to "Logout", "/logout" %></h3> 
 <h2> <%= flash[:message] %></h2>
+
+<%= form_with(url: "/products/index", method: :get) do |form| %>
+    <%= form.label(:name, "Search Product with name:") %>
+    <%= form.text_field(:name) %><br><br>
+    <%= form.submit("Search") %>
+<% end %>
+
 <table style="margin-left:auto; margin-right:auto;margin-top:50px;">
   <tr> 
     <th>Name</th>
