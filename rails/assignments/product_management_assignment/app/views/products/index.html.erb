@@ -6,7 +6,9 @@
     <%= form.text_field(:name) %><br><br>
     <%= form.submit("Search") %>
 <% end %>
-
+<% if @products.count == 0 %>
+<h2> <%= flash[:message2] %></h2>
+<% else %>
 <table style="margin-left:auto; margin-right:auto;margin-top:50px;">
   <tr> 
     <th>Name</th>
@@ -22,6 +24,12 @@
   </tr>
 <% end %> 
 </table>
+<% end %>
+<% if params[:name] != nil %>
+<p style = "text-align:center;"><%= link_to "All Products", "/products" %></p>
+<% end %>
+<%= will_paginate @products %>
 <div style = "margin-bottom:250px;"> 
 </div>
+
 
