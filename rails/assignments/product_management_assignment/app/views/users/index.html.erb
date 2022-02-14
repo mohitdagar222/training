@@ -1,14 +1,14 @@
 <h3><%= link_to "Register", "/signup" %> | <%= link_to "Login", "/" %></h3> 
 <h2> <%= flash[:message] %></h2>
-<% if @id == 1 %>
-<h2> Invalid Username or Password </h2>
- <% end %>
-<%= form_with(url: "/login", method: :get, id: "form") do |form| %>
-   <%= form.label(:name, "User Name:") %>
-   <%= form.text_field(:name) %><br><br>
-    <%= form.label(:password, "Password:") %>
-    <%= form.password_field(:password) %><br><br>
+<div style = "margin-bottom: 160px;">
+<%= form_with(url: "/login", method: :get, id: "form2") do |form| %>
+ <h2>Login </h2>
+   <%= form.label(:name, "User Name:", class: :label) %>
+   <%= form.text_field(:name, id: :user_name) %><br><br>
+    <%= form.label(:password, "Password:", class: :label) %>
+    <%= form.password_field(:password, id: :user_password) %><br><br><br>
    <%= form.submit("Login") %>
 <% end %>
+</div>
 <br>
  
