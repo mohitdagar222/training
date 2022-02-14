@@ -1,9 +1,7 @@
 <h3><%= link_to "Create Product", "/products/create" %> | <%= link_to "Logout", "/logout" %></h3> 
-
-
- <table style="margin-left:auto; margin-right:auto;margin-top:50px;">
-  <tr>
-    
+<h2> <%= flash[:message] %></h2>
+<table style="margin-left:auto; margin-right:auto;margin-top:50px;">
+  <tr> 
     <th>Name</th>
     <th>Price</th>
     <th>Action</th>
@@ -12,9 +10,11 @@
   <tr>
   <td><%= p.name %></td>
   <td><%= p.price %></td> 
-  <td><%= link_to "edit", "/product/#{p.id}" %> &nbsp; <%= button_to "delete", "/product/#{p.id}", method: :delete %> </td>
+  <td><%= link_to "edit", "/product/edit/#{p.id}" %> </td>
+  <td><%= button_to "delete", "/product/#{p.id}", method: :delete %> </td>
   </tr>
-
-  <% end %> 
-  </table>
+<% end %> 
+</table>
+<div style = "margin-bottom:250px;"> 
+</div>
 
