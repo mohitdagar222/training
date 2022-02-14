@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @name = params[:name]
-    @password = params[:password]
-    @user = User.find_by(name: @name, password: @password)
+    @user = User.find_by(name: params[:name], password: params[:password])
     @id = 0
     if @user != nil
       session[:user_id] = @user.id
       redirect_to "/products"
-    elsif @name != nil
-      @id = 1
+    elsif params[:name] != nil
+      flash[:message] = "Invalid Username Or Password"
       render "index"
     end
   end
