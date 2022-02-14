@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
     @user = User.find_by(name: params[:name], password: params[:password])
-    @id = 0
     if @user != nil
       session[:user_id] = @user.id
       redirect_to "/products"
