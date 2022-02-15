@@ -2,7 +2,16 @@ class ProductsController < ApplicationController
   before_action :users_login
 
   def index
-    @products = Product.where(user_id: session[:user_id])
+    flash[:message2] = "No products found"
+    if (params[:name] == nil and params[:price] == nil) or (params[:price] == "0" and params[:name] == "")
+      @products = Product.where(user_id: session[:user_id]).paginate(:page => params[:page])
+    elsif params[:name] != "" and params[:price] == "0"
+      @products = Product.where(user_id: session[:user_id]).where("name ilike ?", "#{params[:name]}%").paginate(:page => params[:page])
+    elsif params[:price] != "0" and params[:name] == ""
+      @products = Product.where(user_id: session[:user_id]).where("price < ? ", "#{params[:price]}").paginate(:page => params[:page])
+    else
+      @products = Product.where(user_id: session[:user_id]).where("price < ? and name ilike ?", "#{params[:price]}", "#{params[:name]}%").paginate(:page => params[:page])
+    end
   end
 
   def new
