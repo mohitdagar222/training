@@ -182,17 +182,23 @@ npm install curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/instal
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-(C) PART 2
+(C) PART 2 (Integrating bootstrap method 2)
 
-Integrating bootstrap method 2
- npm install curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash => install npm
- install yarn
+ install npm =>
+ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+ nvm install node
+
+ install yarn =>
+   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+   sudo apt update
+   sudo apt install yarn
 
 
 1) add to last of gemfile=> gem 'cssbundling-rails'
 2) bundle install
 3) rails css:install:bootstrap
-4) open importmap.rb inside config / run command in terminal => ./bin/importmap pin bootstrap 
+4) open importmap.rb inside config / run command in terminal => ./bin/importmap pin bootstrap
 
  
 -----------------------------------------------------------------------------------------------------------------------------------------------------
