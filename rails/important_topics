@@ -1,0 +1,256 @@
+---------------------------------------------------------------------------------------------------------------------------------------
+(A) PAGINATION
+
+Steps for Pagination 
+
+1. Write in Gemfile
+
+gem 'will_paginate', '~>3.3' (For Specific Version)
+gem 'will_paginate'  (For Latest Version)
+
+2. run command
+
+bundle install
+
+3. In products controller 
+
+@products = Product.all.paginate(page:params[:page])
+
+4. In Product model
+
+self.per_page = 10
+
+5. In view file of @products
+
+In last,
+
+<%= will_paginate @products %>
+
+6. require "will_paginate" in environment.rb
+
+7. Restart Server after that .
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+(B) SETUP ACTION MAILER FOR SENDING EMAILS
+
+1. Type in terminal for generate user mailer
+
+rails g mailer UserMailer
+
+2.  Set Up Your Default ‘From’ Address
+
+in app/mailers/application_mailer.rb,
+
+class ApplicationMailer < ActionMailer::Base
+  default from: "from@example.com"
+  layout 'mailer'
+end
+
+Replace "from@example.com" with our email address
+
+3.  Define Mailer Method
+
+in app/mailers/user_mailer.rb,
+
+class UserMailer < ApplicationMailer  
+  def welcome_email(user)
+    @user = user
+    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  end
+end
+
+4.  Views
+
+(i) Create a file called welcome_email.html.erb in app/views/user_mailer/.
+
+write that in that,
+
+<h1>Welcome to example.com, <%= @user.nickname %></h1>
+  <p>
+    You have successfully signed up to example.com,
+    your username is: <%= @user.usermane %>.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+(ii) Because not all clients prefer HTML emails, it is best practice to have a text-only version as well. Again in app/views/user_mailer/ 
+, create a file called welcome_email.text.erb, and include something like the following:
+
+Welcome to example.com, <%= @user.nickname %>
+===============================================
+You have successfully signed up to example.com,
+your username is: <%= @user.username %>.
+Thanks for joining and have a great day!
+
+5. Configuration for Gmail
+
+Copy and paste the following into config/environments/development.rb , replacing no-reply@example.com 
+with your Gmail address:
+
+config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'no-reply@example.com'}
+
+Then copy and paste this next part, which is specific for Gmail:
+
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+address:              'smtp.gmail.com',
+port:                 587,
+domain:               'example.com',
+user_name:            '<username>',
+password:             '<password>',
+authentication:       'plain',
+enable_starttls_auto: true  }
+
+Replace example.com with the domain of your app (if you have one). Replace <username> and <password> with 
+your Gmail username and password.
+
+6. Calling the Mailer
+
+
+We are now ready to tell the mailer to send emails! Here is the line of code that will execute the action of sending an email:
+
+UserMailer.welcome_email(@user).deliver_now
+
+Notice that it calls our welcome_email method on our UserMailer class and passes in an instance variable that contains the 
+instance of the user. deliver_now is an Action Mailer method that, as you’d expect, delivers the email as soon as its called.
+
+In our case, we want the email to be sent out when a new user signs up, so we will place it in our users controller. 
+
+def create
+    @user = User.new(user_params)
+    if @user.save
+      UserMailer.welcome_email(@user).deliver_now    ...    
+    end
+end
+
+7. Now, open your gmail in browser on which you run your rails application. if security alert arises allow that.
+
+8. Then run two links and allow that,
+
+https://www.google.com/settings/security/lesssecureapps 
+
+http://www.google.com/accounts/DisplayUnlockCaptcha 
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+(C) INTEGRATE BOOTSTRAP IN RAILS APPLICATION
+
+According to the bootstrap-sass gem, you need to add
+
+1. 'gem 'bootstrap-sass'
+
+to your Gemfile and then run
+
+bundle install
+
+2. Next, you'll want to import the bootstrap stylesheets in your application css manifest file. 
+However, by default, the manifest file is named:
+
+app/assets/stylesheets/application.css
+
+but you should rename it to use a .scss extension (or .sass extension) like so:
+
+app/assets/stylesheets/application.scss
+
+3. Now, add the following two lines in your application.scss file :
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+You'll need to manually handle the imports of your scss files from now on.
+
+4. Next, to make bootstrap's javascript helpers available, you'll need to add this line:
+
+//= require bootstrap-sprockets
+
+to your
+
+app/assets/javascripts/application.js
+
+5. if we want to overwrite or write own css , write below of import in app/assets/stylesheets/application.scss .
+
+npm install curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+(C) PART 2
+
+Integrating bootstrap method 2
+ npm install curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash => install npm
+ install yarn
+
+
+1) add to last of gemfile=> gem 'cssbundling-rails'
+2) bundle install
+3) rails css:install:bootstrap
+4) open importmap.rb inside config / run command in terminal => ./bin/importmap pin bootstrap 
+
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+(D) DEVISE GEM
+
+1) include in last of gem file => gem 'devise'
+2) bundle install
+3) run the generator => rails generate devise:install
+4) include in development.rb => config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+5) include in header of layouts.application.html.erb
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+
+6) to generate model => rails g devise user
+7) now run migration and Restart server=> rails db:migrate
+8) we can use functionalities by uncommenting lines in config/initializers/devise
+9) setup **LETTER OPENER 
+10) now add signout and sign in functionality in header
+  	 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <% if user_signed_in? %>
+           <li><%= link_to "Sign Out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %> </li>
+           <% else %>
+           <li><%= link_to "Sign In", new_user_session_path, class: "dropdown-item" %> </li>
+           <% end %>
+        </ul>
+11) now generate devise views => rails g devise:views users
+12) now generate devise controllers => rails g devise:controllers users
+13) for adding bootstrap to views we have to set routes as below
+       devise_for :users, controllers: {
+            sessions: "users/sessions",
+            passwords: "users/passwords",
+            registrations: "users/registrations",
+            confirmations: "users/confirmations",
+          }
+14) now if we dont want to use LETTER OPENER to preview emails we can set up ACTION MAILER to properly send emails 
+15) we will use model here to call mailer like letter opener.
+
+
+** LETTER OPENER GEM
+
+1) include in gemfiles's group :development do => gem 'letter_opener'
+2) bundle install
+3) now include in development.rb under config 
+    config.action_mailer.delivery_method = :letter_opener
+    config.action_mailer.perform_deliveries = true
+4) Restart the server
+9) now we will generate mailer => rails g mailer welcome send_greetings
+6) now customize application_mailer and welcome_mailer under mailers and send_greetings.html.erb file under views/mailers
+7) now add callback in user model 
+ 	
+  private
+
+  def after_confirmation
+    WelcomeMailer.send_greetings_notification(self).deliver_now
+  end
+
+
+
+
+
