@@ -2,35 +2,45 @@ class Api::V1::ProductsController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   def index
-    prod = Product.all
-    render json: { status: "SUCCESS", message: "Loaded successfully", data: prod }, status: :ok
+    category = Category.find_by(id: params[:category_id])
+    if category.present?
+      product = category.products
+    else
+      product = Product.all
+    end
+    render json: { status: "SUCCESS", message: "Loaded successfully", data: ActiveModelSerializers::SerializableResource.new(product, each_serializer: ProductSerializer) }
   end
 
   def create
-    prod = Product.create(product_params)
-    render json: { status: "SUCCESS", message: "Created successfully", data: prod }, status: :ok
+    category = Category.find_by(id: params[:category_id])
+    if category.present?
+      product = category.products.create(product_params)
+    else
+      product = Product.create(product_params)
+    end
+    render json: { status: "SUCCESS", message: "Created successfully", data: product }, status: :ok
   end
 
   def show
-    prod = Product.find(params[:id])
-    render json: { status: "SUCCESS", message: "Fetched successfully", data: prod }, status: :ok
+    product = Product.find(params[:id])
+    render json: { status: "SUCCESS", message: "Fetched successfully", data: product }, status: :ok
   end
 
   def destroy
-    prod = Product.find(params[:id])
-    prod.destroy
-    render json: { status: "SUCCESS", message: "Deleted successfully", data: prod }, status: :ok
+    product = Product.find(params[:id])
+    product.destroy
+    render json: { status: "SUCCESS", message: "Deleted successfully", data: product }, status: :ok
   end
 
   def update
-    prod = Product.find(params[:id])
-    prod.update(product_params)
-    render json: { status: "SUCCESS", message: "Updated successfully", data: prod }, status: :ok
+    product = Product.find(params[:id])
+    product.update(product_params)
+    render json: { status: "SUCCESS", message: "Updated successfully", data: product }, status: :ok
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:id, :name, :price)
+    params.permit(:id, :name, :price, :category_id)
   end
 end
