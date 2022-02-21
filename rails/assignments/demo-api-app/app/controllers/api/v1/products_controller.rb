@@ -58,9 +58,23 @@ class Api::V1::ProductsController < ActionController::Base
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
-    render json: { status: "SUCCESS", message: "Updated successfully", data: product }, status: :ok
+    if params[:category_id].present?
+      product = Product.find_by(id: params[:id], category_id: params[:category_id])
+      if product.present?
+        product.update(product_params)
+        render json: { status: "SUCCESS", message: "Updated successfully", data: product }, status: :ok
+      else
+        render json: { status: "ERROR", message: " Not Updated", data: "No Product found" }, status: :unprocessable_entity and return
+      end
+    else
+      product = Product.find_by(id: params[:id])
+      if product.present?
+        product.update(product_params)
+        render json: { status: "SUCCESS", message: "updated successfully", data: product }, status: :ok
+      else
+        render json: { status: "ERROR", message: " Not Updated", data: "No Product found" }, status: :unprocessable_entity and return
+      end
+    end
   end
 
   private
