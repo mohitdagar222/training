@@ -7,7 +7,7 @@ class Api::V1::ProductsController < ActionController::Base
       if category.present?
         product = category.products
       else
-        render json: { status: "ERROR", message: "No Product found", data: "No Category found" } and return
+        render json: { status: "ERROR", message: " No Category found for given id", data: "No Product found" }, status: :unprocessable_entity and return
       end
     else
       product = Product.all
@@ -26,7 +26,14 @@ class Api::V1::ProductsController < ActionController::Base
   end
 
   def show
-    product = Product.find(params[:id])
+    if params[:category_id].present?
+      product = Product.find_by(id: params[:id], category_id: params[:category_id])
+      if !product.present?
+        render json: { status: "ERROR", message: " No Category found for given id", data: "No Product found" }, status: :unprocessable_entity and return
+      end
+    else
+      product = Product.find_by(id: params[:id])
+    end
     render json: { status: "SUCCESS", message: "Fetched successfully", data: product }, status: :ok
   end
 
