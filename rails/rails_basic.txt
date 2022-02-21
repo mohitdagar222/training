@@ -273,7 +273,10 @@ SELECT "properties"."name" FROM "properties" INNER JOIN transactions ON properti
  Appointment.select("agent_id, sum(property_id) as sum").group(:agent_id).having("sum(property_id) > ?",13)
 
 
+action mailer link (ails smtp authentication error)
 
+google.com/settings/security/lesssecureapps
+http://www.google.com/accounts/DisplayUnlockCaptcha 
 
 
 
