@@ -38,9 +38,23 @@ class Api::V1::ProductsController < ActionController::Base
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
-    render json: { status: "SUCCESS", message: "Deleted successfully", data: product }, status: :ok
+    if params[:category_id].present?
+      product = Product.find_by(id: params[:id], category_id: params[:category_id])
+      if product.present?
+        product.destroy
+        render json: { status: "SUCCESS", message: "Deleted successfully", data: product }, status: :ok
+      else
+        render json: { status: "ERROR", message: " Not Deleted", data: "No Product found" }, status: :unprocessable_entity and return
+      end
+    else
+      product = Product.find_by(id: params[:id])
+      if product.present?
+        product.destroy
+        render json: { status: "SUCCESS", message: "Deleted successfully", data: product }, status: :ok
+      else
+        render json: { status: "ERROR", message: " Not Deleted", data: "No Product found" }, status: :unprocessable_entity and return
+      end
+    end
   end
 
   def update
